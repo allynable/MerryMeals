@@ -60,9 +60,8 @@ form button[type="submit"]:hover {
 }
 
 .login-options img {
-    width: 32px;
-    height: 32px;
-    margin-right: 0.5rem;
-    cursor: pointer;
-  }
-  
+  width: 32px;
+  height: 32px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
