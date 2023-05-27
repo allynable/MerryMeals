@@ -20,7 +20,7 @@ export class HeaderComponent extends Component {
           <div class="navbar-dropdown-content">
             <a href="...">Member/Caregivers</a>
             <br></br>
-            <a href="...">Partner/Volunteer</a>
+            <a href="/pvregistration">Partner/Volunteer</a>
           </div>
         </li>
         <li class="navbar-dropdown">
