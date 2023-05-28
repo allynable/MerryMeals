@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook Login API</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/webjars/bootstrap/css/bootstrap.min.css"
+    />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/webjars/bootstrap/js/bootstrap.min.js"
+    ></script>
+  </head>
+  <body>
+    <h1>Facebook Login API Demo</h1>
+    <div class="container unauthenticated">
+      <a href="/login">
+        <button type="button" class="btn btn-primary">
+          Login with Facebook
+        </button>
+      </a>
+    </div>
+    <div class="container authenticated" style="display: none">
+      Logged in as: <span id="user"></span> <button onClick="logout()"
+      class="btn btn-danger">Logout</button>
+    </div>
+    <script type="text/javascript">
+      $.get("/user", function (data) {
+        $("#user").html(data.userAuthentication.details.name);
+        $(".unauthenticated").hide();
+        $(".authenticated").show();
+      });
+      var logout = function() {
+        $.post("/logout", function() {
+        $("#user").html('');
+        $(".unauthenticated").show();
+        $(".authenticated").hide();
+        });
+        return true;
+        }
+
+      if (window.location.hash == '#_=_') {
+        history.replaceState ? history.replaceState(null, null,
+        window.location.href.split('#')[0])
+        : window.location.hash = '';
+        }
+    </script>
+  </body>
+</html>
