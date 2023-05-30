@@ -27,4 +27,14 @@ public class GoogleOAuth2Users extends OAuth2Users{
 	public String getImageUrl() {
 		return (String) attributes.get("picture");
 	}
+
+	@Override
+	public String getFirstName() {
+		return (String) attributes.get("given_name");
+	}
+
+	@Override
+	public String getLastName() {
+		return (String) attributes.get("family_name");
+	}
 }

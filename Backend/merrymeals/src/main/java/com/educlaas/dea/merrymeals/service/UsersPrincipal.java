@@ -34,14 +34,6 @@ public class UsersPrincipal implements UserDetails, OAuth2User{
 		UsersPrincipal usersPrincipal = new UsersPrincipal(users.getUserId(), users.getEmail(), users.getPassword(), authorities);
 		return usersPrincipal;
 	}
-	
-	//It returns usersPrincipal for Google or Facebook Login
-	public static UsersPrincipal createUser(Users user, Map<String, Object> attributes) {
-        UsersPrincipal userPrincipal = UsersPrincipal.createUser(user);
-        userPrincipal.setAttributes(attributes);
-		userPrincipal.setAuthorities(Collections.singletonList(new SimpleGrantedAuthority(user.getRole())));
-        return userPrincipal;
-    }
 
     public static long getSerialversionuid() {
 		return serialVersionUID;

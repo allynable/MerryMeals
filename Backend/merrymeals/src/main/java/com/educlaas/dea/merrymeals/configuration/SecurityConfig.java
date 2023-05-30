@@ -19,7 +19,6 @@ import com.educlaas.dea.merrymeals.jwtsecurity.TokenAuthenticationFilter;
 import com.educlaas.dea.merrymeals.oauth2security.AuthorizationFailureHandler;
 import com.educlaas.dea.merrymeals.oauth2security.AuthorizationSuccessHandler;
 import com.educlaas.dea.merrymeals.oauth2security.HttpCookieAuthorizationRequestRepo;
-import com.educlaas.dea.merrymeals.service.OAuthUsersServiceImpl;
 import com.educlaas.dea.merrymeals.service.UsersServiceImpl;
 
 //Secure or Protect to unauthorized user to protect resource without valid JWT token
@@ -67,10 +66,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
-    //OAuth2 Login
-    @Autowired
-    private OAuthUsersServiceImpl oAuthUsersServiceImpl;
     
     @Autowired
     private AuthorizationSuccessHandler authorizationSuccessHandler;
@@ -114,24 +109,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                         .permitAll()
-                    .antMatchers("/online/**", "/oauth2/**")
+                    .antMatchers("/")
                         .permitAll()
                     .anyRequest()
-                        .authenticated()
-                    .and()
-                .oauth2Login()
-                    .authorizationEndpoint()
-                        .baseUri("/oauth2/authorize")
-                        .authorizationRequestRepository(cookieAuthorizationRequestRepo())
-                        .and()
-                    .redirectionEndpoint()
-                        .baseUri("/oauth2/callback/*")
-                        .and()
-                    .userInfoEndpoint()
-                        .userService(oAuthUsersServiceImpl)
-                        .and()
-                    .successHandler(authorizationSuccessHandler)
-                    .failureHandler(authorizationFailureHandler);
+                        .authenticated();
                  
 
         // Add our custom Token based authentication filter
