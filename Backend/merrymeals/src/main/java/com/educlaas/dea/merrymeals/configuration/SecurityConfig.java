@@ -109,10 +109,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                         .permitAll()
-                    .antMatchers("/")
-                        .permitAll()
-                    .anyRequest()
-                        .authenticated();
+                    .antMatchers("/**")
+                        .permitAll();
                  
 
         // Add our custom Token based authentication filter

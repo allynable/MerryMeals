@@ -15,6 +15,47 @@ public class ServiceCenter {
 
     private String scName;
     private String scDetails;
-    private String sclongitude;
+    private String scLongitude;
     private String scLatitude;
+
+    public long getScId() {
+        return this.scId;
+    }
+
+    public void setScId(long scId) {
+        this.scId = scId;
+    }
+
+    public String getScName() {
+        return this.scName;
+    }
+
+    public void setScName(String scName) {
+        this.scName = scName;
+    }
+
+    public String getScDetails() {
+        return this.scDetails;
+    }
+
+    public void setScDetails(String scDetails) {
+        this.scDetails = scDetails;
+    }
+
+    public String getScLongitude() {
+        return this.scLongitude;
+    }
+
+    public void setScLongitude(String scLongitude) {
+        this.scLongitude = scLongitude;
+    }
+
+    public String getScLatitude() {
+        return this.scLatitude;
+    }
+
+    public void setScLatitude(String scLatitude) {
+        this.scLatitude = scLatitude;
+    }
+
 }
