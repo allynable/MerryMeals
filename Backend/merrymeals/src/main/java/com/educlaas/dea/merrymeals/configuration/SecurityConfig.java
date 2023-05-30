@@ -111,6 +111,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                     .antMatchers("/**")
                         .permitAll();
+                        
                  
 
         // Add our custom Token based authentication filter
