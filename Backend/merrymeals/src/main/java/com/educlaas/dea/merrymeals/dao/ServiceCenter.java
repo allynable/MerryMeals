@@ -17,6 +17,15 @@ public class ServiceCenter {
     private String scDetails;
     private String scLongitude;
     private String scLatitude;
+    private String contactNumber;
+
+    public String getContactNumber() {
+        return this.contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
     public long getScId() {
         return this.scId;

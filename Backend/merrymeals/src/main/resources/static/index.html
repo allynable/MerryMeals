@@ -25,42 +25,13 @@
         geocodeAddress();
       })
     })
-    function initAutocomplete() {
-      var addressInput = document.getElementById("address");
-      var autocompleteService = new google.maps.places.AutocompleteService();
-      var suggestionsContainer = document.getElementById("suggestions");
 
-      addressInput.addEventListener("input", function () {
-        var input = addressInput.value;
-
-        if (input) {
-          autocompleteService.getPlacePredictions(
-            { input: input },
-            function (results, status) {
-              if (status === google.maps.places.PlacesServiceStatus.OK) {
-                suggestionsContainer.innerHTML = "";
-                results.forEach(function (prediction) {
-                  var suggestion = document.createElement("div");
-                  suggestion.textContent = prediction.description;
-                  suggestion.classList.add("suggestion");
-                  suggestion.addEventListener("click", function () {
-                    addressInput.value = prediction.description;
-                    suggestionsContainer.innerHTML = "";
-                    geocodeAddress();
-                  });
-                  suggestionsContainer.appendChild(suggestion);
-                });
-              } else {
-                suggestionsContainer.innerHTML = "";
-              }
-            }
-          );
-        } else {
-          suggestionsContainer.innerHTML = "";
-        }
-      });
-    }
-
+    $(document).ready(() => {
+      $("#address").keypress(() => {
+        initAutocomplete();
+      })
+    })
+    
     function geocodeAddress() {
       var geocoder = new google.maps.Geocoder();
       var address = document.getElementById("address").value;
@@ -115,7 +86,7 @@
 
     // Haversine formula
     function getDistance(lat1, lng1, lat2, lng2) {
-      const R = 6371e3; // Earth's radius in meters
+      const R = 6371e3;
       const phi1 = toRadians(lat1);
       const phi2 = toRadians(lat2);
       const deltaPhi = toRadians(lat2 - lat1);
@@ -240,8 +211,6 @@
         });
       });
     }
-
-    initAutocomplete();
   </script>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeP41nTw8QroOfvcCFR9bKIC-GUW7BLcs&callback=initMap"></script>
