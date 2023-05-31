@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //Create member table and define attributes
 @Entity
-@Table(name = "tb_member", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class Member {
 	
 	@Id
