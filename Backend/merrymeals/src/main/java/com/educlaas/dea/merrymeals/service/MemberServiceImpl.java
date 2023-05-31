@@ -1,4 +1,4 @@
-package com.mow.service;
+package com.educlaas.dea.merrymeals.service;
 
 import javax.transaction.Transactional;
 

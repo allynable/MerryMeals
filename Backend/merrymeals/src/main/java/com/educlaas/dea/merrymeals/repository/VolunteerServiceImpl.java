@@ -1,4 +1,4 @@
-package com.mow.service;
+package com.educlaas.dea.merrymeals.repository;
 
 import javax.transaction.Transactional;
 
@@ -9,9 +9,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
-import com.mow.dao.Volunteer;
-import com.mow.exception.ResourceNotFoundException;
-import com.mow.repository.VolunteerRepository;
+import com.educlaas.dea.merrymeals.dao.Volunteer;
+import com.educlaas.dea.merrymeals.exception.ResourceNotFoundException;
+import com.educlaas.dea.merrymeals.repository.VolunteerRepository;
 
 //UserDetailsService is the default built-in interface
 /*

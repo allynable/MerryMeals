@@ -1,18 +1,18 @@
-package com.mow.repository;
+package com.educlaas.dea.merrymeals.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mow.dao.Member;
+import com.mow.dao.Volunteer;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Long> {
+public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
 
 	//Check or Find existing email - return user which relates with existing email
 	//For Login 
-    Optional<Member> findByEmail(String email);
+    Optional<Volunteer> findByEmail(String email);
 
     //Check or Find existing mail - return true or false
     //For Register (duplicate mail)

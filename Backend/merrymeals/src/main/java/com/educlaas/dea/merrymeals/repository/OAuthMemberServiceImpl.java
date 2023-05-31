@@ -1,4 +1,4 @@
-package com.mow.service;
+package com.educlaas.dea.merrymeals.repository;
 
 import java.util.Optional;
 
@@ -12,18 +12,18 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.mow.dao.AuthProvider;
-import com.mow.dao.Volunteer;
-import com.mow.exception.OAuthAuthenticationException;
-import com.mow.oauth2users.OAuth2Member;
-import com.mow.oauth2users.OAuth2MemberFactory;
-import com.mow.repository.VolunteerRepository;
+import com.educlaas.dea.merrymeals.dao.AuthProvider;
+import com.educlaas.dea.merrymeals.dao.Member;
+import com.educlaas.dea.merrymeals.exception.OAuthAuthenticationException;
+import com.educlaas.dea.merrymeals.oauth2users.OAuth2Member;
+import com.educlaas.dea.merrymeals.oauth2users.OAuth2MemberFactory;
+import com.educlaas.dea.merrymeals.repository.MemberRepository;
 
 @Service
-public class OAuthVolunteerServiceImpl extends DefaultOAuth2UserService{
+public class OAuthMemberServiceImpl extends DefaultOAuth2UserService{
 	
 	@Autowired
-    private VolunteerRepository volunteerRepository;
+    private MemberRepository memberRepository;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -45,38 +45,38 @@ public class OAuthVolunteerServiceImpl extends DefaultOAuth2UserService{
             throw new OAuthAuthenticationException("Email not found from OAuth2 provider");
         }
 
-        Optional<Volunteer> userOptional = volunteerRepository.findByEmail(oAuth2Users.getEmail());
-        Volunteer volunteer;
+        Optional<Member> userOptional = memberRepository.findByEmail(oAuth2Users.getEmail());
+        Member member;
         if(userOptional.isPresent()) {
-            volunteer = userOptional.get();
-            if(!volunteer.getProvider().equals(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()))) {
+            member = userOptional.get();
+            if(!member.getProvider().equals(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()))) {
                 throw new OAuthAuthenticationException("Looks like you're signed up with " +
-                        volunteer.getProvider() + " account. Please use your " + volunteer.getProvider() +
+                        member.getProvider() + " account. Please use your " + member.getProvider() +
                         " account to login.");
             }
-            volunteer = updateExistingUser(volunteer, oAuth2Users);
+            member = updateExistingUser(member, oAuth2Users);
         } else {
-            volunteer = registerNewUser(oAuth2UserRequest, oAuth2Users);
+            member = registerNewUser(oAuth2UserRequest, oAuth2Users);
         }
 
-        return VolunteerPrincipal.createUser(volunteer, oAuth2User.getAttributes());
+        return MemberPrincipal.createUser(member, oAuth2User.getAttributes());
     }
 
-    private Volunteer registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2Member oAuth2Users) {
-    	Volunteer volunteer = new Volunteer();
+    private Member registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2Member oAuth2Users) {
+        Member member = new Member();
 
-        volunteer.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
-        volunteer.setProviderId(oAuth2Users.getId());
-        volunteer.setUserName(oAuth2Users.getName());
-        volunteer.setEmail(oAuth2Users.getEmail());
-        volunteer.setImageUrl(oAuth2Users.getImageUrl());
-        return volunteerRepository.save(volunteer);
+        member.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
+        member.setProviderId(oAuth2Users.getId());
+        member.setUserName(oAuth2Users.getName());
+        member.setEmail(oAuth2Users.getEmail());
+        member.setImageUrl(oAuth2Users.getImageUrl());
+        return memberRepository.save(member);
     }
 
-    private Volunteer updateExistingUser(Volunteer existingUser, OAuth2Member oAuth2UserInfo) {
+    private Member updateExistingUser(Member existingUser, OAuth2Member oAuth2UserInfo) {
         existingUser.setUserName(oAuth2UserInfo.getName());
         existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
-        return volunteerRepository.save(existingUser);
+        return memberRepository.save(existingUser);
     }
 
 }
