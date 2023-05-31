@@ -1,14 +1,22 @@
 package com.educlaas.dea.merrymeals.controller;
 
+import org.hibernate.engine.jdbc.connections.internal.UserSuppliedConnectionProviderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.educlaas.dea.merrymeals.dao.Member;
 import com.educlaas.dea.merrymeals.dao.Users;
 import com.educlaas.dea.merrymeals.exception.ResourceNotFoundException;
+import com.educlaas.dea.merrymeals.payload.MemberRegistrater;
+import com.educlaas.dea.merrymeals.repository.AdminRepository;
+import com.educlaas.dea.merrymeals.repository.MemberRepository;
 import com.educlaas.dea.merrymeals.repository.UsersRepository;
+import com.educlaas.dea.merrymeals.repository.VolunteerRepository;
 import com.educlaas.dea.merrymeals.service.UsersPrincipal;
 
 @RestController
@@ -18,10 +26,29 @@ public class UsersController {
     @Autowired
     private UsersRepository userRepository;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
+    @Autowired
+    private VolunteerRepository volunteerRepository;
+
+    @Autowired
+    private AdminRepository adminRepository;
+
 	//Profile API <<Get Current User Profile>>
     @GetMapping("/user/me")
-    public Users getUser(@CurrentUser UsersPrincipal usersPrincipal) {
-    	return userRepository.findById((usersPrincipal.getUserId())) 
+    public Object getUser(@CurrentUser UsersPrincipal usersPrincipal) {
+    	Users user =  userRepository.findById((usersPrincipal.getUserId())) 
                 .orElseThrow(() -> new ResourceNotFoundException("Users", "userId", usersPrincipal.getUserId()));
+        String role = user.getRole();
+
+        switch (role){
+            case "ROLE_MEMBER":
+            Member member = memberRepository.findByUser(user);
+            
+
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Unknown role");
     }    
 }

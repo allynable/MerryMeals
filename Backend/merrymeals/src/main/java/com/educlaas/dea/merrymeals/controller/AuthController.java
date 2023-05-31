@@ -23,9 +23,9 @@ import com.educlaas.dea.merrymeals.exception.BadRequestException;
 import com.educlaas.dea.merrymeals.jwtsecurity.TokenProvider;
 import com.educlaas.dea.merrymeals.payload.Login;
 import com.educlaas.dea.merrymeals.payload.LoginResponse;
-import com.educlaas.dea.merrymeals.payload.MemberDto;
+import com.educlaas.dea.merrymeals.payload.MemberRegistrater;
 import com.educlaas.dea.merrymeals.payload.MemberRegisterResponse;
-import com.educlaas.dea.merrymeals.payload.VolunteerDto;
+import com.educlaas.dea.merrymeals.payload.VolunteerRegister;
 import com.educlaas.dea.merrymeals.payload.VolunteerRegisterResponse;
 import com.educlaas.dea.merrymeals.repository.MemberRepository;
 import com.educlaas.dea.merrymeals.repository.UsersRepository;
@@ -54,7 +54,7 @@ public class AuthController {
 
 	// Register User for Local
 	@PostMapping(value = "/register/member")
-	public ResponseEntity<?> registerMember(@RequestBody MemberDto register) {
+	public ResponseEntity<?> registerMember(@RequestBody MemberRegistrater register) {
 		// Checking duplicate email
 		if (usersRepository.existsByEmail(register.getEmail())) {
 			throw new BadRequestException(
@@ -100,7 +100,7 @@ public class AuthController {
 	}
 
 	@PostMapping(value = "/register/volunteer")
-	public ResponseEntity<?> registerVolunteer(@RequestBody VolunteerDto register) {
+	public ResponseEntity<?> registerVolunteer(@RequestBody VolunteerRegister register) {
 		// Checking duplicate email
 		if (usersRepository.existsByEmail(register.getEmail())) {
 			throw new BadRequestException(
