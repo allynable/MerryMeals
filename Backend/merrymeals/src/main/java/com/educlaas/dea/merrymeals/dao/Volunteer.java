@@ -1,124 +1,105 @@
-package com.mow.dao;
+package com.educlaas.dea.merrymeals.dao;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-//Create volunteer table and define attributes
 @Entity
-@Table(name = "tb_volunteer", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "volunteer")
 public class Volunteer {
-	
-	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private long volunteerId;
-	
-	@Column
-	private int loginId;
-	
-	public int getLoginId() {
-		return loginId;
-	}
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long volunteerId;
+    
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Users users;
 
-	public void setLoginId(int loginId) {
-		this.loginId = loginId;
-	}
+    private String firstName;
+    private String lastName;
+    private String longitude;
+    private String latitude;
+    private String contactNumber;
+    private String dateOfBirth;
+    private String station;
 
-	@Column(nullable = false)
-	private String userName;
-	
-	@Email
-	@Column(nullable = false)
-	private String email;
-	
-	@JsonIgnore
-	private String password;
-	
-	private String imageUrl;
-	
-	@Column(nullable = false)
-	private Boolean emailVerified = false;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private AuthProvider provider;
-	
-	private String providerId;
+    public long getVolunteerId() {
+        return this.volunteerId;
+    }
 
+    public void setVolunteerId(long volunteerId) {
+        this.volunteerId = volunteerId;
+    }
 
+    public Users getUsers() {
+        return this.users;
+    }
 
-	public long getVolunteerId() {
-		return volunteerId;
-	}
+    public void setUsers(Users users) {
+        this.users = users;
+    }
 
-	public void setVolunteerId(long volunteerId) {
-		this.volunteerId = volunteerId;
-	}
+    public String getFirstName() {
+        return this.firstName;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public String getLastName() {
+        return this.lastName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getLongitude() {
+        return this.longitude;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getLatitude() {
+        return this.latitude;
+    }
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    public String getContactNumber() {
+        return this.contactNumber;
+    }
 
-	public Boolean getEmailVerified() {
-		return emailVerified;
-	}
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
-	public void setEmailVerified(Boolean emailVerified) {
-		this.emailVerified = emailVerified;
-	}
+    public String getDateOfBirth() {
+        return this.dateOfBirth;
+    }
 
-	public AuthProvider getProvider() {
-		return provider;
-	}
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-	public void setProvider(AuthProvider provider) {
-		this.provider = provider;
-	}
+    public String getStation() {
+        return this.station;
+    }
 
-	public String getProviderId() {
-		return providerId;
-	}
+    public void setStation(String station) {
+        this.station = station;
+    }
 
-	public void setProviderId(String providerId) {
-		this.providerId = providerId;
-	}
 }

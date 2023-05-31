@@ -1,123 +1,143 @@
-package com.mow.dao;
+package com.educlaas.dea.merrymeals.dao;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-//Create member table and define attributes
 @Entity
-@Table(name = "tb_member", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = "email")} )
 public class Member {
-	
-	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private long memberId;
-	
-	@Column
-	private int loginId;
-	
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String memberId;
 
-	@Column(nullable = false)
-	private String userName;
-	
-	@Email
-	@Column(nullable = false)
-	private String email;
-	
-	@JsonIgnore
-	private String password;
-	
-	private String imageUrl;
-	
-	@Column(nullable = false)
-	private Boolean emailVerified = false;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private AuthProvider provider;
-	
-	private String providerId;
+    private String firstName;
+    private String lastName;
+    private String longitude;
+    private String latitude;
+    private String contactNumber;
+    private String dateOfBirth;
+    private String condition;
+    private String allergies;
+    private String caregiverName;
+    private String relationship;
+    private String caregiverContactNumber;
 
-	public int getLoginId() {
-		return loginId;
-	}
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private Users user;
 
-	public void setLoginId(int loginId) {
-		this.loginId = loginId;
-	}
+    public String getMemberId() {
+        return this.memberId;
+    }
 
-	public long getMemberId() {
-		return memberId;
-	}
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
 
-	public void setMemberId(long memberId) {
-		this.memberId = memberId;
-	}
+    public String getFirstName() {
+        return this.firstName;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public String getLastName() {
+        return this.lastName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getLongitude() {
+        return this.longitude;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getLatitude() {
+        return this.latitude;
+    }
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    public String getContactNumber() {
+        return this.contactNumber;
+    }
 
-	public Boolean getEmailVerified() {
-		return emailVerified;
-	}
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
-	public void setEmailVerified(Boolean emailVerified) {
-		this.emailVerified = emailVerified;
-	}
+    public String getDateOfBirth() {
+        return this.dateOfBirth;
+    }
 
-	public AuthProvider getProvider() {
-		return provider;
-	}
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-	public void setProvider(AuthProvider provider) {
-		this.provider = provider;
-	}
+    public String getCondition() {
+        return this.condition;
+    }
 
-	public String getProviderId() {
-		return providerId;
-	}
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
 
-	public void setProviderId(String providerId) {
-		this.providerId = providerId;
-	}
+    public String getAllergies() {
+        return this.allergies;
+    }
+
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    public String getCaregiverName() {
+        return this.caregiverName;
+    }
+
+    public void setCaregiverName(String caregiverName) {
+        this.caregiverName = caregiverName;
+    }
+
+    public String getRelationship() {
+        return this.relationship;
+    }
+
+    public void setRelationship(String relationship) {
+        this.relationship = relationship;
+    }
+
+    public String getCaregiverContactNumber() {
+        return this.caregiverContactNumber;
+    }
+
+    public void setCaregiverContactNumber(String caregiverContactNumber) {
+        this.caregiverContactNumber = caregiverContactNumber;
+    }
+
+    public Users getUser() {
+        return this.user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 }
+

@@ -1,4 +1,4 @@
-package com.mow.configuration;
+package com.educlaas.dea.merrymeals.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,14 +15,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.mow.jwtsecurity.TokenAuthenticationFilter;
-import com.mow.oauth2security.AuthorizationFailureHandler;
-import com.mow.oauth2security.AuthorizationSuccessHandler;
-import com.mow.oauth2security.HttpCookieAuthorizationRequestRepo;
-import com.mow.service.OAuthMemberServiceImpl;
-import com.mow.service.OAuthVolunteerServiceImpl;
-import com.mow.service.VolunteerServiceImpl;
-import com.mow.service.MemberServiceImpl;
+import com.educlaas.dea.merrymeals.jwtsecurity.TokenAuthenticationFilter;
+import com.educlaas.dea.merrymeals.oauth2security.AuthorizationFailureHandler;
+import com.educlaas.dea.merrymeals.oauth2security.AuthorizationSuccessHandler;
+import com.educlaas.dea.merrymeals.oauth2security.HttpCookieAuthorizationRequestRepo;
+import com.educlaas.dea.merrymeals.service.OAuthMemberServiceImpl;
+import com.educlaas.dea.merrymeals.service.OAuthVolunteerServiceImpl;
+import com.educlaas.dea.merrymeals.service.VolunteerServiceImpl;
+import com.educlaas.dea.merrymeals.service.MemberServiceImpl;
 
 //Secure or Protect to unauthorized user to protect resource without valid JWT token
 @Configuration
