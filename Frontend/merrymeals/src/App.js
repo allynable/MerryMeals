@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+//import React, { Component } from 'react'
+// eslint-disable-next-line
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
+import HeaderComponent from './component/HeaderComponent'
+import FooterComponent from './component/FooterComponent'
+import HomeComponent from './component/HomeComponent';
+import PVRegisterComponent from './component/PVRegisterComponent'
+import PVLoginComponent from './component/PVLogionComponent'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+      <HeaderComponent></HeaderComponent>
+
+      <Switch>
+      <Route exact path='/' component={HomeComponent}></Route>
+      <Route exact path='/pvregistration' component={PVRegisterComponent}></Route>
+      <Route exact path='/pvlogin' component={PVLoginComponent}></Route>
+      </Switch>
+
+      <FooterComponent></FooterComponent>
+
+
+      </Router>
+      </div>
+        
+    
   );
 }
 
