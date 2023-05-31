@@ -6,7 +6,7 @@ const RegistrationForm = () => {
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -39,7 +39,7 @@ const RegistrationForm = () => {
       </div>
       <div>
         <label htmlFor="phone">Phone:</label>
-        <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+        <input type="tel" id="phone" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
       </div>
       <div>
         <label htmlFor="birthDate">Birth Date:</label>

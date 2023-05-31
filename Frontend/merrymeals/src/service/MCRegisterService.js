@@ -46,10 +46,10 @@ export function login(loginRequest) {
   });
 }
 
-export function register(registerRequest) {
+export function memberRegister(memberRegisterRequest) {
   return request({
-    url: API_BASE_URL + "/online/register",
+    url: API_BASE_URL + "/online/register/member",
     method: "POST",
-    body: JSON.stringify(registerRequest),
+    body: JSON.stringify(memberRegisterRequest),
   });
 }

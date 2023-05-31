@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -29,36 +30,15 @@ public class Users {
     @JsonIgnore
     private String password;
 
-    private String userName;
-
     @NotNull
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
-
-    private String providerId;
 
     private String imageUrl;
 
     private String role;
 
     private boolean isApproved;
-
-
-    public String getUserName() {
-        return this.userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getProviderId() {
-        return this.providerId;
-    }
-
-    public void setProviderId(String providerId) {
-        this.providerId = providerId;
-    }
 
     public boolean isIsApproved() {
         return this.isApproved;
