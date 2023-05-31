@@ -8,13 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table (name = "users")
+@Table (name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class Users {
     
     @Id
@@ -28,15 +29,56 @@ public class Users {
     @JsonIgnore
     private String password;
 
-    private String imageUrl;
+    private String userName;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
 
+    private String providerId;
+
+    private String imageUrl;
+
     private String role;
 
     private boolean isApproved;
+
+
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getProviderId() {
+        return this.providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
+    }
+
+    public boolean isIsApproved() {
+        return this.isApproved;
+    }
+
+    public boolean getIsApproved() {
+        return this.isApproved;
+    }
+
+    public void setIsApproved(boolean isApproved) {
+        this.isApproved = isApproved;
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public long getUserId() {
         return this.userId;
@@ -62,14 +104,6 @@ public class Users {
         this.password = password;
     }
 
-    public String getImageUrl() {
-        return this.imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public AuthProvider getProvider() {
         return this.provider;
     }
@@ -85,17 +119,5 @@ public class Users {
     public void setRole(String role) {
         this.role = role;
     }
-
-    public boolean isIsApproved() {
-        return this.isApproved;
-    }
-
-    public boolean getIsApproved() {
-        return this.isApproved;
-    }
-
-    public void setIsApproved(boolean isApproved) {
-        this.isApproved = isApproved;
-    }
-
+    
 }
