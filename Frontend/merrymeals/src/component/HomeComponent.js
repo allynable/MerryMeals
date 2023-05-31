@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../css/HomeComponent.css'
-import { Link } from 'react-router-dom';
 import CarouselComponent from './CarouselComponent';
 import TestimonialComponent from './TestimonialComponent';
 import purpose from '../image/purpose.png'
