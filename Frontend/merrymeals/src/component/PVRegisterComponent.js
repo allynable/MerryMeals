@@ -7,12 +7,12 @@ const RegistrationForm = () => {
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
-  const [birthDate, setBirthDate] = useState('');
+  const [dob, setDob] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [representingGroup, setRepresentingGroup] = useState(false);
   const [groupName, setGroupName] = useState('');
-  const [expertise, setExpertise] = useState('');
+  const [station, setStation] = useState('');
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ const RegistrationForm = () => {
       </div>
       <div>
         <label htmlFor="birthDate">Birth Date:</label>
-        <input type="date" id="birthDate" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} required />
+        <input type="date" id="birthDate" value={dob} onChange={(e) => setDob(e.target.value)} required />
       </div>
       <div>
         <label htmlFor="password">Password:</label>
@@ -65,10 +65,10 @@ const RegistrationForm = () => {
       )}
       <div>
         <label htmlFor="expertise">Areas of expertise/interest:</label>
-        <select id="expertise" value={expertise} onChange={(e) => setExpertise(e.target.value)}>
+        <select id="expertise" value={station} onChange={(e) => setStation(e.target.value)}>
           <option value="">Select expertise</option>
-          <option value="driving">Driving/Delivery</option>
-          <option value="cooking">Cooking/Kitchen Help</option>
+          <option value="Delivery">Driving/Delivery</option>
+          <option value="Kitchen">Food Preparation/Kitchen Help</option>
         </select>
       </div>
       <div>

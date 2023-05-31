@@ -1,10 +1,13 @@
 package com.educlaas.dea.merrymeals.dao;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,14 +22,19 @@ public class Member {
     private String lastName;
     private String latitude;
     private String longitude;
-    private String dob;
     private String contactNumber;
+    private String dob;
+
+    @Column(name = "health_condition")
     private String condition;
     private String allergies;
     private String caregiverName;
     private String relationship;
     private String caregiverContact;
-    private long userId;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    private Users user;
 
     public long getMemberId() {
         return this.memberId;
@@ -68,14 +76,6 @@ public class Member {
         this.longitude = longitude;
     }
 
-    public String getDob() {
-        return this.dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
     public String getContactNumber() {
         return this.contactNumber;
     }
@@ -84,20 +84,20 @@ public class Member {
         this.contactNumber = contactNumber;
     }
 
+    public String getDob() {
+        return this.dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public String getCondition() {
         return this.condition;
     }
 
     public void setCondition(String condition) {
         this.condition = condition;
-    }
-
-    public String getAllergies() {
-        return this.allergies;
-    }
-
-    public void setAllergies(String allergies) {
-        this.allergies = allergies;
     }
 
     public String getCaregiverName() {
@@ -124,13 +124,21 @@ public class Member {
         this.caregiverContact = caregiverContact;
     }
 
-    public long getUserId() {
-        return this.userId;
+
+    public String getAllergies() {
+        return this.allergies;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    public Users getUser() {
+        return this.user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
 }
-
