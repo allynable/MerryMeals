@@ -3,7 +3,7 @@ package com.educlaas.dea.merrymeals.payload;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class VolunteerRegister {
+public class VolunteerDto {
     @Email
 	@NotBlank
 	private String email;
