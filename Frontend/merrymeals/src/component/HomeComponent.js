@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
 import '../css/HomeComponent.css'
 import CarouselComponent from './CarouselComponent';
 import TestimonialComponent from './TestimonialComponent';
 import purpose from '../image/purpose.png'
 import news from '../image/news.png'
-=======
->>>>>>> oauth2
 
 export class HomeComponent extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
        <CarouselComponent />
        <h1 class="testimonial">TESTIMONIALS</h1>
        <TestimonialComponent/>
@@ -69,9 +65,7 @@ export class HomeComponent extends Component {
         <img src={news} alt="Purpose"/>
         </div>      
         </div>
-=======
         Home Component
->>>>>>> oauth2
       </div>
     )
   }

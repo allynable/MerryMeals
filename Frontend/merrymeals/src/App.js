@@ -1,35 +1,34 @@
 //import React, { Component } from 'react'
 // eslint-disable-next-line
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import './App.css';
-import HeaderComponent from './component/HeaderComponent'
-import FooterComponent from './component/FooterComponent'
-import HomeComponent from './component/HomeComponent';
-import PVRegisterComponent from './component/PVRegisterComponent'
-import PVLoginComponent from './component/PVLogionComponent'
-import MemberSignup from './component/MemberSignup'
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import HeaderComponent from "./component/HeaderComponent";
+import FooterComponent from "./component/FooterComponent";
+import HomeComponent from "./component/HomeComponent";
+import PVRegisterComponent from "./component/PVRegisterComponent";
+import PVLoginComponent from "./component/PVLogionComponent";
+import MemberSignup from "./component/MemberSignup";
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <HeaderComponent></HeaderComponent>
+        <HeaderComponent></HeaderComponent>
 
-      <Switch>
-      <Route exact path='/' component={HomeComponent}></Route>
-      <Route exact path='/memregistration' component={MemberSignup}></Route>
-      <Route exact path='/pvregistration' component={PVRegisterComponent}></Route>
-      <Route exact path='/pvlogin' component={PVLoginComponent}></Route>
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={HomeComponent}></Route>
+          <Route exact path="/memregistration" component={MemberSignup}></Route>
+          <Route
+            exact
+            path="/pvregistration"
+            component={PVRegisterComponent}
+          ></Route>
+          <Route exact path="/pvlogin" component={PVLoginComponent}></Route>
+        </Switch>
 
-      <FooterComponent></FooterComponent>
-
-
+        <FooterComponent></FooterComponent>
       </Router>
-      </div>
-        
-    
+    </div>
   );
 }
 

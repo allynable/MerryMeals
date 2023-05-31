@@ -18,11 +18,8 @@ export class HeaderComponent extends Component {
         <li class="navbar-dropdown">
           <a href="..." class="navbar-link">Register</a>
           <div class="navbar-dropdown-content">
-<<<<<<< HEAD
             <a href="/memregistration">Member/Caregivers</a>
-=======
             <a href="...">Member/Caregivers</a>
->>>>>>> oauth2
             <br></br>
             <a href="/pvregistration">Partner/Volunteer</a>
           </div>
