@@ -1,7 +1,7 @@
 package com.educlaas.dea.merrymeals.payload;
 
 //After register, it will show in body as JSON format <<success, message>>
-public class RegisterResponse {
+public class MemberRegisterResponse {
 	private boolean success;
 	private String message;
 	
@@ -21,7 +21,7 @@ public class RegisterResponse {
 		this.message = message;
 	}
 
-	public RegisterResponse(boolean success, String message) {
+	public MemberRegisterResponse(boolean success, String message) {
 		super();
 		this.success = success;
 		this.message = message;

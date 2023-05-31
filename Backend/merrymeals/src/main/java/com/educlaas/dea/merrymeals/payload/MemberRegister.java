@@ -3,8 +3,14 @@ package com.educlaas.dea.merrymeals.payload;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-//Local or Google or Facebook Register
 public class MemberRegister {
+	@Email
+	@NotBlank
+	private String email;
+
+	@NotBlank
+	private String password;
+
 	@NotBlank
 	private String firstName;
 
@@ -12,23 +18,13 @@ public class MemberRegister {
 	private String lastName;
 
 	@NotBlank
+	private String latitude;
+
+	@NotBlank
 	private String longitude;
 
 	@NotBlank
-	private String latitude;
-
-	@Email
-	@NotBlank
-	private String email;
-
-	@NotBlank
-	private String dob;
-
-	@NotBlank
 	private String contactNumber;
-	
-	@NotBlank
-	private String password;
 
 	@NotBlank
 	private String condition;
@@ -36,9 +32,29 @@ public class MemberRegister {
 	@NotBlank
 	private String allergies;
 
+	@NotBlank
+	private String dob;
+
 	private String caregiverName;
 	private String relationship;
 	private String caregiverContact;
+
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getFirstName() {
 		return this.firstName;
@@ -56,14 +72,6 @@ public class MemberRegister {
 		this.lastName = lastName;
 	}
 
-	public String getLongitude() {
-		return this.longitude;
-	}
-
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-
 	public String getLatitude() {
 		return this.latitude;
 	}
@@ -72,20 +80,12 @@ public class MemberRegister {
 		this.latitude = latitude;
 	}
 
-	public String getEmail() {
-		return this.email;
+	public String getLongitude() {
+		return this.longitude;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getDob() {
-		return this.dob;
-	}
-
-	public void setDob(String dob) {
-		this.dob = dob;
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 
 	public String getContactNumber() {
@@ -94,14 +94,6 @@ public class MemberRegister {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getCondition() {
@@ -145,23 +137,12 @@ public class MemberRegister {
 	}
 
 
-	@Override
-	public String toString() {
-		return "{" +
-			" firstName='" + getFirstName() + "'" +
-			", lastName='" + getLastName() + "'" +
-			", longitude='" + getLongitude() + "'" +
-			", latitude='" + getLatitude() + "'" +
-			", email='" + getEmail() + "'" +
-			", dob='" + getDob() + "'" +
-			", contactNumber='" + getContactNumber() + "'" +
-			", password='" + getPassword() + "'" +
-			", condition='" + getCondition() + "'" +
-			", allergies='" + getAllergies() + "'" +
-			", caregiverName='" + getCaregiverName() + "'" +
-			", relationship='" + getRelationship() + "'" +
-			", caregiverContact='" + getCaregiverContact() + "'" +
-			"}";
+	public String getDob() {
+		return this.dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 }

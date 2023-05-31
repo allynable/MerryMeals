@@ -1,11 +1,10 @@
 package com.educlaas.dea.merrymeals.dao;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,29 +13,26 @@ public class Member {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String memberId;
+    private long memberId;
 
     private String firstName;
     private String lastName;
-    private String longitude;
     private String latitude;
+    private String longitude;
+    private String dob;
     private String contactNumber;
-    private String dateOfBirth;
     private String condition;
     private String allergies;
     private String caregiverName;
     private String relationship;
-    private String caregiverContactNumber;
+    private String caregiverContact;
+    private long userId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users user;
-
-    public String getMemberId() {
+    public long getMemberId() {
         return this.memberId;
     }
 
-    public void setMemberId(String memberId) {
+    public void setMemberId(long memberId) {
         this.memberId = memberId;
     }
 
@@ -56,14 +52,6 @@ public class Member {
         this.lastName = lastName;
     }
 
-    public String getLongitude() {
-        return this.longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
     public String getLatitude() {
         return this.latitude;
     }
@@ -72,20 +60,28 @@ public class Member {
         this.latitude = latitude;
     }
 
+    public String getLongitude() {
+        return this.longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getDob() {
+        return this.dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
     public String getContactNumber() {
         return this.contactNumber;
     }
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
-    }
-
-    public String getDateOfBirth() {
-        return this.dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getCondition() {
@@ -120,20 +116,21 @@ public class Member {
         this.relationship = relationship;
     }
 
-    public String getCaregiverContactNumber() {
-        return this.caregiverContactNumber;
+    public String getCaregiverContact() {
+        return this.caregiverContact;
     }
 
-    public void setCaregiverContactNumber(String caregiverContactNumber) {
-        this.caregiverContactNumber = caregiverContactNumber;
+    public void setCaregiverContact(String caregiverContact) {
+        this.caregiverContact = caregiverContact;
     }
 
-    public Users getUser() {
-        return this.user;
+    public long getUserId() {
+        return this.userId;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
+
 }
 

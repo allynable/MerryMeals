@@ -23,7 +23,7 @@ import com.educlaas.dea.merrymeals.jwtsecurity.TokenProvider;
 import com.educlaas.dea.merrymeals.payload.Login;
 import com.educlaas.dea.merrymeals.payload.LoginResponse;
 import com.educlaas.dea.merrymeals.payload.MemberRegister;
-import com.educlaas.dea.merrymeals.payload.RegisterResponse;
+import com.educlaas.dea.merrymeals.payload.MemberRegisterResponse;
 import com.educlaas.dea.merrymeals.repository.MemberRepository;
 import com.educlaas.dea.merrymeals.repository.UsersRepository;
 
@@ -64,23 +64,30 @@ public class AuthController {
 
 		// Save new user in the database
 		Users newUser = usersRepository.save(users);
-		Member member = new Member();
-    
-        // Set the Users entity as the foreign key reference
-        member.setUser(newUser);
-		System.out.println("HELOOO");
-        // Save the Member entity to the database
-        memberRepository.save(member);
 
+		Member member = new Member();
+		System.out.println("REGISTERATION: " + register.toString()); 
+		member.setFirstName(register.getFirstName());
+        member.setLastName(register.getLastName());
+        member.setLongitude(register.getLongitude());
+        member.setLatitude(register.getLatitude());
+        member.setContactNumber(register.getContactNumber());
+        member.setDob(register.getDob());
+        member.setCondition(register.getCondition());
+        member.setAllergies(register.getAllergies());
+        member.setCaregiverName(register.getCaregiverName());
+        member.setRelationship(register.getRelationship());
+        member.setCaregiverContact(register.getCaregiverContact());	
+		member.setUserId(newUser.getUserId());
 		Member newMember = memberRepository.save(member);
 
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentContextPath().path("/user/me")
-				.buildAndExpand(newMember.getUser().getUserId()).toUri();
+				.buildAndExpand(newMember.getUserId()).toUri();
 
 		// Return to RegisterResponse Payload
 		return ResponseEntity.created(location)
-				.body(new RegisterResponse(true, "User has successfully registered!!!"));
+				.body(new MemberRegisterResponse(true, "User has successfully registered!!!"));
 	}
 
 	// Local Login
