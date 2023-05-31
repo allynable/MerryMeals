@@ -19,6 +19,7 @@ import com.educlaas.dea.merrymeals.jwtsecurity.TokenAuthenticationFilter;
 import com.educlaas.dea.merrymeals.oauth2security.AuthorizationFailureHandler;
 import com.educlaas.dea.merrymeals.oauth2security.AuthorizationSuccessHandler;
 import com.educlaas.dea.merrymeals.oauth2security.HttpCookieAuthorizationRequestRepo;
+import com.educlaas.dea.merrymeals.service.OAuthUsersServiceImpl;
 import com.educlaas.dea.merrymeals.service.UsersServiceImpl;
 
 //Secure or Protect to unauthorized user to protect resource without valid JWT token
@@ -59,6 +60,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Autowired
+    private OAuthUsersServiceImpl oAuthUsersServiceImpl;
 
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
@@ -110,7 +114,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js")
                         .permitAll()
                     .antMatchers("/**")
-                        .permitAll();
+                        .permitAll()
+                    .anyRequest()
+                        .authenticated()
+                    .and()
+                .oauth2Login()
+                    .authorizationEndpoint()
+                        .baseUri("/oauth2/authorize")
+                        .authorizationRequestRepository(cookieAuthorizationRequestRepo())
+                        .and()
+                    .redirectionEndpoint()
+                        .baseUri("/oauth2/callback/*")
+                        .and()
+                    .userInfoEndpoint()
+                        .userService(oAuthUsersServiceImpl)
+                        .and()
+                    .successHandler(authorizationSuccessHandler)
+                    .failureHandler(authorizationFailureHandler);
                         
                  
 
