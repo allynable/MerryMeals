@@ -7,10 +7,7 @@ import FooterComponent from './component/FooterComponent'
 import HomeComponent from './component/HomeComponent';
 import PVRegisterComponent from './component/PVRegisterComponent'
 import PVLoginComponent from './component/PVLogionComponent'
-<<<<<<< HEAD
 import MemberSignup from './component/MemberSignup'
-=======
->>>>>>> oauth2
 
 
 function App() {
@@ -21,10 +18,7 @@ function App() {
 
       <Switch>
       <Route exact path='/' component={HomeComponent}></Route>
-<<<<<<< HEAD
       <Route exact path='/memregistration' component={MemberSignup}></Route>
-=======
->>>>>>> oauth2
       <Route exact path='/pvregistration' component={PVRegisterComponent}></Route>
       <Route exact path='/pvlogin' component={PVLoginComponent}></Route>
       </Switch>
