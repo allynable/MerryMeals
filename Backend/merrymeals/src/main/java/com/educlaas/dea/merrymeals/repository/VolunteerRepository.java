@@ -4,10 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.educlaas.dea.merrymeals.dao.Volunteer;
-import java.util.List;
-import java.util.Optional;
+import com.educlaas.dea.merrymeals.dao.Users;
+
 
 @Repository
 public interface VolunteerRepository extends JpaRepository<Volunteer, Long>{
-    Optional<Volunteer> findByVolunteerId(long volunteerId);
+    Volunteer findByUser(Users user);
 }

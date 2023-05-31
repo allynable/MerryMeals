@@ -35,7 +35,6 @@ export function getCurrentUser() {
     url: API_BASE_URL + "/online/user/me",
     method: "GET",
   });
-  //return axios.get(API_BASE_URL + '/online/user/me');
 }
 
 export function login(loginRequest) {
@@ -51,5 +50,13 @@ export function memberRegister(memberRegisterRequest) {
     url: API_BASE_URL + "/online/register/member",
     method: "POST",
     body: JSON.stringify(memberRegisterRequest),
+  });
+}
+
+export function volunteerRegister(volunteerRegisterRequest) {
+  return request({
+    url: API_BASE_URL + "/online/register/member",
+    method: "POST",
+    body: JSON.stringify(volunteerRegisterRequest),
   });
 }

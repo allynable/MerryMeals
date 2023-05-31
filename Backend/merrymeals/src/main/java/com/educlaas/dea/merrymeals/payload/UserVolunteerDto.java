@@ -7,6 +7,11 @@ public class UserVolunteerDto {
     private Users user;
     private Volunteer volunteer;
 
+    public UserVolunteerDto(Users user, Volunteer volunteer) {
+        this.user = user;
+        this.volunteer = volunteer;
+    }
+
     public Users getUser() {
         return this.user;
     }

@@ -7,6 +7,11 @@ public class UserAdminDto {
    private Users user;
    private Admin admin;
 
+    public UserAdminDto(Users user, Admin admin) {
+        this.user = user;
+        this.admin = admin;
+    }
+
     public Users getUser() {
         return this.user;
     }
