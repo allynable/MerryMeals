@@ -7,7 +7,11 @@ const RegistrationForm = () => {
     const [lastName, setLastName] = useState('');
     const [address, setAddress] = useState('');
     const [email, setEmail] = useState('');
+<<<<<<< HEAD
     const [contact, setContact] = useState('');
+=======
+    const [contactNumber, setContactNumber] = useState('');
+>>>>>>> oauth2
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -28,11 +32,19 @@ const RegistrationForm = () => {
           <h1>Member Registration</h1>
           <div>
             <label htmlFor="firstName">First Name:</label>
+<<<<<<< HEAD
             <input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
           </div>
           <div>
             <label htmlFor="lastName">Last Name:</label>
             <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+=======
+            <input type="text" id="firstName" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+          </div>
+          <div>
+            <label htmlFor="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+>>>>>>> oauth2
           </div>
           <div>
             <label htmlFor="address">Address:</label>
@@ -44,7 +56,11 @@ const RegistrationForm = () => {
           </div>
           <div>
             <label htmlFor="contact">Phone:</label>
+<<<<<<< HEAD
             <input type="tel" id="contact" value={contact} onChange={(e) => setContact(e.target.value)} required />
+=======
+            <input type="tel" id="contactNumber" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
+>>>>>>> oauth2
           </div>
           <div>
             <label htmlFor="dob">Birth Date:</label>

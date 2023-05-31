@@ -6,13 +6,22 @@ const RegistrationForm = () => {
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
+<<<<<<< HEAD
   const [phone, setPhone] = useState('');
   const [birthDate, setBirthDate] = useState('');
+=======
+  const [contactNumber, setContactNumber] = useState('');
+  const [dob, setDob] = useState('');
+>>>>>>> oauth2
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [representingGroup, setRepresentingGroup] = useState(false);
   const [groupName, setGroupName] = useState('');
+<<<<<<< HEAD
   const [expertise, setExpertise] = useState('');
+=======
+  const [station, setStation] = useState('');
+>>>>>>> oauth2
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -39,11 +48,19 @@ const RegistrationForm = () => {
       </div>
       <div>
         <label htmlFor="phone">Phone:</label>
+<<<<<<< HEAD
         <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
       </div>
       <div>
         <label htmlFor="birthDate">Birth Date:</label>
         <input type="date" id="birthDate" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} required />
+=======
+        <input type="tel" id="phone" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
+      </div>
+      <div>
+        <label htmlFor="birthDate">Birth Date:</label>
+        <input type="date" id="birthDate" value={dob} onChange={(e) => setDob(e.target.value)} required />
+>>>>>>> oauth2
       </div>
       <div>
         <label htmlFor="password">Password:</label>
@@ -65,10 +82,17 @@ const RegistrationForm = () => {
       )}
       <div>
         <label htmlFor="expertise">Areas of expertise/interest:</label>
+<<<<<<< HEAD
         <select id="expertise" value={expertise} onChange={(e) => setExpertise(e.target.value)}>
           <option value="">Select expertise</option>
           <option value="driving">Driving/Delivery</option>
           <option value="cooking">Cooking/Kitchen Help</option>
+=======
+        <select id="expertise" value={station} onChange={(e) => setStation(e.target.value)}>
+          <option value="">Select expertise</option>
+          <option value="Delivery">Driving/Delivery</option>
+          <option value="Kitchen">Food Preparation/Kitchen Help</option>
+>>>>>>> oauth2
         </select>
       </div>
       <div>
