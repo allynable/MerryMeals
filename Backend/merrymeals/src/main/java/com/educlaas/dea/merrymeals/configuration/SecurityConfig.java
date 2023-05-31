@@ -24,31 +24,31 @@ import com.educlaas.dea.merrymeals.service.UsersServiceImpl;
 
 //Secure or Protect to unauthorized user to protect resource without valid JWT token
 @Configuration
-//use to enable configure class
+// use to enable configure class
 @EnableWebSecurity
-//use to enable Web Security
-@EnableGlobalMethodSecurity(
-        securedEnabled = true,
-        //security for controller, service method
+// use to enable Web Security
+@EnableGlobalMethodSecurity(securedEnabled = true,
+        // security for controller, service method
         jsr250Enabled = true,
-        //@RolesAllowed annotation
+        // @RolesAllowed annotation
         prePostEnabled = true
-        //PreAuthorize or PostAuthorize
+// PreAuthorize or PostAuthorize
 )
 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UsersServiceImpl usersServiceImpl;
-    
+
     @Bean
     public TokenAuthenticationFilter tokenAuthenticationFilter() {
         return new TokenAuthenticationFilter();
     }
 
-    //AuthenticationManagerBuidler - is used to create AuthenticationManager
-    //AuthenticationManagerBuilder - is used to build custom authentication, JDBC, etc
-    //In my project, want to authenticate usersServiceImpl and passwordEncoder
+    // AuthenticationManagerBuidler - is used to create AuthenticationManager
+    // AuthenticationManagerBuilder - is used to build custom authentication, JDBC,
+    // etc
+    // In my project, want to authenticate usersServiceImpl and passwordEncoder
     @Override
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
@@ -61,40 +61,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    
     @Bean
     public HttpCookieAuthorizationRequestRepo cookieAuthorizationRequestRepo() {
-    	return new HttpCookieAuthorizationRequestRepo();
+        return new HttpCookieAuthorizationRequestRepo();
     }
-    
-    //configure cors, sessionManagement, add rules
-    //permit or restrict
-    //permit static like images, script and so on
-    //permit register API, login API to everyone
-    //restrict profile API, view API and search API
+
+    // configure cors, sessionManagement, add rules
+    // permit or restrict
+    // permit static like images, script and so on
+    // permit register API, login API to everyone
+    // restrict profile API, view API and search API
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .cors()
-                    .and()
+                .and()
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 .csrf()
-                    .disable()
+                .disable()
                 .formLogin()
-                    .disable()
+                .disable()
                 .httpBasic()
-                    .disable()                    
+                .disable()
                 .authorizeRequests()
-                    .antMatchers("/",
+                .antMatchers("/",
                         "/error",
                         "/favicon.ico",
                         "/**/*.png",
@@ -104,13 +102,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js")
-                        .permitAll()
-                    .antMatchers("/online/register/**", "/online/login**")
-                        .permitAll()
-                    .anyRequest()
-                        .authenticated();
-                        
-                 
+                .permitAll()
+                .antMatchers("/online/register/**", "/online/login**")
+                .permitAll()
+                .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/online/user/me").hasAnyAuthority("ROLE_ADMIN", "ROLE_MEMBER")
+                .anyRequest()
+                .authenticated();
 
         // Add our custom Token based authentication filter
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -14,7 +14,6 @@ import com.educlaas.dea.merrymeals.dao.Member;
 import com.educlaas.dea.merrymeals.dao.Users;
 import com.educlaas.dea.merrymeals.dao.Volunteer;
 import com.educlaas.dea.merrymeals.exception.ResourceNotFoundException;
-import com.educlaas.dea.merrymeals.payload.MemberRegistrater;
 import com.educlaas.dea.merrymeals.payload.UserAdminDto;
 import com.educlaas.dea.merrymeals.payload.UserMemberDto;
 import com.educlaas.dea.merrymeals.payload.UserVolunteerDto;
