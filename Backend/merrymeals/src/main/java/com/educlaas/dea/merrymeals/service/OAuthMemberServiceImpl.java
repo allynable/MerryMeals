@@ -1,4 +1,4 @@
-package com.educlaas.dea.merrymeals.repository;
+package com.educlaas.dea.merrymeals.service;
 
 import java.util.Optional;
 

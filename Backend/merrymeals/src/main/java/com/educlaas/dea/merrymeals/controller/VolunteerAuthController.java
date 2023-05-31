@@ -1,4 +1,4 @@
-package com.mow.controller;
+package com.educlaas.dea.merrymeals.controller;
 
 import java.net.URI;
 import java.util.Optional;
@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.mow.dao.AuthProvider;
-import com.mow.dao.Volunteer;
-import com.mow.exception.BadRequestException;
-import com.mow.jwtsecurity.TokenProvider;
-import com.mow.payload.VolunteerLogin;
-import com.mow.payload.VolunteerLoginResponse;
-import com.mow.payload.VolunteerRegister;
-import com.mow.payload.VolunteerRegisterResponse;
-import com.mow.repository.VolunteerRepository;
+import com.educlaas.dea.merrymeals.dao.AuthProvider;
+import com.educlaas.dea.merrymeals.dao.Volunteer;
+import com.educlaas.dea.merrymeals.exception.BadRequestException;
+import com.educlaas.dea.merrymeals.jwtsecurity.TokenProvider;
+import com.educlaas.dea.merrymeals.payload.VolunteerLogin;
+import com.educlaas.dea.merrymeals.payload.VolunteerLoginResponse;
+import com.educlaas.dea.merrymeals.payload.VolunteerRegister;
+import com.educlaas.dea.merrymeals.payload.VolunteerRegisterResponse;
+import com.educlaas.dea.merrymeals.repository.VolunteerRepository;
 
 @RestController
 @RequestMapping("/mow/volunteer")

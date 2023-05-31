@@ -1,14 +1,14 @@
-package com.mow.controller;
+package com.educlaas.dea.merrymeals.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mow.dao.Volunteer;
-import com.mow.exception.ResourceNotFoundException;
-import com.mow.repository.VolunteerRepository;
-import com.mow.service.VolunteerPrincipal;
+import com.educlaas.dea.merrymeals.dao.Volunteer;
+import com.educlaas.dea.merrymeals.exception.ResourceNotFoundException;
+import com.educlaas.dea.merrymeals.repository.VolunteerRepository;
+import com.educlaas.dea.merrymeals.service.VolunteerPrincipal;
 
 @RestController
 @RequestMapping(value="/mow")
