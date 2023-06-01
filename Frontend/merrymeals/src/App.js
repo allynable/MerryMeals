@@ -2,6 +2,7 @@
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
 import HeaderComponent from "./component/HeaderComponent";
 import FooterComponent from "./component/FooterComponent";
 import HomeComponent from "./component/HomeComponent";
