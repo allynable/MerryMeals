@@ -50,3 +50,7 @@
 .footer-social-link:hover {
   color: #b7c274;
 }
+
+.container {
+  margin-bottom: 80px;
+}

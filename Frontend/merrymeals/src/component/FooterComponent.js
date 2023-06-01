@@ -31,7 +31,8 @@ export class FooterComponent extends Component {
         <li><a href="...">Annual Report</a></li>
         <li><a href="...">Guide Book</a></li>
         <li><a href="...">Award</a></li>
-        <li><a href="...">Privacy Policy</a></li>
+        <li><a href="/privacypolicy">Privacy Policy</a></li>
+        <li><a href="/foodsafetyguide">Food Safety Guideline</a></li>
       </ul>
     </div>
     <div class="footer-menu">
