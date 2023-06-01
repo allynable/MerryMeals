@@ -85,7 +85,7 @@ const DonationComponent = () => {
                 <Row className="mb-3">
                   {showOtherInput && (
                     <Form.Group
-                      controlId="formBasicEmail"
+                      controlId="formGridOther"
                       className="col col-sm-6"
                     >
                       <Form.Label>Other Amount</Form.Label>
