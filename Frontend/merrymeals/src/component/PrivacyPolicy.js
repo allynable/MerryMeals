@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
         creation of an account, including personal information, in order for you to complete a donation or conduct other
         transactions on our site. You may view or update information related to your account by accessing feeseniors.org/give
         a meal section of the website. Fields that are required cannot be deleted. For other questions related to updating or
-        changing your account information, please call our office at 503.736.6325 or send us an email to subscriptions@mowp.org.
+        changing your account information, please call our office at 123.456.789 or send us an email to subscriptions@merrymeals.org.
       </p>
       <p>
         Your personal information may be used to direct specific news and information to you while using our site, which has
@@ -101,7 +101,7 @@ const PrivacyPolicy = () => {
 
       <h3>QUESTIONS REGARDING OUR PRIVACY POLICY</h3>
       <p>
-        If you should have questions about our policy or need further assistance, please send us an email at info@mowp.org.
+        If you should have questions about our policy or need further assistance, please send us an email at info@merrymeals.org.
       </p>
     </div>
   );
