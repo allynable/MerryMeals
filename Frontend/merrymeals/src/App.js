@@ -1,6 +1,8 @@
 //import React, { Component } from 'react'
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import HeaderComponent from "./component/HeaderComponent";
@@ -32,6 +34,7 @@ function App() {
 
         <FooterComponent></FooterComponent>
       </Router>
+      <ToastContainer autoclose={2500} theme="dark" limit={3} className="toast-position"/>
     </div>
   );
 }
