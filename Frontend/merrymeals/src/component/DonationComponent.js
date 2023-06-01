@@ -2,7 +2,6 @@ import React from "react";
 import "../css/DonationComponent.css";
 import {
   Form,
-  InputGroup,
   Tabs,
   Tab,
   Row,
