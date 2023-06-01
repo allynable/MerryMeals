@@ -18,7 +18,7 @@ export class HeaderComponent extends Component {
         <li class="navbar-dropdown">
           <a href="..." class="navbar-link">Register</a>
           <div class="navbar-dropdown-content">
-            <a href="...">Member/Caregivers</a>
+            <a href="/membersignup">Member/Caregivers</a>
             <br></br>
             <a href="/pvregistration">Partner/Volunteer</a>
           </div>
@@ -26,7 +26,7 @@ export class HeaderComponent extends Component {
         <li class="navbar-dropdown">
           <a href="..." class="navbar-link">Login</a>
           <div class="navbar-dropdown-content">
-            <a href="...">Member/Caregivers</a>
+            <a href="/login">Member/Caregivers</a>
             <br></br>
             <a href="/pvlogin">Partner/Volunteer</a>
           </div>

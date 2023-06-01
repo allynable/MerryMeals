@@ -80,7 +80,6 @@ const RegistrationForm = () => {
           <div>
             <button type="submit">Register</button>
           </div>
-          <span>Already have an account? <Link to="/Login">Login here</Link>.</span>
         </form>
       </div>  
       );

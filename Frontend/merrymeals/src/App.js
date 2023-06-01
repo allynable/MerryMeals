@@ -7,6 +7,7 @@ import FooterComponent from './component/FooterComponent'
 import HomeComponent from './component/HomeComponent';
 import PVRegisterComponent from './component/PVRegisterComponent'
 import PVLoginComponent from './component/PVLogionComponent'
+import MemberSignup from './component/MemberSignup'
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
       <Route exact path='/' component={HomeComponent}></Route>
       <Route exact path='/pvregistration' component={PVRegisterComponent}></Route>
       <Route exact path='/pvlogin' component={PVLoginComponent}></Route>
+      <Route exact path='/membersignup' component={MemberSignup}></Route>
+      
       </Switch>
 
       <FooterComponent></FooterComponent>
