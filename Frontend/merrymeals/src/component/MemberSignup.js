@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 import '../css/MembersSignup.css';
 
 const RegistrationForm = () => {
@@ -6,7 +7,7 @@ const RegistrationForm = () => {
     const [lastName, setLastName] = useState('');
     const [address, setAddress] = useState('');
     const [email, setEmail] = useState('');
-    const [contact, setContact] = useState('');
+    const [contactNumber, setContactNumber] = useState('');
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -22,16 +23,16 @@ const RegistrationForm = () => {
     };
 
     return (
-      <div  className='container'>  
+      <div id="form" className='container'>  
         <form onSubmit={handleRegistration}>
           <h1>Member Registration</h1>
           <div>
             <label htmlFor="firstName">First Name:</label>
-            <input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+            <input type="text" id="firstName" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
           </div>
           <div>
             <label htmlFor="lastName">Last Name:</label>
-            <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+            <input type="text" id="lastName" name="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
           </div>
           <div>
             <label htmlFor="address">Address:</label>
@@ -43,7 +44,7 @@ const RegistrationForm = () => {
           </div>
           <div>
             <label htmlFor="contact">Phone:</label>
-            <input type="tel" id="contact" value={contact} onChange={(e) => setContact(e.target.value)} required />
+            <input type="tel" id="contactNumber" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
           </div>
           <div>
             <label htmlFor="dob">Birth Date:</label>

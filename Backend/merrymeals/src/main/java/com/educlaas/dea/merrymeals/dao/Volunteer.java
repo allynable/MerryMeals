@@ -1,124 +1,125 @@
-package com.mow.dao;
+package com.educlaas.dea.merrymeals.dao;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-//Create volunteer table and define attributes
 @Entity
-@Table(name = "tb_volunteer", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "volunteer")
 public class Volunteer {
-	
-	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private long volunteerId;
-	
-	@Column
-	private int loginId;
-	
-	public int getLoginId() {
-		return loginId;
-	}
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long volunteerId;
+    
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    private Users user;
 
-	public void setLoginId(int loginId) {
-		this.loginId = loginId;
-	}
-
-	@Column(nullable = false)
-	private String userName;
-	
-	@Email
-	@Column(nullable = false)
-	private String email;
-	
-	@JsonIgnore
-	private String password;
-	
-	private String imageUrl;
-	
-	@Column(nullable = false)
-	private Boolean emailVerified = false;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private AuthProvider provider;
-	
-	private String providerId;
+    private String firstName;
+    private String lastName;
+    private String longitude;
+    private String latitude;
+    private String contactNumber;
+    private String dob;
+    private String representingGroup;
+    private String groupName;
+    private String station;
 
 
+    public long getVolunteerId() {
+        return this.volunteerId;
+    }
 
-	public long getVolunteerId() {
-		return volunteerId;
-	}
+    public void setVolunteerId(long volunteerId) {
+        this.volunteerId = volunteerId;
+    }
 
-	public void setVolunteerId(long volunteerId) {
-		this.volunteerId = volunteerId;
-	}
+    public Users getUser() {
+        return this.user;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public void setUser(Users user) {
+        this.user = user;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public String getFirstName() {
+        return this.firstName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getLastName() {
+        return this.lastName;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getLongitude() {
+        return this.longitude;
+    }
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    public String getLatitude() {
+        return this.latitude;
+    }
 
-	public Boolean getEmailVerified() {
-		return emailVerified;
-	}
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
-	public void setEmailVerified(Boolean emailVerified) {
-		this.emailVerified = emailVerified;
-	}
+    public String getContactNumber() {
+        return this.contactNumber;
+    }
 
-	public AuthProvider getProvider() {
-		return provider;
-	}
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
-	public void setProvider(AuthProvider provider) {
-		this.provider = provider;
-	}
+    public String getDob() {
+        return this.dob;
+    }
 
-	public String getProviderId() {
-		return providerId;
-	}
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
-	public void setProviderId(String providerId) {
-		this.providerId = providerId;
-	}
+    public String getRepresentingGroup() {
+        return this.representingGroup;
+    }
+
+    public void setRepresentingGroup(String representingGroup) {
+        this.representingGroup = representingGroup;
+    }
+
+    public String getGroupName() {
+        return this.groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getStation() {
+        return this.station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
+    }
+    
 }

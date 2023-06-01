@@ -1,0 +1,10 @@
+#custom-container {
+    background-color: white;
+    border-radius: 5px;
+    height: auto;
+    margin-top: 2rem;
+}
+
+#custom-column {
+    margin-top: 1rem;
+}

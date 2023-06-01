@@ -1,0 +1,48 @@
+.testimonial {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+#more-info-content {
+    margin-top: 6.2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 7rem;
+}
+
+#purpose-title {
+    padding-top: 1rem;
+    margin-bottom: 4rem;
+    
+}
+
+#purpose-content {
+    margin-bottom: 7.5rem;
+    
+}
+
+#purpose-button {
+    width: 13rem;
+}
+
+
+#more-info {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+    background-color: #f7f7f7;
+}
+
+#news-title {
+    margin-bottom: 0;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    background-color: #f7f7f7;
+}
+
+#news-content {
+    padding-bottom: 8rem;
+    background-color: #f7f7f7;
+    
+}

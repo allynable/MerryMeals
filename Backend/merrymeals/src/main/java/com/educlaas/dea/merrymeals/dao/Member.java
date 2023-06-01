@@ -1,123 +1,144 @@
-package com.mow.dao;
+package com.educlaas.dea.merrymeals.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-//Create member table and define attributes
 @Entity
-@Table(name = "tb_member", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "member")
 public class Member {
-	
-	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private long memberId;
-	
-	@Column
-	private int loginId;
-	
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long memberId;
 
-	@Column(nullable = false)
-	private String userName;
-	
-	@Email
-	@Column(nullable = false)
-	private String email;
-	
-	@JsonIgnore
-	private String password;
-	
-	private String imageUrl;
-	
-	@Column(nullable = false)
-	private Boolean emailVerified = false;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private AuthProvider provider;
-	
-	private String providerId;
+    private String firstName;
+    private String lastName;
+    private String latitude;
+    private String longitude;
+    private String contactNumber;
+    private String dob;
 
-	public int getLoginId() {
-		return loginId;
-	}
+    @Column(name = "health_condition")
+    private String condition;
+    private String allergies;
+    private String caregiverName;
+    private String relationship;
+    private String caregiverContact;
 
-	public void setLoginId(int loginId) {
-		this.loginId = loginId;
-	}
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    private Users user;
 
-	public long getMemberId() {
-		return memberId;
-	}
+    public long getMemberId() {
+        return this.memberId;
+    }
 
-	public void setMemberId(long memberId) {
-		this.memberId = memberId;
-	}
+    public void setMemberId(long memberId) {
+        this.memberId = memberId;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getFirstName() {
+        return this.firstName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getLastName() {
+        return this.lastName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getLatitude() {
+        return this.latitude;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    public String getLongitude() {
+        return this.longitude;
+    }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
-	public Boolean getEmailVerified() {
-		return emailVerified;
-	}
+    public String getContactNumber() {
+        return this.contactNumber;
+    }
 
-	public void setEmailVerified(Boolean emailVerified) {
-		this.emailVerified = emailVerified;
-	}
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
-	public AuthProvider getProvider() {
-		return provider;
-	}
+    public String getDob() {
+        return this.dob;
+    }
 
-	public void setProvider(AuthProvider provider) {
-		this.provider = provider;
-	}
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
-	public String getProviderId() {
-		return providerId;
-	}
+    public String getCondition() {
+        return this.condition;
+    }
 
-	public void setProviderId(String providerId) {
-		this.providerId = providerId;
-	}
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getCaregiverName() {
+        return this.caregiverName;
+    }
+
+    public void setCaregiverName(String caregiverName) {
+        this.caregiverName = caregiverName;
+    }
+
+    public String getRelationship() {
+        return this.relationship;
+    }
+
+    public void setRelationship(String relationship) {
+        this.relationship = relationship;
+    }
+
+    public String getCaregiverContact() {
+        return this.caregiverContact;
+    }
+
+    public void setCaregiverContact(String caregiverContact) {
+        this.caregiverContact = caregiverContact;
+    }
+
+
+    public String getAllergies() {
+        return this.allergies;
+    }
+
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    public Users getUser() {
+        return this.user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
 }
