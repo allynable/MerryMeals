@@ -14,7 +14,7 @@ import { useState } from "react";
 
 const DonationComponent = () => {
   const [currentTab, setCurrentTab] = React.useState(0);
-  const [frequency, setFrequency] = useState("");
+  const [frequency, setFrequency] = useState("One Time");
   const [amount, setAmount] = useState("100");
   const [otherAmount, setOtherAmount] = useState("");
   const [showOtherInput, setShowOtherInput] = useState(false);
@@ -39,9 +39,9 @@ const DonationComponent = () => {
       <Row>
         <Col id="custom-column">
           <Tabs activeKey={currentTab} id="controlled-tab-example">
-            <Tab eventKey={0} title="Donation" disabled={currentTab !== 0}>
+            <Tab eventKey={0} title="DONATION" disabled={currentTab !== 0}>
               <form onSubmit={submitButton}>
-                <h4 class="mt-4 mb-4">How would you like you donate?</h4>
+                <h4 class="mt-3 mb-4">HOW WOULD YOU LIKE TO DONATE?</h4>
                 <Row className="mb-3">
                   <Form.Group
                     controlId="formGridFrequency"
@@ -49,14 +49,14 @@ const DonationComponent = () => {
                   >
                     <Form.Label>Frequency</Form.Label>
                     <Form.Select
-                      defaultValue="Once"
+                      defaultValue="One Time"
                       className="form-control"
                       id="frequency"
                       value={frequency}
                       onChange={(e) => setFrequency(e.target.value)}
                       required
                     >
-                      <option value="Once">One Time</option>
+                      <option value="One Time">One Time</option>
                       <option value="Monthly">Monthly</option>
                     </Form.Select>
                   </Form.Group>
@@ -100,7 +100,7 @@ const DonationComponent = () => {
                     </Form.Group>
                   )}
                 </Row>
-                <Button
+                <Button 
                   type="submit"
                   className="success mb-3"
                   disabled={currentTab === 3}
@@ -111,15 +111,31 @@ const DonationComponent = () => {
               </form>
               
             </Tab>
-            <Tab eventKey={1} title="Payment" disabled={currentTab !== 1}>
-              Profile
-              <Button
+            <Tab eventKey={1} title="CONFIRMATION" disabled={currentTab !== 1}>
+            <h4 class="mt-4 mb-3">TODAY'S DONATION </h4>
+            <h4 class="mb-4 text-secondary">${amount}</h4>
+            <h4 class="mb-4">FREQUENCY</h4>        
+            <h4 class="mb-4 text-secondary">{frequency}</h4>   
+            <Button style={{ width: '8rem' }}
+                className="success me-4"
+                disabled={currentTab === 0}
+                onClick={() => setCurrentTab((prev) => prev - 1)}
+              >
+                Prev
+              </Button>     
+              <Button style={{ width: '8rem' }}
                 className="success"
                 disabled={currentTab === 3}
                 onClick={() => setCurrentTab((prev) => prev + 1)}
               >
                 Next
               </Button>
+  
+            </Tab>
+
+            <Tab eventKey={2} title="PAYMENT" disabled={currentTab !== 2}>
+              Profile
+             
               <Button
                 className="success"
                 disabled={currentTab === 0}
@@ -128,11 +144,12 @@ const DonationComponent = () => {
                 Prev
               </Button>
             </Tab>
+
           </Tabs>
         </Col>
       </Row>
       <Stack
-        gap={1}
+        gap={2}
         direction="horizontal"
         className="mt-3 justify-content-center"
       ></Stack>
