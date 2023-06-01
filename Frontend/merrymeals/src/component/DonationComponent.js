@@ -112,42 +112,8 @@ const DonationComponent = () => {
               </form>
               
             </Tab>
-            <Tab eventKey={1} title="Billing" disabled={currentTab !== 1}>
+            <Tab eventKey={1} title="Payment" disabled={currentTab !== 1}>
               Profile
-              <Button
-                className="success"
-                disabled={currentTab === 3}
-                onClick={() => setCurrentTab((prev) => prev + 1)}
-              >
-                Next
-              </Button>
-              <Button
-                className="success"
-                disabled={currentTab === 0}
-                onClick={() => setCurrentTab((prev) => prev - 1)}
-              >
-                Prev
-              </Button>
-            </Tab>
-            <Tab eventKey={2} title="Payment" disabled={currentTab !== 2}>
-              Contacts
-              <Button
-                className="success"
-                disabled={currentTab === 3}
-                onClick={() => setCurrentTab((prev) => prev + 1)}
-              >
-                Next
-              </Button>
-              <Button
-                className="success"
-                disabled={currentTab === 0}
-                onClick={() => setCurrentTab((prev) => prev - 1)}
-              >
-                Prev
-              </Button>
-            </Tab>
-            <Tab eventKey={3} title="Completion" disabled={currentTab !== 3}>
-              Contacts
               <Button
                 className="success"
                 disabled={currentTab === 3}
@@ -167,7 +133,7 @@ const DonationComponent = () => {
         </Col>
       </Row>
       <Stack
-        gap={3}
+        gap={1}
         direction="horizontal"
         className="mt-3 justify-content-center"
       ></Stack>
