@@ -8,6 +8,7 @@ import HomeComponent from "./component/HomeComponent";
 import PVRegisterComponent from "./component/PVRegisterComponent";
 import PVLoginComponent from "./component/PVLogionComponent";
 import MemberSignup from "./component/MemberSignup";
+import DonateComponent from "./component/DonateComponent";
 
 function App() {
   return (
@@ -18,11 +19,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeComponent}></Route>
           <Route exact path="/memregistration" component={MemberSignup}></Route>
-          <Route
-            exact
-            path="/pvregistration"
-            component={PVRegisterComponent}
-          ></Route>
+          <Route exact path="/donate" component={DonateComponent}></Route>
+          <Route exact path="/pvregistration"component={PVRegisterComponent}></Route>
           <Route exact path="/pvlogin" component={PVLoginComponent}></Route>
         </Switch>
 

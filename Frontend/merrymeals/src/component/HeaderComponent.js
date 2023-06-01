@@ -15,6 +15,7 @@ export class HeaderComponent extends Component {
       <ul class="navbar-menu">
         <li><a href="/" class="navbar-link">Home</a></li>
         <li><a href="..." class="navbar-link">Meals</a></li>
+        <li><a href="/donate" class="navbar-link">Donate</a></li>
         <li class="navbar-dropdown">
           <a href="..." class="navbar-link">Register</a>
           <div class="navbar-dropdown-content">

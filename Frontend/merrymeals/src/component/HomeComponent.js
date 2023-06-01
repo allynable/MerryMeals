@@ -65,7 +65,6 @@ export class HomeComponent extends Component {
         <img src={news} alt="Purpose"/>
         </div>      
         </div>
-        Home Component
       </div>
     )
   }
