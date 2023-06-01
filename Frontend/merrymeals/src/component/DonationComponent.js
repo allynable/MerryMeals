@@ -135,7 +135,7 @@ const DonationComponent = () => {
                 Next
               </Button>
             </Tab>
-
+              
             <Tab eventKey={2} title="PAYMENT" disabled={currentTab !== 2}>
               <PaymentComponent/>
 
