@@ -11,6 +11,8 @@ import {
   Stack,
 } from "react-bootstrap";
 import { useState } from "react";
+import PaymentComponent from './PaymentComponent';
+
 
 const DonationComponent = () => {
   const [currentTab, setCurrentTab] = React.useState(0);
@@ -33,6 +35,7 @@ const DonationComponent = () => {
       setShowOtherInput(false);
     }
   };
+
 
   return (
     <Container id="custom-container">
@@ -100,7 +103,7 @@ const DonationComponent = () => {
                     </Form.Group>
                   )}
                 </Row>
-                <Button 
+                <Button
                   type="submit"
                   className="success mb-3"
                   disabled={currentTab === 3}
@@ -109,33 +112,33 @@ const DonationComponent = () => {
                   Next
                 </Button>
               </form>
-              
             </Tab>
             <Tab eventKey={1} title="CONFIRMATION" disabled={currentTab !== 1}>
-            <h4 class="mt-4 mb-3">TODAY'S DONATION </h4>
-            <h4 class="mb-4 text-secondary">${amount}</h4>
-            <h4 class="mb-4">FREQUENCY</h4>        
-            <h4 class="mb-4 text-secondary">{frequency}</h4>   
-            <Button style={{ width: '8rem' }}
+              <h4 class="mt-4 mb-3">TODAY'S DONATION </h4>
+              <h4 class="mb-4 text-secondary">${amount}</h4>
+              <h4 class="mb-4">FREQUENCY</h4>
+              <h4 class="mb-4 text-secondary">{frequency}</h4>
+              <Button
+                style={{ width: "8rem" }}
                 className="success me-4"
                 disabled={currentTab === 0}
                 onClick={() => setCurrentTab((prev) => prev - 1)}
               >
                 Prev
-              </Button>     
-              <Button style={{ width: '8rem' }}
+              </Button>
+              <Button
+                style={{ width: "8rem" }}
                 className="success"
                 disabled={currentTab === 3}
                 onClick={() => setCurrentTab((prev) => prev + 1)}
               >
                 Next
               </Button>
-  
             </Tab>
 
             <Tab eventKey={2} title="PAYMENT" disabled={currentTab !== 2}>
-              Profile
-             
+              <PaymentComponent/>
+
               <Button
                 className="success"
                 disabled={currentTab === 0}
@@ -144,7 +147,6 @@ const DonationComponent = () => {
                 Prev
               </Button>
             </Tab>
-
           </Tabs>
         </Col>
       </Row>
