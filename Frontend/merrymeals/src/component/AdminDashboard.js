@@ -1,7 +1,5 @@
 import React from "react";
 import '../css/AdminDashboard.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import MemberTable from './MemberTable';
 
 const AdminDashboard = () => {
