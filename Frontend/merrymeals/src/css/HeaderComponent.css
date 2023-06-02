@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #483d8b;
+  background: linear-gradient(45deg, #673ee5 -20%, #2f1c6b 120%);
   color: white;
   display: flex;
   justify-content: space-between;

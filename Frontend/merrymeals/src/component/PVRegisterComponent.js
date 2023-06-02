@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import '../css/PVRegisterComponent.css';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap'; // Import Bootstrap components
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const RegistrationForm = () => {
   const [firstName, setFirstName] = useState('');
@@ -20,61 +22,63 @@ const RegistrationForm = () => {
   };
 
   return (
-    <form onSubmit={handleRegistration}>
-      <div>
-        <label htmlFor="firstName">First Name:</label>
-        <input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor="lastName">Last Name:</label>
-        <input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor="address">Address:</label>
-        <input type="text-area" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor="phone">Phone:</label>
-        <input type="tel" id="phone" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor="birthDate">Birth Date:</label>
-        <input type="date" id="birthDate" value={dob} onChange={(e) => setDob(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-      </div>
-      <div>
-        <label htmlFor="representingGroup">Are you representing a group or club?</label>
-        <input type="checkbox" id="representingGroup" checked={representingGroup} onChange={(e) => setRepresentingGroup(e.target.checked)} />
-      </div>
+    <Form onSubmit={handleRegistration}>
+      <FormGroup>
+        <Label for="firstName">First Name:</Label>
+        <Input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="lastName">Last Name:</Label>
+        <Input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="address">Address:</Label>
+        <Input type="textarea" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
+      </FormGroup>
+      <FormGroup>
+        <Label for="email">Email:</Label>
+        <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="phone">Phone:</Label>
+        <Input type="tel" id="phone" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="birthDate">Birth Date:</Label>
+        <Input type="date" id="birthDate" value={dob} onChange={(e) => setDob(e.target.value)} required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="password">Password:</Label>
+        <Input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      </FormGroup>
+      <FormGroup>
+        <Label for="confirmPassword">Confirm Password:</Label>
+        <Input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+      </FormGroup>
+      <FormGroup check>
+        <Label check>
+          <Input type="checkbox" id="representingGroup" checked={representingGroup} onChange={(e) => setRepresentingGroup(e.target.checked)} />{' '}
+          Are you representing a group or club?
+        </Label>
+      </FormGroup>
       {representingGroup && (
-        <div>
-          <label htmlFor="groupName">Group Name:</label>
-          <input type="text" id="groupName" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
-        </div>
+        <FormGroup>
+          <Label for="groupName">Group Name:</Label>
+          <Input type="text" id="groupName" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
+        </FormGroup>
       )}
-      <div>
-        <label htmlFor="expertise">Areas of expertise/interest:</label>
-        <select id="expertise" value={station} onChange={(e) => setStation(e.target.value)}>
+      <FormGroup>
+        <Label for="expertise">Areas of expertise/interest:</Label>
+        <Input type="select" id="expertise" value={station} onChange={(e) => setStation(e.target.value)}>
           <option value="">Select expertise</option>
           <option value="Delivery">Driving/Delivery</option>
           <option value="Kitchen">Food Preparation/Kitchen Help</option>
-        </select>
-      </div>
-      <div>
-        <button type="submit">Register</button>
-      </div>
-    </form>
+        </Input>
+      </FormGroup>
+      <FormGroup>
+        <Button type="submit" color="primary">Register</Button>
+      </FormGroup>
+    </Form>
   );
 };
 

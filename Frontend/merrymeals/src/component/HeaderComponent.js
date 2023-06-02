@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import '../css/HeaderComponent.css'
-import logo from '../image/logo.jpg'
-
+import React, { Component } from "react";
+import "../css/HeaderComponent.css";
+import logo from "../image/logo.jpg";
 
 export class HeaderComponent extends Component {
   render() {
@@ -28,7 +27,7 @@ export class HeaderComponent extends Component {
         <li class="navbar-dropdown">
           <a href="..." class="navbar-link">Login</a>
           <div class="navbar-dropdown-content">
-            <a href="...">Member/Caregivers</a>
+            <a href="/login">Member/Caregivers</a>
             <br></br>
             <a href="/pvlogin">Partner/Volunteer</a>
           </div>
@@ -41,8 +40,8 @@ export class HeaderComponent extends Component {
     </div>
   </nav>
       </div>
-    )
+    );
   }
 }
 
-export default HeaderComponent
+export default HeaderComponent;
