@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Form, Row, Col, Button, Card,Dropdown, DropdownButton } from "react-bootstrap";
 import "../css/MembersSignup.css";
 import pvRegisterService from "../service/PVRegisterService";
 import locationService from "../service/LocationService";
@@ -25,6 +25,8 @@ const RegistrationForm = (props) => {
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
+  const [validLocation, setValidLocation] = useState(false);
+  const [locationError, setLocationError] = useState(false);
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -41,7 +43,7 @@ const RegistrationForm = (props) => {
         password,
         representingGroup,
         groupName,
-        station
+        station,
       };
 
       pvRegisterService(registrationData)
@@ -70,6 +72,27 @@ const RegistrationForm = (props) => {
     }
   };
 
+  const getCoordinates = (address) => {
+    var geocoder = new window.google.maps.Geocoder();
+    console.log("address: " + address);
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        var location = results[0].geometry.location;
+        var latitude = location.lat();
+        var longitude = location.lng();
+
+        setValidLocation(true);
+        setLocationError(false);
+        setLatitude(latitude);
+        setLongitude(longitude);
+      } else {
+        toast.error("Please enter a valid address!");
+        setValidLocation(false);
+        setLocationError(true);
+      }
+    });
+  };
+
   return (
     <Container>
       <Row className="justify-content-center">
@@ -78,104 +101,132 @@ const RegistrationForm = (props) => {
             <h1>Volunteer Application</h1>
             <br />
             <Form onSubmit={handleRegistration}>
-              <Form.Group controlId="firstName">
-                <Form.Label>First Name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Form.Group controlId="lastName">
-                <Form.Label>Last Name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  required
-                />
-              </Form.Group>
+              <Row>
+                <Col>
+                  <Form.Group controlId="firstName">
+                    <Form.Control
+                      type="text"
+                      value={firstName}
+                      placeholder="First Name"
+                      onChange={(e) => setFirstName(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group controlId="lastName">
+                    <Form.Control
+                      type="text"
+                      value={lastName}
+                      placeholder="Last Name"
+                      onChange={(e) => setLastName(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <br />
               <Form.Group controlId="address">
-                <Form.Label>Address:</Form.Label>
                 <Form.Control
-                  as="textarea"
-                  rows={3}
+                  type="text"
+                  placeholder="Address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="email">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Form.Group controlId="contactNumber">
-                <Form.Label>Contact Number:</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={contactNumber}
-                  onChange={(e) => setContactNumber(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Form.Group controlId="dob">
-                <Form.Label>Date of Birth:</Form.Label>
-                <br />
-                <DatePicker
-                  selected={dob}
-                  onChange={(date) => setDob(date)}
-                  dateFormat="yyyy/MM/dd"
-                  required
-                />
-              </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Form.Group controlId="confirmPassword">
-                <Form.Label>Confirm Password:</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  onBlur={checkPassword}
-                  required
-                />
-                {passwordMatchError && (
-                  <div className="password-match-error">
-                    Passwords do not match
-                  </div>
-                )}
-              </Form.Group>
-              <Form.Group controlId="representingGroup">
+              <br />
+              <Row>
+                <Col>
+                  <Form.Group controlId="email">
+                    <Form.Control
+                      type="email"
+                      value={email}
+                      placeholder="Email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group controlId="contactNumber">
+                    <Form.Control
+                      type="text"
+                      value={contactNumber}
+                      placeholder="Contact Number"
+                      onChange={(e) => setContactNumber(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group controlId="dob">
+                    <DatePicker
+                      className="form-control"
+                      selected={dob}
+                      onChange={(date) => setDob(date)}
+                      placeholderText="Date of Birth (mm/dd/yyyy)"
+                      showMonthDropdown
+                      showIcon
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col>
+                  <Form.Group controlId="password">
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group controlId="confirmPassword">
+                    <Form.Control
+                      type="password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      onBlur={checkPassword}
+                      required
+                    />
+                    {passwordMatchError && (
+                      <div className="password-match-error">
+                        Passwords do not match
+                      </div>
+                    )}
+                  </Form.Group>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={4}>
+                <Form.Group controlId="representingGroup">
                 <Form.Check
                   type="checkbox"
                   checked={representingGroup}
                   onChange={(e) => setRepresentingGroup(e.target.checked)}
-                  label="Representing a Group"
+                  label="Are you representing a Group?"
+                  style={{borderColor: '#ff0000' }}
                 />
               </Form.Group>
-              {representingGroup && (
+                </Col>
+                <Col>{representingGroup && (
                 <Form.Group controlId="groupName">
-                  <Form.Label>Group Name:</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="Group Name"
                     value={groupName}
                     onChange={(e) => setGroupName(e.target.value)}
                     required
                   />
                 </Form.Group>
-              )}
+              )}</Col>
+              </Row>
+              <br />
               <Button variant="primary" type="submit" disabled={!passwordMatch}>
                 Register
               </Button>

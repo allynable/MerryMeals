@@ -103,10 +103,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                 .permitAll()
-                .antMatchers("/online/register/**", "/online/login**", "/servicecenter/all", "/member/**")
+                .antMatchers("/online/register/**", "/online/login**", "/servicecenter/all", "/member/**", "/admin/**")
                 .permitAll()
-                .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/online/user/me").hasAnyAuthority("ROLE_ADMIN", "ROLE_MEMBER", "ROLE_VOLUNTEER")
+                // .antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                // .antMatchers("/online/user/me").hasAnyAuthority("ROLE_ADMIN", "ROLE_MEMBER",
+                // "ROLE_VOLUNTEER")
                 .anyRequest()
                 .authenticated();
 
