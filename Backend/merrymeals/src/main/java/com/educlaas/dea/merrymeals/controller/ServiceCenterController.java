@@ -18,15 +18,14 @@ public class ServiceCenterController{
     @Autowired
     private ServiceCenterRepository serviceCenterRepository;
 
-    @PostMapping("/")
-    public void saveServiceCenter(@RequestBody ServiceCenter serviceCenter){
-        serviceCenterRepository.save(serviceCenter);
+    @PostMapping("/save")
+    public ServiceCenter saveServiceCenter(@RequestBody ServiceCenter serviceCenter){
+        return serviceCenterRepository.save(serviceCenter);
     }
 
-    @GetMapping("/map")
+    @GetMapping("/all")
     public List<ServiceCenter> getServiceCenter(){
         return serviceCenterRepository.findAll();
     }
 
-    
 }

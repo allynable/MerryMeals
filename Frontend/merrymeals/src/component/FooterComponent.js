@@ -19,7 +19,7 @@ export class FooterComponent extends Component {
     <div class="footer-menu">
       <h3 class="footer-title">Get Involved</h3>
       <ul class="footer-links">
-        <li><a href="...">Donate</a></li>
+        <li><a href="/donate">Donate</a></li>
         <li><a href="...">Volunteer</a></li>
       </ul>
     </div>
@@ -30,7 +30,7 @@ export class FooterComponent extends Component {
         <li><a href="...">FAQ's</a></li>
         <li><a href="...">Annual Report</a></li>
         <li><a href="...">Guide Book</a></li>
-        <li><a href="...">Award</a></li>
+        <li><a href="/admindashboard">Award</a></li>
         <li><a href="/privacypolicy">Privacy Policy</a></li>
         <li><a href="/foodsafetyguide">Food Safety Guideline</a></li>
       </ul>
