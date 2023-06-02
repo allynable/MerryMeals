@@ -6,7 +6,6 @@ import "../css/MembersSignup.css";
 import { memberRegister } from "../service/MCRegisterService";
 import locationService from "../service/LocationService";
 import DatePicker from "react-datepicker";
-import { reverseGeocode } from '../service/GeocoderService';
 import "react-datepicker/dist/react-datepicker.css";
 
 const RegistrationForm = (props) => {
@@ -106,12 +105,30 @@ const RegistrationForm = (props) => {
   }
 
   async function reverseGeocodeAddress(latitude, longitude) {
-    try {
-      const modifiedAddress = await reverseGeocode(latitude, longitude);
-      setServiceLocation(modifiedAddress);
-    } catch (error) {
-      toast.error(error);
+    var geocoder = new window.google.maps.Geocoder();
+    var lat = parseFloat(latitude);
+    var long = parseFloat(longitude);
+
+    if (isNaN(lat) || isNaN(long)) {
+      toast.error("Please enter valid coordinates.");
+      return;
     }
+
+    var location = new window.google.maps.LatLng(lat, long);
+
+    geocoder.geocode({ location: location }, function (results, status) {
+      if (status === "OK") {
+        if (results[0]) {
+          var formattedAddress = results[0].formatted_address;
+          var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
+          setServiceLocation(modifiedAddress);
+        } else {
+          toast.error("No results found.");
+        }
+      } else {
+        toast.error("Please enter a valid address!");
+      }
+    });
   }
 
   function toRadians(degrees) {
