@@ -22,11 +22,8 @@
     "react-bootstrap": "^2.7.4",
     "react-datepicker": "^4.12.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-=======
     "react-elastic-carousel": "^0.11.5",
     "react-helmet": "^6.1.0",
->>>>>>> a7c3686f0d719b71262eab48ffd76354d7859187
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
