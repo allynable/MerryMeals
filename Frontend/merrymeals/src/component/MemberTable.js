@@ -12,7 +12,6 @@ import { FaEye, FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import DeleteModal from "./Modal/DeleteModal";
 import MemberForm from "./Modal/MemberForm";
-import SearchBar from "./SearchBar";
 import { toast } from "react-toastify";
 
 const MemberTable = (props) => {
@@ -97,13 +96,11 @@ const MemberTable = (props) => {
         if (results[0]) {
           var formattedAddress = results[0].formatted_address;
           var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
-          var tdElement = document.getElementById("address");
-          tdElement.textContent = modifiedAddress;
+          console.log(formattedAddress);
         } else {
           toast.error("No results found.");
         }
       } else {
-        toast.error("Please enter a valid address!");
       }
     });
   }
@@ -116,9 +113,6 @@ const MemberTable = (props) => {
             <h1>Members</h1>
           </Col>
           <Col xs={8} md={5} lg={7}>
-            <div>
-              <SearchBar />
-            </div>
           </Col>
           {props.authenticated && (
             <Col xs={4} md={3} lg={2}>
@@ -143,7 +137,7 @@ const MemberTable = (props) => {
             {members.map((member) => (
               <tr key={member.memberId}>
                 <td>{member.firstName}</td>
-                <td id="address">{reverseGeocodeAddress(member.latitude, member.longitude)}</td>
+                <td >{reverseGeocodeAddress(member.latitude, member.longitude)}</td>
                 <td>{member.contactNumber}</td>
                 <td>{member.condition}</td>
                 {props.authenticated && (
