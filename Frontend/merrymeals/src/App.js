@@ -12,7 +12,7 @@ import MemberSignup from "./component/MemberSignup";
 import DonateComponent from "./component/DonateComponent";
 import FoodSafetyGuide from "./component/FoodSafetyGuide";
 import PrivacyPolicy from "./component/PrivacyPolicy";
-
+import PVProfile from "./component/PVProfile";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
           <Route exact path="/pvlogin" component={PVLoginComponent}></Route>
           <Route exact path="/foodsafetyguide" component={FoodSafetyGuide}></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
+          <Route exact path="/pvprofile" component={PVProfile}></Route>
         </Switch>
 
         <FooterComponent></FooterComponent>
