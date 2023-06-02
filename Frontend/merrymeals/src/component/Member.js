@@ -10,7 +10,7 @@ const Member = () => {
 
   useEffect(() => {
     const fetchMember = async () => {
-      const response = await memberService.getMemberById(5);
+      const response = await memberService.getMemberById(memberId);
       const memberData = response.data;
       setMember(memberData);
     };
@@ -43,9 +43,7 @@ const Member = () => {
         } else {
           toast.error("No results found.");
         }
-      } else {
-        toast.error("Please enter a valid address!");
-      }
+      } 
     });
   }
   return (

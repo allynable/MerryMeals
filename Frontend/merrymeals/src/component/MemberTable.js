@@ -122,12 +122,9 @@ const MemberTable = (props) => {
                         </Tooltip>
                       }
                     >
-                    <Link
-                      to={`/member/${member.memberId}`}
-                      className="btn btn-success m-1"
-                    >
+                    <a className="btn btn-success m-1" href="/member/:memberId" >
                       <FaEye />
-                    </Link>
+                      </a>
                     </OverlayTrigger>
                     <OverlayTrigger
                       placement="bottom"
