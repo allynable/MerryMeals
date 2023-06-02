@@ -15,6 +15,7 @@ import MemberSignup from "./component/MemberSignup";
 import DonateComponent from "./component/DonateComponent";
 import FoodSafetyGuide from "./component/FoodSafetyGuide";
 import PrivacyPolicy from "./component/PrivacyPolicy";
+import AdminDashboard from "./component/AdminDashboard";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/pvlogin" component={PVLoginComponent}></Route>
           <Route exact path="/foodsafetyguide" component={FoodSafetyGuide}></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
+          <Route exact path="/admindashboard" component={AdminDashboard}></Route>
         </Switch>
 
         <FooterComponent></FooterComponent>
