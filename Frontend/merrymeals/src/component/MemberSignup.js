@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import "../css/MembersSignup.css";
@@ -180,9 +179,6 @@ const RegistrationForm = (props) => {
 
   return (
     <Container>
-      <Helmet>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeP41nTw8QroOfvcCFR9bKIC-GUW7BLcs"></script>
-      </Helmet>
       <Row className="justify-content-center">
         <Col xs={12} sm={10} md={8}>
           <Card className="shadow registration-card">
@@ -204,7 +200,6 @@ const RegistrationForm = (props) => {
                   required
                 />
               </Form.Group>
-              <br />
               <Row>
                 <Col>
                   <Form.Group controlId="mealType">

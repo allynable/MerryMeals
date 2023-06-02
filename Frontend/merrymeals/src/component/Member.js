@@ -8,12 +8,12 @@ const Member = () => {
   const [member, setMember] = useState(null);
 
   useEffect(() => {
-    const fetchStore = async () => {
+    const fetchMember = async () => {
       const response = await memberService.getMemberById(memberId);
       const memberData = response.data;
       setMember(memberData);
     };
-    fetchStore();
+    fetchMember();
   }, [memberId]);
 
   if (!member) {
