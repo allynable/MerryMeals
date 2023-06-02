@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import "../css/MembersSignup.css";
 import { memberRegister } from "../service/MCRegisterService";
 import locationService from "../service/LocationService";
 import DatePicker from "react-datepicker";
+import { reverseGeocode } from '../service/GeocoderService';
 import "react-datepicker/dist/react-datepicker.css";
 
 const RegistrationForm = (props) => {
@@ -105,31 +105,38 @@ const RegistrationForm = (props) => {
     return distance / 1000;
   }
 
-  function reverseGeocodeAddress(latitude, longitude) {
-    var geocoder = new window.google.maps.Geocoder();
-    var lat = parseFloat(latitude);
-    var long = parseFloat(longitude);
+  async function reverseGeocodeAddress(latitude, longitude) {
+    // var geocoder = new window.google.maps.Geocoder();
+    // var lat = parseFloat(latitude);
+    // var long = parseFloat(longitude);
 
-    if (isNaN(lat) || isNaN(long)) {
-      toast.error("Please enter valid coordinates.");
-      return;
+    // if (isNaN(lat) || isNaN(long)) {
+    //   toast.error("Please enter valid coordinates.");
+    //   return;
+    // }
+
+    // var location = new window.google.maps.LatLng(lat, long);
+
+    // geocoder.geocode({ location: location }, function (results, status) {
+    //   if (status === "OK") {
+    //     if (results[0]) {
+    //       var formattedAddress = results[0].formatted_address;
+    //       var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
+    //       setServiceLocation(modifiedAddress);
+    //     } else {
+    //       toast.error("No results found.");
+    //     }
+    //   } else {
+    //     toast.error("Please enter a valid address!");
+    //   }
+    // });
+
+    try {
+      const modifiedAddress = await reverseGeocode(latitude, longitude);
+      setServiceLocation(modifiedAddress);
+    } catch (error) {
+      console.error(error);
     }
-
-    var location = new window.google.maps.LatLng(lat, long);
-
-    geocoder.geocode({ location: location }, function (results, status) {
-      if (status === "OK") {
-        if (results[0]) {
-          var formattedAddress = results[0].formatted_address;
-          var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
-          setServiceLocation(modifiedAddress);
-        } else {
-          toast.error("No results found.");
-        }
-      } else {
-        toast.error("Please enter a valid address!");
-      }
-    });
   }
 
   function toRadians(degrees) {
@@ -180,9 +187,6 @@ const RegistrationForm = (props) => {
 
   return (
     <Container>
-      <Helmet>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeP41nTw8QroOfvcCFR9bKIC-GUW7BLcs"></script>
-      </Helmet>
       <Row className="justify-content-center">
         <Col xs={12} sm={10} md={8}>
           <Card className="shadow registration-card">
@@ -204,7 +208,6 @@ const RegistrationForm = (props) => {
                   required
                 />
               </Form.Group>
-              <br />
               <Row>
                 <Col>
                   <Form.Group controlId="mealType">
