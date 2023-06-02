@@ -1,32 +1,62 @@
-import axios from 'axios';
+export const API_BASE_URL = "http://localhost:8080";
+export const ACCESS_TOKEN = "accessToken";
 
-const API_BASE_URL = "http://localhost:8080";
+const request = (options) => {
+  const headers = new Headers({
+    "Content-Type": "application/json",
+  });
 
-class PVRegisterService {
-  viewPv() {
-    return axios.get(API_BASE_URL + "/pv");
+  if (localStorage.getItem(ACCESS_TOKEN)) {
+    headers.append(
+      "Authorization",
+      "Bearer " + localStorage.getItem(ACCESS_TOKEN)
+    );
   }
 
-  getPvId(pvId) {
-    return axios.get(API_BASE_URL + "/pv/" + pvId);
+  const defaults = { headers: headers };
+  options = Object.assign({}, defaults, options);
+
+  return fetch(options.url, options).then((response) =>
+    response.json().then((json) => {
+      if (!response.ok) {
+        return Promise.reject(json);
+      }
+      return json;
+    })
+  );
+};
+
+export function getCurrentUser() {
+  if (!localStorage.getItem(ACCESS_TOKEN)) {
+    return Promise.reject("No access token set.");
   }
 
-  deletePv(pvId) {
-    return axios.delete(API_BASE_URL + "/pv/" + pvId);
-  }
-
-  savePv(pv) {
-    return axios.post(API_BASE_URL + "/pv", pv);
-  }
-
-  updatePv(pv) {
-    return axios.put(API_BASE_URL + "/pv/" + pv.pvId, pv);
-  }
-
-  searchPv(keyword) {
-    return axios.get(API_BASE_URL + "/pvs/" + keyword);
-  }
+  return request({
+    url: API_BASE_URL + "/pv/user/me",
+    method: "GET",
+  });
 }
 
-const pvRegisterService = new PVRegisterService();
-export default pvRegisterService;
+export function login(loginRequest) {
+  return request({
+    url: API_BASE_URL + "/pv/login",
+    method: "POST",
+    body: JSON.stringify(loginRequest),
+  });
+}
+
+export function pvRegister(pvRegisterRequest) {
+  return request({
+    url: API_BASE_URL + "/pv/register/member",
+    method: "POST",
+    body: JSON.stringify(pvRegisterRequest),
+  });
+}
+
+export function volunteerRegister(volunteerRegisterRequest) {
+  return request({
+    url: API_BASE_URL + "/pv/register/member",
+    method: "POST",
+    body: JSON.stringify(volunteerRegisterRequest),
+  });
+}
