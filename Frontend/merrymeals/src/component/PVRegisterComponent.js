@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap'; // Import Bootstrap components
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import "../css/MembersSignup.css";
+import { memberRegister } from "../service/MCRegisterService";
+import locationService from "../service/LocationService";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-
-const RegistrationForm = () => {
+const RegistrationForm = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
@@ -15,10 +21,44 @@ const RegistrationForm = () => {
   const [representingGroup, setRepresentingGroup] = useState(false);
   const [groupName, setGroupName] = useState('');
   const [station, setStation] = useState('');
+  const [passwordMatchError, setPasswordMatchError] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(false);
 
   const handleRegistration = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    if (password === confirmPassword) {
+      setPasswordMatchError(false);
+      const registrationData = {
+        firstName,
+        lastName,
+        email,
+        contactNumber,
+        dob,
+        password,
+        representingGroup,
+        groupName
+      };
+
+      memberRegister(registrationData)
+        .then((response) => {
+          toast.success("Your application has been submitted! Our Staff will contact you shortly");
+        })
+        .catch((error) => {
+          toast.error((error.message) || 'Oops! Something went wrong. Please try again!');
+        });
+    } else {
+      setPasswordMatchError(true);
+    }
+  };
+
+  const checkPassword = () => {
+    if (password === confirmPassword) {
+      setPasswordMatchError(false);
+      setPasswordMatch(true);
+    } else {
+      setPasswordMatchError(true);
+      setPasswordMatch(false);
+    }
   };
 
   return (
