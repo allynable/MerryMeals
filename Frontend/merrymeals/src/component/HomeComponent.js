@@ -17,7 +17,7 @@ export class HomeComponent extends Component {
           <div class="col-xl-3">
             <h3>WAYS TO GIVE</h3>
             <p>Help ensure no senior is left behind.</p><br></br>
-            <a class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">DONATE</a>
+            <a class="btn btn-info fs-5 fw-bold text-light" href="/donate" role="button">DONATE</a>
           </div>
           <div class="col-xl-3">
             <h3>BODY & SOUL</h3>

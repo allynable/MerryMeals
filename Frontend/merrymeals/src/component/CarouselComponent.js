@@ -18,7 +18,7 @@ const CarouselComponent = () => {
         <Carousel.Caption className="d-flex flex-column align-items-start">
           <h3 className="fs-1">PROTECT SENIORS NATIONWIDE</h3>
           <p className="fs-5">Help seniors like Sophia age with dignity and without fear of hunger.</p>
-          <Link to="/destination">
+          <Link to="/donate">
           <button type="button" class="btn btn-info fs-5 fw-bold text-light">GIVE NOW</button><br></br><br></br><br></br><br></br><br></br>
           </Link>
         </Carousel.Caption>
