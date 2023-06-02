@@ -79,33 +79,6 @@ const MemberTable = (props) => {
     }
   };
 
-  function reverseGeocodeAddress(latitude, longitude) {
-    var geocoder = new window.google.maps.Geocoder();
-    var lat = parseFloat(latitude);
-    var long = parseFloat(longitude);
-
-    if (isNaN(lat) || isNaN(long)) {
-      toast.error("Please enter valid coordinates.");
-      return;
-    }
-
-    var location = new window.google.maps.LatLng(lat, long);
-
-    geocoder.geocode({ location: location }, function (results, status) {
-      if (status === "OK") {
-        if (results[0]) {
-          var formattedAddress = results[0].formatted_address;
-          var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
-          var tdElement = document.getElementById("address");
-          tdElement.textContent = modifiedAddress;
-        } else {
-          toast.error("No results found.");
-        }
-      } else {
-        toast.error("Please enter a valid address!");
-      }
-    });
-  }
   
   return (
     <section>
@@ -129,20 +102,17 @@ const MemberTable = (props) => {
           <thead>
             <tr className="table-dark">
               <th>Name</th>
-              <th>Address</th>
               <th>Contact</th>
               <th>Condition</th>
-              {props.authenticated && <th>Action</th>}
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {members.map((member) => (
               <tr key={member.memberId}>
                 <td>{member.firstName}</td>
-                <td id="address">{reverseGeocodeAddress(member.latitude, member.longitude)}</td>
                 <td>{member.contactNumber}</td>
                 <td>{member.condition}</td>
-                {props.authenticated && (
                   <td className="text-center">
                     <OverlayTrigger
                       placement="bottom"
@@ -190,7 +160,7 @@ const MemberTable = (props) => {
                       </button>
                     </OverlayTrigger>
                   </td>
-                )}
+                
               </tr>
             ))}
           </tbody>

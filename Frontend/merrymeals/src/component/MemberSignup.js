@@ -406,7 +406,7 @@ const RegistrationForm = (props) => {
               </Button>
               <br />
               <Form.Text>
-                Already have an account? <Link to="/Login">Login here</Link>.
+                Already have an account? <Link to="/login">Login here</Link>.
               </Form.Text>
             </Form>
           </Card>
