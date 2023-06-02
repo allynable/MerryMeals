@@ -96,15 +96,17 @@ const MemberTable = (props) => {
         if (results[0]) {
           var formattedAddress = results[0].formatted_address;
           var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
-          console.log(formattedAddress);
+          var tdElement = document.getElementById("address");
+          tdElement.textContent = modifiedAddress;
         } else {
           toast.error("No results found.");
         }
       } else {
+        toast.error("Please enter a valid address!");
       }
     });
   }
-
+  
   return (
     <section>
       <Container>
@@ -137,7 +139,7 @@ const MemberTable = (props) => {
             {members.map((member) => (
               <tr key={member.memberId}>
                 <td>{member.firstName}</td>
-                <td >{reverseGeocodeAddress(member.latitude, member.longitude)}</td>
+                <td id="address">{reverseGeocodeAddress(member.latitude, member.longitude)}</td>
                 <td>{member.contactNumber}</td>
                 <td>{member.condition}</td>
                 {props.authenticated && (
