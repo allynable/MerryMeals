@@ -104,7 +104,7 @@ const RegistrationForm = (props) => {
     return distance / 1000;
   }
 
-  async function reverseGeocodeAddress(latitude, longitude) {
+  function reverseGeocodeAddress(latitude, longitude) {
     var geocoder = new window.google.maps.Geocoder();
     var lat = parseFloat(latitude);
     var long = parseFloat(longitude);
