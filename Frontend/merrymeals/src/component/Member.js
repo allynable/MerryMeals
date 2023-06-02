@@ -6,8 +6,8 @@ import { Container, Table } from "react-bootstrap";
 
 const Member = () => {
   const { memberId } = useParams();
-  const { userId } = useParams();
   const [member, setMember] = useState(null);
+  const { userId } = useParams();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
