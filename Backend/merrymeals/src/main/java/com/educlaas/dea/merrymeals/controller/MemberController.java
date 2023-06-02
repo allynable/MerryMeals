@@ -31,17 +31,8 @@ public class MemberController {
     private UsersRepository usersRepository;
 
     @GetMapping("/all")
-    public Object getMembers() {
-        List<Member> members = memberRepository.findAll();
-        List<UserMemberDto> userMemberDtos = new ArrayList<>();
-
-        for (Member member : members) {
-            Users user = member.getUser();
-            UserMemberDto userMemberDto = new UserMemberDto(user, member);
-            userMemberDtos.add(userMemberDto);
-        }
-
-        return userMemberDtos;
+    public List<Member> getMembers() {
+        return memberRepository.findAll();
     }
 
     @RequestMapping("/{memberId}")
@@ -49,15 +40,14 @@ public class MemberController {
         return memberRepository.findById(memberId);
     }
 
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<String> deleteStore(@PathVariable Long userId) {
+    @DeleteMapping("/{memberId}")
+    public ResponseEntity<String> deleteStore(@PathVariable Long memberId) {
         try {
-            Optional<Users> users = usersRepository.findById(userId);
+            Optional<Member> optionalMember = memberRepository.findById(memberId);
 
-            if (users.isPresent()) {
-                Users user = users.get();
-
-                Member member = memberRepository.findByUser(user);
+            if (optionalMember.isPresent()) {
+                Member member = optionalMember.get();
+                Users user = member.getUser();
 
                 member.setUser(null);
                 memberRepository.delete(member);
