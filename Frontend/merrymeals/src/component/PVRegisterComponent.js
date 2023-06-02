@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { Container, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import "../css/MembersSignup.css";
-import { memberRegister } from "../service/MCRegisterService";
+import { memberRegister } from "../service/PVRegisterService";
 import locationService from "../service/LocationService";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -62,63 +62,68 @@ const RegistrationForm = (props) => {
   };
 
   return (
-    <Form onSubmit={handleRegistration}>
-      <FormGroup>
-        <Label for="firstName">First Name:</Label>
-        <Input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-      </FormGroup>
-      <FormGroup>
-        <Label for="lastName">Last Name:</Label>
-        <Input type="text" id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-      </FormGroup>
-      <FormGroup>
-        <Label for="address">Address:</Label>
-        <Input type="textarea" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
-      </FormGroup>
-      <FormGroup>
-        <Label for="email">Email:</Label>
-        <Input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-      </FormGroup>
-      <FormGroup>
-        <Label for="phone">Phone:</Label>
-        <Input type="tel" id="phone" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
-      </FormGroup>
-      <FormGroup>
-        <Label for="birthDate">Birth Date:</Label>
-        <Input type="date" id="birthDate" value={dob} onChange={(e) => setDob(e.target.value)} required />
-      </FormGroup>
-      <FormGroup>
-        <Label for="password">Password:</Label>
-        <Input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-      </FormGroup>
-      <FormGroup>
-        <Label for="confirmPassword">Confirm Password:</Label>
-        <Input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-      </FormGroup>
-      <FormGroup check>
-        <Label check>
-          <Input type="checkbox" id="representingGroup" checked={representingGroup} onChange={(e) => setRepresentingGroup(e.target.checked)} />{' '}
-          Are you representing a group or club?
-        </Label>
-      </FormGroup>
-      {representingGroup && (
-        <FormGroup>
-          <Label for="groupName">Group Name:</Label>
-          <Input type="text" id="groupName" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
-        </FormGroup>
-      )}
-      <FormGroup>
-        <Label for="expertise">Areas of expertise/interest:</Label>
-        <Input type="select" id="expertise" value={station} onChange={(e) => setStation(e.target.value)}>
-          <option value="">Select expertise</option>
-          <option value="Delivery">Driving/Delivery</option>
-          <option value="Kitchen">Food Preparation/Kitchen Help</option>
-        </Input>
-      </FormGroup>
-      <FormGroup>
-        <Button type="submit" color="primary">Register</Button>
-      </FormGroup>
-    </Form>
+    <Container>
+      <Row className="justify-content-center">
+        <Col xs={12} sm={10} md={8}>
+          <Card className="shadow registration-card">
+            <h1>Volunteer Application</h1>
+            <br />
+            <Form onSubmit={handleRegistration}>
+              <Form.Group controlId="firstName">
+                <Form.Label>First Name:</Form.Label>
+                <Form.Control type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+              </Form.Group>
+              <Form.Group controlId="lastName">
+                <Form.Label>Last Name:</Form.Label>
+                <Form.Control type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+              </Form.Group>
+              <Form.Group controlId="address">
+                <Form.Label>Address:</Form.Label>
+                <Form.Control as="textarea" rows={3} value={address} onChange={(e) => setAddress(e.target.value)} />
+              </Form.Group>
+              <Form.Group controlId="email">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              </Form.Group>
+              <Form.Group controlId="contactNumber">
+                <Form.Label>Contact Number:</Form.Label>
+                <Form.Control type="text" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
+              </Form.Group>
+              <Form.Group controlId="dob">
+                <Form.Label>Date of Birth:</Form.Label>
+                <br />
+                <DatePicker selected={dob} onChange={(date) => setDob(date)} dateFormat="yyyy/MM/dd" required />
+              </Form.Group>
+              <Form.Group controlId="password">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              </Form.Group>
+              <Form.Group controlId="confirmPassword">
+                <Form.Label>Confirm Password:</Form.Label>
+                <Form.Control type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} onBlur={checkPassword} required />
+                {passwordMatchError && <div className="password-match-error">Passwords do not match</div>}
+              </Form.Group>
+              <Form.Group controlId="representingGroup">
+                <Form.Check type="checkbox" checked={representingGroup} onChange={(e) => setRepresentingGroup(e.target.checked)} label="Representing a Group" />
+              </Form.Group>
+              {representingGroup &&
+                <Form.Group controlId="groupName">
+                  <Form.Label>Group Name:</Form.Label>
+                  <Form.Control type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} required />
+                </Form.Group>
+              }
+              <Button variant="primary" type="submit" disabled={!passwordMatch}>
+                Register
+              </Button>
+            </Form>
+            <br />
+            <div className="text-center">
+              Already have an account? <Link to="/login">Login here</Link>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
