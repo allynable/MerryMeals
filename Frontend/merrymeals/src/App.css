@@ -1,3 +1,30 @@
 .toast-position {
     top: 8rem !important;
-  }
+}
+
+/* Page Not Found CSS */
+.page-not-found h1{
+  color: #f0f0f0;
+  font-size: 300px;
+  padding: 30px 0;
+  display: block;
+}
+
+.page-not-found h2{
+  color:#198754;
+  font-size: 60px;
+  padding-bottom: 10px;
+}
+
+.page-not-found h3{
+  color:#2c2c2c;
+}
+
+.page-not-found .error-link{
+  text-decoration: none;
+  color:#198754;
+}
+
+.page-not-found .error-link:hover{
+  opacity: .8;
+}

@@ -1,6 +1,3 @@
-//import React, { Component } from 'react'
-// eslint-disable-next-line
-import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -18,6 +15,7 @@ import FoodSafetyGuide from "./component/FoodSafetyGuide";
 import PrivacyPolicy from "./component/PrivacyPolicy";
 import AdminDashboard from "./component/AdminDashboard";
 import { getCurrentUser } from "./service/MCRegisterService";
+import PageNotFound from "./component/PageNotFound";
 import Member from "./component/Member";
 import AboutUs from "./component/AboutUs"
 export const ACCESS_TOKEN = "accessToken";
@@ -89,6 +87,7 @@ function App(props) {
           ></Route>
           <Route path='/member/:memberId' element={<Member/>}></Route>
           <Route path='members/:keyword' element={<AdminDashboard/>} />
+          <Route component={PageNotFound}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>
         </Switch>
 
