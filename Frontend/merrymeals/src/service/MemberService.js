@@ -1,8 +1,8 @@
 import axios from 'axios'
-const API_BASE_URL = "http://localhost:8080"
+const API_BASE_URL = "http://localhost:8080/"
 class MemberService{
     viewMember(){
-        return axios.get(API_BASE_URL + "members");
+        return axios.get(API_BASE_URL + "member/all");
     }
 
     getMemberById(memberId){

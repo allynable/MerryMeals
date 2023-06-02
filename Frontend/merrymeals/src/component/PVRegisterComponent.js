@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import "../css/MembersSignup.css";
-import { memberRegister } from "../service/PVRegisterService";
+import pvRegisterService from "../service/PVRegisterService";
 import locationService from "../service/LocationService";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -39,7 +39,7 @@ const RegistrationForm = (props) => {
         groupName
       };
 
-      memberRegister(registrationData)
+      pvRegisterService(registrationData)
         .then((response) => {
           toast.success("Your application has been submitted! Our Staff will contact you shortly");
         })
