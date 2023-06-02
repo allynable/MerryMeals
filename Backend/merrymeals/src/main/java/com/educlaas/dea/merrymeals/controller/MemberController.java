@@ -2,7 +2,6 @@ package com.educlaas.dea.merrymeals.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,14 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.educlaas.dea.merrymeals.dao.Member;
 import com.educlaas.dea.merrymeals.dao.Users;
-import com.educlaas.dea.merrymeals.payload.UserMemberDto;
 import com.educlaas.dea.merrymeals.repository.MemberRepository;
 import com.educlaas.dea.merrymeals.repository.UsersRepository;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/member")

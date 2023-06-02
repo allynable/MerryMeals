@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MerrymealsApplication<merrymeals>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.educlaas.dea.merrymeals.MerrymealsApplication",
+            "projectName": "merrymeals",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

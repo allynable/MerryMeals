@@ -17,6 +17,7 @@ const LoginComponent = (props) => {
   useEffect(() => {
     if (props.authenticated) {
       history.push('/');
+      window.location.reload();
     }
   }, [props.authenticated], history);
 
@@ -37,6 +38,7 @@ const LoginComponent = (props) => {
           toast.update(id, { render: "Logged in successfully!", type: "success", isLoading: false });
         }, 1000);
         setTimeout(() => {
+          history.push('/');
           window.location.reload();
         }, 2000);
       })
