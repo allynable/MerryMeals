@@ -17,6 +17,7 @@ import AdminDashboard from "./component/AdminDashboard";
 import { getCurrentUser } from "./service/MCRegisterService";
 import PageNotFound from "./component/PageNotFound";
 import Member from "./component/Member";
+import AboutUs from "./component/AboutUs"
 export const ACCESS_TOKEN = "accessToken";
 
 function App(props) {
@@ -87,6 +88,7 @@ function App(props) {
           <Route path='/member/:memberId' element={<Member/>}></Route>
           <Route path='members/:keyword' element={<AdminDashboard/>} />
           <Route component={PageNotFound}></Route>
+          <Route exact path="/aboutus" component={AboutUs}></Route>
         </Switch>
 
         <FooterComponent></FooterComponent>
