@@ -18,6 +18,7 @@ import FoodSafetyGuide from "./component/FoodSafetyGuide";
 import PrivacyPolicy from "./component/PrivacyPolicy";
 import AdminDashboard from "./component/AdminDashboard";
 import { getCurrentUser } from "./service/MCRegisterService";
+import Member from "./component/Member";
 export const ACCESS_TOKEN = "accessToken";
 
 function App(props) {
@@ -28,6 +29,7 @@ function App(props) {
   useEffect(() => {
     loadCurrentlyLoggedInUser();
   }, []);
+
 
   function loadCurrentlyLoggedInUser() {
     getCurrentUser()
@@ -86,6 +88,8 @@ function App(props) {
             path="/admindashboard"
             component={AdminDashboard}
           ></Route>
+          <Route path='/member/:memberId' element={<Member/>}></Route>
+          <Route path='members/:keyword' element={<AdminDashboard/>} />
         </Switch>
 
         <FooterComponent></FooterComponent>
