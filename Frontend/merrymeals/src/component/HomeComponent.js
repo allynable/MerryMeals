@@ -47,7 +47,7 @@ export class HomeComponent extends Component {
             and other vulnerable individuals through the provision of nutritious meals, social interaction, and support services 
             delivered by caring volunteers. We strive to ensure that no senior or vulnerable person goes hungry or feels isolated, 
             fostering a community that values and uplifts their well-being.</p>
-            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">DONATE NOW</a>
+            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="/donate" role="button">DONATE NOW</a>
         </div>      
         </div>
         <h1 id="news-title">NEWS</h1>
