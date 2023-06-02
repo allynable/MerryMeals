@@ -5,7 +5,7 @@ import logo from "../image/mow-logo.png";
 export class HeaderComponent extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-light">
           <div class="navbar-logo">
             <a href="/"><img src={logo} alt="Logo" /></a>
