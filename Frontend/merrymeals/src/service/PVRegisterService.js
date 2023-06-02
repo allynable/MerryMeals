@@ -45,20 +45,10 @@ export function login(loginRequest) {
   });
 }
 
-export function pvRegisterService(pvRegisterRequest) {
-  return request({
-    url: API_BASE_URL + "/pv/register/member",
-    method: "POST",
-    body: JSON.stringify(pvRegisterRequest),
-  });
-}
-
 export function volunteerRegister(volunteerRegisterRequest) {
   return request({
-    url: API_BASE_URL + "/pv/register/member",
+    url: API_BASE_URL + "/online/register/volunteer",
     method: "POST",
     body: JSON.stringify(volunteerRegisterRequest),
   });
 }
-
-export default pvRegisterService;

@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { Container, Form, Row, Col, Button, Card,Dropdown, DropdownButton } from "react-bootstrap";
+import {
+  Container,
+  Form,
+  Row,
+  Col,
+  Button,
+  Card,
+  Dropdown,
+  DropdownButton,
+} from "react-bootstrap";
 import "../css/MembersSignup.css";
-import pvRegisterService from "../service/PVRegisterService";
+import { volunteerRegister } from "../service/PVRegisterService";
 import locationService from "../service/LocationService";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -43,10 +52,10 @@ const RegistrationForm = (props) => {
         password,
         representingGroup,
         groupName,
-        station,
+        station
       };
-
-      pvRegisterService(registrationData)
+      console.log(registrationData);
+      volunteerRegister(registrationData)
         .then((response) => {
           toast.success(
             "Your application has been submitted! Our Staff will contact you shortly"
@@ -74,7 +83,6 @@ const RegistrationForm = (props) => {
 
   const getCoordinates = (address) => {
     var geocoder = new window.google.maps.Geocoder();
-    console.log("address: " + address);
     geocoder.geocode({ address: address }, (results, status) => {
       if (status === "OK") {
         var location = results[0].geometry.location;
@@ -132,6 +140,10 @@ const RegistrationForm = (props) => {
                   placeholder="Address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                  onBlur={(e) => getCoordinates(e.target.value)}
+                  isInvalid={locationError}
+                  isValid={validLocation}
+                  required
                 />
               </Form.Group>
               <br />
@@ -178,8 +190,12 @@ const RegistrationForm = (props) => {
                   <Form.Group controlId="password">
                     <Form.Control
                       type="password"
+                      placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      onBlur={(e) => checkPassword()}
+                      isInvalid={passwordMatchError}
+                      isValid={passwordMatch}
                       required
                     />
                   </Form.Group>
@@ -188,50 +204,68 @@ const RegistrationForm = (props) => {
                   <Form.Group controlId="confirmPassword">
                     <Form.Control
                       type="password"
+                      placeholder="Confirm Password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      onBlur={checkPassword}
+                      onBlur={(e) => checkPassword()}
+                      isInvalid={passwordMatchError}
+                      isValid={passwordMatch}
                       required
                     />
-                    {passwordMatchError && (
-                      <div className="password-match-error">
-                        Passwords do not match
-                      </div>
-                    )}
                   </Form.Group>
                 </Col>
               </Row>
               <br />
               <Row>
                 <Col sm={4}>
-                <Form.Group controlId="representingGroup">
-                <Form.Check
-                  type="checkbox"
-                  checked={representingGroup}
-                  onChange={(e) => setRepresentingGroup(e.target.checked)}
-                  label="Are you representing a Group?"
-                  style={{borderColor: '#ff0000' }}
-                />
-              </Form.Group>
+                  <Form.Group controlId="representingGroup">
+                    <Form.Check
+                      type="checkbox"
+                      checked={representingGroup}
+                      onChange={(e) => setRepresentingGroup(e.target.checked)}
+                      label="Are you representing a Group?"
+                      style={{ borderColor: "#ff0000" }}
+                    />
+                  </Form.Group>
                 </Col>
-                <Col>{representingGroup && (
-                <Form.Group controlId="groupName">
-                  <Form.Control
-                    type="text"
-                    placeholder="Group Name"
-                    value={groupName}
-                    onChange={(e) => setGroupName(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-              )}</Col>
+                <Col>
+                  {representingGroup && (
+                    <Form.Group controlId="groupName">
+                      <Form.Control
+                        type="text"
+                        placeholder="Group Name"
+                        value={groupName}
+                        onChange={(e) => setGroupName(e.target.value)}
+                        required
+                      />
+                    </Form.Group>
+                  )}
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col sm={2}><label htmlFor="groupSelection">Choose Station:</label></Col>
+                <Col sm={6}>
+                  <Form.Group controlId="groupName">
+                    
+                    <select
+                      id="groupSelection"
+                      value={station}
+                      onChange={(e) => setStation(e.target.value)}
+                      className="form-control"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="Kitchen">Kitchen</option>
+                      <option value="Delivery">Delivery</option>
+                    </select>
+                  </Form.Group>
+                </Col>
               </Row>
               <br />
               <Button variant="primary" type="submit" disabled={!passwordMatch}>
                 Register
               </Button>
             </Form>
-            <br />
             <div className="text-center">
               Already have an account? <Link to="/login">Login here</Link>
             </div>
