@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
-import { Container, Form, Row, Col, Button, Card } from 'react-bootstrap';
-import '../css/MembersSignup.css';
-import { pvRegister } from '../service/PVRegisterService';
-import locationService from '../service/LocationService';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
+import "../css/MembersSignup.css";
+import pvRegisterService from "../service/PVRegisterService";
+import locationService from "../service/LocationService";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const RegistrationForm = () => {
   const [firstName, setFirstName] = useState('');
@@ -38,7 +38,7 @@ const RegistrationForm = () => {
         groupName,
       };
 
-      pvRegister(registrationData)
+      pvRegisterService(registrationData)
         .then((response) => {
           toast.success('Your application has been submitted! Our staff will contact you shortly.');
         })

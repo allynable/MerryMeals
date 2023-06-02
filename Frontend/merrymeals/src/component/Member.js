@@ -6,13 +6,15 @@ import { Container, Table } from "react-bootstrap";
 const Member = () => {
   const { memberId } = useParams();
   const [member, setMember] = useState(null);
-
+  
   useEffect(() => {
     const fetchMember = async () => {
       const response = await memberService.getMemberById(memberId);
       const memberData = response.data;
       setMember(memberData);
     };
+
+   
     fetchMember();
   }, [memberId]);
 

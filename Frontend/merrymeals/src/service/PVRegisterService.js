@@ -45,7 +45,7 @@ export function login(loginRequest) {
   });
 }
 
-export function pvRegister(pvRegisterRequest) {
+export function pvRegisterService(pvRegisterRequest) {
   return request({
     url: API_BASE_URL + "/pv/register/member",
     method: "POST",
@@ -60,3 +60,5 @@ export function volunteerRegister(volunteerRegisterRequest) {
     body: JSON.stringify(volunteerRegisterRequest),
   });
 }
+
+export default pvRegisterService;
