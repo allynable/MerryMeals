@@ -2,7 +2,7 @@
 // eslint-disable-next-line
 import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -25,6 +25,7 @@ function App(props) {
   const [authenticated, setAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState([]);
   const [role, setRole] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     loadCurrentlyLoggedInUser();
@@ -50,9 +51,6 @@ function App(props) {
   }
   return (
     <div className="App">
-      <Helmet>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeP41nTw8QroOfvcCFR9bKIC-GUW7BLcs"></script>
-      </Helmet>
       <Router>
         <HeaderComponent
           authenticated={authenticated}
