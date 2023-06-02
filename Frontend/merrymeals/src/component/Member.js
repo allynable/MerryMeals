@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import memberService from "../service/MemberService";
-import userService from "../service/UserService";
 import { useParams } from "react-router-dom";
 import { Container, Table } from "react-bootstrap";
 
 const Member = () => {
   const { memberId } = useParams();
   const [member, setMember] = useState(null);
-  const { userId } = useParams();
-  const [user, setUser] = useState(null);
-
+  
   useEffect(() => {
     const fetchMember = async () => {
       const response = await memberService.getMemberById(memberId);
@@ -17,15 +14,9 @@ const Member = () => {
       setMember(memberData);
     };
 
-    const fetchUser = async () => {
-      const response = await userService.getUserById(userId);
-      const userData = response.data;
-      setUser(userData);
-    };
-
+   
     fetchMember();
-    fetchUser();
-  }, [memberId,userId]);
+  }, [memberId]);
 
   if (!member) {
     return <div>Loading...</div>;
