@@ -65,7 +65,6 @@ const RegistrationForm = (props) => {
 
   const getCoordinates = (address) => {
     var geocoder = new window.google.maps.Geocoder();
-    console.log("address: " + address);
     geocoder.geocode({ address: address }, (results, status) => {
       if (status === "OK") {
         var location = results[0].geometry.location;
@@ -401,7 +400,7 @@ const RegistrationForm = (props) => {
                 </Col>
               </Row>
               <br />
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" disabled={!passwordMatch}>
                 Register
               </Button>
               <br />
