@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name ="meal_order")
@@ -17,23 +18,21 @@ public class MealOrder {
     private long mealOrderId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "userId")
-    private Users user;
+    @JoinColumn(name = "member_id", referencedColumnName = "memberId")
+    private Member member;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "meal_item_id", referencedColumnName = "mealItemId")
     private MealItem mealItem;
 
-
     public MealOrder() {
     }
 
-    public MealOrder(long mealOrderId, Users user, MealItem mealItem) {
+    public MealOrder(long mealOrderId, Member member, MealItem mealItem) {
         this.mealOrderId = mealOrderId;
-        this.user = user;
+        this.member = member;
         this.mealItem = mealItem;
     }
-
 
     public long getMealOrderId() {
         return this.mealOrderId;
@@ -43,12 +42,12 @@ public class MealOrder {
         this.mealOrderId = mealOrderId;
     }
 
-    public Users getUser() {
-        return this.user;
+    public Member getMember() {
+        return this.member;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public MealItem getMealItem() {
@@ -57,6 +56,21 @@ public class MealOrder {
 
     public void setMealItem(MealItem mealItem) {
         this.mealItem = mealItem;
+    }
+
+    public MealOrder mealOrderId(long mealOrderId) {
+        setMealOrderId(mealOrderId);
+        return this;
+    }
+
+    public MealOrder member(Member member) {
+        setMember(member);
+        return this;
+    }
+
+    public MealOrder mealItem(MealItem mealItem) {
+        setMealItem(mealItem);
+        return this;
     }
 
 }
