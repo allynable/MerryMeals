@@ -88,7 +88,7 @@ function App(props) {
           <Route path='/member/:memberId' element={<Member/>}></Route>
           <Route path='members/:keyword' element={<AdminDashboard/>} />
           <Route component={PageNotFound}></Route>
-          <Route exact path="/aboutus" component={AboutUs}></Route>
+          <Route path="/aboutus" component={AboutUs}></Route>
         </Switch>
 
         <FooterComponent></FooterComponent>
