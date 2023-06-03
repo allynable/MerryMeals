@@ -28,3 +28,12 @@
 .page-not-found .error-link:hover{
   opacity: .8;
 }
+
+/* Profile Style */
+.profile-image{
+  width: 150px;
+}
+
+.profile{
+  text-align: left !important;
+}

@@ -2,40 +2,101 @@ import { Container, Row, Col, Image, Card, Form } from "react-bootstrap";
 import defaultProfile from "../image/profile.svg";
 import { getCurrentUser } from "../service/MCRegisterService";
 import { useState, useEffect } from "react";
-export const MemberProfile = () => {
+import LoadingSpinner from "./Loading";
+import { toast } from "react-toastify";
+
+export const MemberProfile = (props) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState(null);
+  const [address, setAddress] = useState("");
+  if (!props.authenticated) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
+
+  reverseGeocodeAddress(
+    props.currentUser.member.latitude,
+    props.currentUser.member.longitude
+  );
+
+  function reverseGeocodeAddress(latitude, longitude) {
+    var geocoder = new window.google.maps.Geocoder();
+    var lat = parseFloat(latitude);
+    var long = parseFloat(longitude);
+
+    if (isNaN(lat) || isNaN(long)) {
+      toast.error("Please enter valid coordinates.");
+      return;
+    }
+
+    var location = new window.google.maps.LatLng(lat, long);
+
+    geocoder.geocode({ location: location }, function (results, status) {
+      if (status === "OK") {
+        if (results[0]) {
+          var formattedAddress = results[0].formatted_address;
+          var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
+          setAddress(modifiedAddress);
+        } else {
+          toast.error("No results found.");
+        }
+      } else {
+        toast.error("Please enter a valid address!");
+      }
+    });
+  }
   return (
     <section>
-      <Container>
+      <Container className="profile">
         <Row className="py-5 justify-content-center">
           <Col xs={12} sm={10} md={8}>
             <Card className="p-3 shadow-lg" style={{ height: "200%%" }}>
               <Row>
                 <Col xs={4} className="text-center">
                   <Image
-                    src={
-                      defaultProfile
-                    }
+                    src={defaultProfile}
                     roundedCircle
                     thumbnail
                     className="profile-image"
                   ></Image>
-                  <h5>{}</h5>
+                  <h4 className="pt-2">
+                    {props.currentUser.member.firstName}{" "}
+                    {props.currentUser.member.lastName}
+                  </h4>
+                  <h6 className="text-secondary">Member</h6>
                 </Col>
                 <Col xs={8}>
-                  <h1 className="text-secondary">User Profile</h1>
+                  <h1 className="text-secondary">Member Profile</h1>
                   <hr />
                   <Row className="py-2">
                     <Form.Label>Email:</Form.Label>
-                    <h5>{}</h5>
-                    <Col sm={6}>
-                      <Form.Label>First Name: </Form.Label>
-                      <h5>{}</h5>
-                    </Col>
-                    <Col sm={6}>
-                      <Form.Label>Last Name: </Form.Label>
-                      <h5>{}</h5>
-                    </Col>
+                    <h5>{props.currentUser.user.email}</h5>
                   </Row>
+                  <Row>
+                    <Form.Label>Contact Number:</Form.Label>
+                    <h5>{props.currentUser.member.contactNumber}</h5>
+                  </Row>
+                  <Row>
+                    <Form.Label>Date of Birth:</Form.Label>
+                    <h5>{props.currentUser.member.dob}</h5>
+                  </Row>
+                  <Row>
+                    <Form.Label>Address:</Form.Label>
+                    <h5>{address}</h5>
+                  </Row>
+                  <Row>
+                    <Form.Label>Allergies:</Form.Label>
+                    <h5>{props.currentUser.member.allergies}</h5>
+                  </Row>
+                  <Row>
+                    <Form.Label>Health Condition:</Form.Label>
+                    <h5>{props.currentUser.member.condition}</h5>
+                  </Row>
+                  {props.currentUser.member.caregiver !== "" && (
+                    <Row>
+                      <Form.Label>Caregiver:</Form.Label>
+                      <h5>{props.currentUser.member.caregiver}</h5>
+                    </Row>
+                  )}
                 </Col>
               </Row>
             </Card>

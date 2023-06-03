@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, history, useHistory} from "react-router-dom";
 import { Container, Form, Row, Col, Button, Card } from "react-bootstrap";
 import "../css/MembersSignup.css";
 import { memberRegister } from "../service/MCRegisterService";
@@ -31,6 +31,7 @@ const RegistrationForm = (props) => {
   const [locationError, setLocationError] = useState(false);
   const [serviceLocation, setServiceLocation] = useState("");
   const [serviceCenter, setServiceCenter] = useState("");
+  const history = useHistory();
 
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -54,6 +55,10 @@ const RegistrationForm = (props) => {
       memberRegister(registrationData)
         .then((response) => {
           toast.success("Your application has been submitted! Our Staff will contact you shortly");
+          setTimeout(() => {
+            history.push("/");
+            window.location.reload();
+          }, 1000);
         })
         .catch((error) => {
           toast.error((error.message) || 'Oops! Something went wrong. Please try again!');
@@ -304,6 +309,7 @@ const RegistrationForm = (props) => {
                       selected={dob}
                       onChange={(date) => setDob(date)}
                       placeholderText="Date of Birth (mm/dd/yyyy)"
+                      dateFormat={"MM/dd/yyyy"}
                       showMonthDropdown
                       showIcon
                       required

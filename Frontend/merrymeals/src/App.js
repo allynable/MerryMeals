@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -17,12 +22,12 @@ import AdminDashboard from "./component/AdminDashboard";
 import { getCurrentUser } from "./service/MCRegisterService";
 import PageNotFound from "./component/PageNotFound";
 import Member from "./component/Member";
-import AboutUs from "./component/AboutUs"
-import News from "./component/News"
+import AboutUs from "./component/AboutUs";
+import News from "./component/News";
 import PaymentComponent from "./component/PaymentComponent";
 import MemberProfile from "./component/MemberProfile";
 import ContactUsComponent from "./component/ContactUsComponent";
-import PVProfile  from "./component/PVProfile";
+import PVProfile from "./component/PVProfile";
 export const ACCESS_TOKEN = "accessToken";
 
 function App() {
@@ -35,15 +40,14 @@ function App() {
     loadCurrentlyLoggedInUser();
   }, [history]);
 
-
   function loadCurrentlyLoggedInUser() {
     getCurrentUser()
-    .then(response => {
-      setCurrentUser(response);
-      setAuthenticated(true);
-      setRole(response.user.role);
-    }).catch(error => {
-    });    
+      .then((response) => {
+        setCurrentUser(response);
+        setAuthenticated(true);
+        setRole(response.user.role);
+      })
+      .catch((error) => {});
   }
 
   function handleLogout() {
@@ -71,9 +75,13 @@ function App() {
             exact
             path="/memberprofile"
             render={(props) => (
-              <MemberProfile authenticated={authenticated} currentUser={currentUser} {...props} />
+              <MemberProfile
+              {...props}
+                authenticated={authenticated}
+                currentUser={currentUser}
+              />
             )}
-          ></Route>
+          />
           <Route
             exact
             path="/pvregistration"
@@ -97,25 +105,30 @@ function App() {
           <Route exact path="/aboutus" component={AboutUs}></Route>
           {/* <Route exact path="/volunteerprofile" component={PVProfile} /> */}
           <Route
-          exact
-          path="/volunteerprofile"
-          render={(props) => (
-          <PVProfile
-          authenticated={authenticated}
-          currentUser={currentUser}
-          {...props}
-                />  )}
+            exact
+            path="/volunteerprofile"
+            render={(props) => (
+              <PVProfile
+                authenticated={authenticated}
+                currentUser={currentUser}
+                {...props}
+              />
+            )}
           />
 
           <Route
             exact
             path="/admindashboard"
             render={(props) => (
-              <AdminDashboard authenticated={authenticated} role={role} {...props} />
+              <AdminDashboard
+                authenticated={authenticated}
+                role={role}
+                {...props}
+              />
             )}
           ></Route>
-          <Route path='/member/:memberId' component={Member}></Route>
-          <Route path='members/:keyword' element={<AdminDashboard/>} />
+          <Route path="/member/:memberId" component={Member}></Route>
+          <Route path="members/:keyword" element={<AdminDashboard />} />
           <Route component={PageNotFound}></Route>
           <Route path="/aboutus" component={AboutUs}></Route>
           <Route exact path="/pay" component={PaymentComponent}></Route>
