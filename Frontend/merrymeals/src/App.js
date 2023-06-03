@@ -21,6 +21,7 @@ import AboutUs from "./component/AboutUs"
 import News from "./component/News"
 import PaymentComponent from "./component/PaymentComponent";
 import ContactUsComponent from "./component/ContactUsComponent";
+import PVProfile  from "./component/PVProfile";
 export const ACCESS_TOKEN = "accessToken";
 
 function App(props) {
@@ -87,6 +88,18 @@ function App(props) {
           <Route exact path="/news" component={News}></Route>
           <Route exact path="/pay" component={PaymentComponent}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>
+          {/* <Route exact path="/volunteerprofile" component={PVProfile} /> */}
+          <Route
+          exact
+          path="/volunteerprofile"
+          render={(props) => (
+          <PVProfile
+          authenticated={authenticated}
+          currentUser={currentUser}
+          {...props}
+                />  )}
+          />
+
           <Route
             exact
             path="/admindashboard"

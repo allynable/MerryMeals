@@ -63,7 +63,7 @@ export class HeaderComponent extends Component {
                 {this.props.authenticated ? (
                   <li>
                     <a
-                      href="#"
+                      href=".."
                       onClick={this.props.onLogout}
                       class="navbar-link"
                     >
