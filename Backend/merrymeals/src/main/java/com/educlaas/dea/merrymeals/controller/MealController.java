@@ -1,5 +1,7 @@
 package com.educlaas.dea.merrymeals.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +26,17 @@ public class MealController {
     }
 
     @PutMapping("/{mealId}")
-    public SomeEnityData putMethodName(@PathVariable long mealId, @RequestBody SomeEnityData entity) {
-        //TODO: process PUT request
-        
-        return entity;
+    public MealItem updMealItem(@PathVariable long mealId, @RequestBody MealItem mealItem) {
+        Optional<MealItem> existingMeal = mealRepository.findById(mealId);
+        if(!existingMeal.isEmpty()){
+            MealItem updatedMeal = existingMeal.get();
+
+            updatedMeal.setName(mealItem.getName());
+            updatedMeal.setDescription(mealItem.getDescription());
+            updatedMeal.setDay(mealItem.getDay());
+
+            return mealRepository.save(updatedMeal);
+        }
+        return null;
     }
 }
