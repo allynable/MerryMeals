@@ -1,9 +1,11 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import '../css/AdminDashboard.css'
 import MemberTable from './MemberTable';
 import Member from './Member';
 
-const AdminDashboard = () => {
+const AdminDashboard = (props) => {
 
   return (
     <div>

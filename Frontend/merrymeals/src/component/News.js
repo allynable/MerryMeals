@@ -1,11 +1,17 @@
 import React from "react";
-const PrivacyPolicy = () => {
+
+
+const News = () => {
   return (
     <div className="container1">
-      <h2 className="text-center mt-3 mb-4">PRIVACY POLICY</h2>
+      <h2 className="text-center mt-3 mb-4">KEEPING SENIORS SAFE AMID COVID-19</h2>
       <p className="text-center">
-        Meals on Wheels People respect your privacy choices. If you give us
-        personal information, we will treat it according to the policy below.
+      Vulnerable seniors are at the greatest risk amid COVID-19. Local Meals on Wheels programs are on the front lines every day, 
+      focused on doing all they can to keep older Singaporeans safe and nourished in communities across the country. The costs and efforts 
+      needed to protect seniors from COVID-19 require additional emergency funds, and that is why we are asking federal lawmakers, 
+      corporations, foundations and the general public to remember these vulnerable seniors in our national response. We’re monitoring 
+      the rapidly evolving COVID-19 situation and will continue to share updates as quickly as possible. In the meantime, we ask for 
+      your help.
       </p>
 
       <h3 className="mt-5 mb-4">CONFIDENTIALITY</h3>
@@ -138,4 +144,4 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default News;
