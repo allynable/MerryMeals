@@ -80,6 +80,7 @@ function App(props) {
             component={FoodSafetyGuide}
           ></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
+          <Route exact path="/aboutus" component={AboutUs}></Route>
           <Route
             exact
             path="/admindashboard"
@@ -88,7 +89,7 @@ function App(props) {
           <Route path='/member/:memberId' component={Member}></Route>
           <Route path='members/:keyword' element={<AdminDashboard/>} />
           <Route component={PageNotFound}></Route>
-          <Route exact path="/aboutus" component={AboutUs}></Route>
+          <Route path="/aboutus" component={AboutUs}></Route>
         </Switch>
 
         <FooterComponent></FooterComponent>

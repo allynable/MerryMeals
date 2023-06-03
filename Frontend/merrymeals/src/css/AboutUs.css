@@ -1,0 +1,34 @@
+.container1 {
+  padding: 20px;
+  text-align: justify;
+}
+
+.story-card {
+  display: flex;
+  align-items: left;
+}
+
+.story-image {
+  max-width: 400px;
+  margin-right: 20px;
+}
+
+.container2 {
+  background-color: #ebf7fa;
+  text-align: justify;
+}
+
+.container3 {
+  text-align: justify;
+  margin-top: 10px;
+}
+
+.container4 {
+  text-align: justify;
+  margin-top: 10px;
+}
+
+.container5 {
+  text-align: justify;
+  margin-top: 10px;
+}
