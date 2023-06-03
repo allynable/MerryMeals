@@ -45,7 +45,6 @@ public class UsersController {
     	Users user =  userRepository.findById((usersPrincipal.getUserId())) 
                 .orElseThrow(() -> new ResourceNotFoundException("Users", "userId", usersPrincipal.getUserId()));
         String role = user.getRole();
-
         switch (role){
             case "ROLE_MEMBER":
                 Member member = memberRepository.findByUser(user);
@@ -60,5 +59,5 @@ public class UsersController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("USER NOT FOUND");
         }
-    }
+    }    
 }

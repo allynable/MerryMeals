@@ -19,14 +19,14 @@ export class FooterComponent extends Component {
     <div class="footer-menu">
       <h3 class="footer-title">Get Involved</h3>
       <ul class="footer-links">
-        <li><a href="...">Donate</a></li>
+        <li><a href="/donate">Donate</a></li>
         <li><a href="...">Volunteer</a></li>
       </ul>
     </div>
     <div class="footer-menu">
       <h3 class="footer-title">Learn More</h3>
       <ul class="footer-links">
-        <li><a href="...">About Us</a></li>
+        <li><a href="/aboutus">About Us</a></li>
         <li><a href="...">FAQ's</a></li>
         <li><a href="...">Annual Report</a></li>
         <li><a href="...">Guide Book</a></li>
@@ -38,7 +38,7 @@ export class FooterComponent extends Component {
     <div class="footer-menu">
       <h3 class="footer-title">Contact Us</h3>
       <ul class="footer-links">
-        <li><a href="...">Contact Details</a></li>
+        <li><a href="/contactus">Contact Details</a></li>
         <li><a href="...">Media Enquiries</a></li>
       </ul>
     </div>

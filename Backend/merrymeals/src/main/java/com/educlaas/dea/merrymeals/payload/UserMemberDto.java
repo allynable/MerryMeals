@@ -7,6 +7,9 @@ public class UserMemberDto {
     private Users user;
     private Member member;
 
+    public UserMemberDto() {
+    }
+
     public UserMemberDto(Users user, Member member) {
         this.user = user;
         this.member = member;

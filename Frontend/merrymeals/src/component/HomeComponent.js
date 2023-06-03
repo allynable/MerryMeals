@@ -17,17 +17,17 @@ export class HomeComponent extends Component {
           <div class="col-xl-3">
             <h3>WAYS TO GIVE</h3>
             <p>Help ensure no senior is left behind.</p><br></br>
-            <a class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">DONATE</a>
+            <a class="btn btn-info fs-5 fw-bold text-light" href="/donate" role="button">DONATE</a>
           </div>
           <div class="col-xl-3">
             <h3>BODY & SOUL</h3>
             <p>Find out how Meals on Wheels delivers so much more than just a meal.</p>
-            <a class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">LEARN MORE</a>
+            <a class="btn btn-info fs-5 fw-bold text-light" href="/aboutus" role="button">LEARN MORE</a>
           </div>
           <div class="col-xl-3">
             <h3>GET INVOLVED</h3>
             <p>Make an impact in your community.</p><br></br>
-            <a class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">SIGN UP</a>
+            <a class="btn btn-info fs-5 fw-bold text-light" href="/pvregistration" role="button">SIGN UP</a>
           </div>
           <div class="col-xl-3">
             <h3>CONTACT US</h3>
@@ -47,7 +47,7 @@ export class HomeComponent extends Component {
             and other vulnerable individuals through the provision of nutritious meals, social interaction, and support services 
             delivered by caring volunteers. We strive to ensure that no senior or vulnerable person goes hungry or feels isolated, 
             fostering a community that values and uplifts their well-being.</p>
-            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">DONATE NOW</a>
+            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="/donate" role="button">DONATE NOW</a>
         </div>      
         </div>
         <h1 id="news-title">NEWS</h1>
@@ -59,7 +59,7 @@ export class HomeComponent extends Component {
           it most. Thanks to our generous donors, we’ve been able to provide healthy meals, social contact and a watchful eye for 
           millions of seniors. But, our work has just begun. We still need to safely serve seniors in need through the end of the 
           pandemic and long into the future..</p>
-            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">LEARN MORE</a>
+            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="/news" role="button">LEARN MORE</a>
         </div>
         <div class="col-xl-4">
         <img src={news} alt="Purpose"/>
