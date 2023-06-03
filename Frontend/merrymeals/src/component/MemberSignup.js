@@ -33,6 +33,7 @@ const RegistrationForm = (props) => {
   const [serviceCenter, setServiceCenter] = useState("");
   const history = useHistory();
 
+
   const handleRegistration = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {

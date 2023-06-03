@@ -92,10 +92,20 @@ export const MemberProfile = (props) => {
                     <h5>{props.currentUser.member.condition}</h5>
                   </Row>
                   {props.currentUser.member.caregiver !== "" && (
+                    <>
                     <Row>
                       <Form.Label>Caregiver:</Form.Label>
                       <h5>{props.currentUser.member.caregiver}</h5>
                     </Row>
+                    <Row>
+                      <Form.Label>Caregiver Contact Number:</Form.Label>
+                      <h5>{props.currentUser.member.caregiverContact}</h5>
+                    </Row>
+                    <Row>
+                      <Form.Label>Relationship:</Form.Label>
+                      <h5>{props.currentUser.member.relationship}</h5>
+                    </Row>
+                    </>
                   )}
                 </Col>
               </Row>
