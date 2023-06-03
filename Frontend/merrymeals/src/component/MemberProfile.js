@@ -95,7 +95,7 @@ export const MemberProfile = (props) => {
                     <>
                     <Row>
                       <Form.Label>Caregiver:</Form.Label>
-                      <h5>{props.currentUser.member.caregiver}</h5>
+                      <h5>{props.currentUser.member.caregiverName}</h5>
                     </Row>
                     <Row>
                       <Form.Label>Caregiver Contact Number:</Form.Label>
