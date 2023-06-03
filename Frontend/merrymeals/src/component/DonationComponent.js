@@ -38,13 +38,13 @@ const DonationComponent = () => {
 
 
   return (
-    <Container id="custom-container">
+    <Container id="custom-container1">
       <Row>
-        <Col id="custom-column">
+        <Col id="custom-column1">
           <Tabs activeKey={currentTab} id="controlled-tab-example">
             <Tab eventKey={0} title="DONATION" disabled={currentTab !== 0}>
               <form onSubmit={submitButton}>
-                <h4 class="mt-3 mb-4">HOW WOULD YOU LIKE TO DONATE?</h4>
+                <h4 class="mt-4 mb-4">HOW WOULD YOU LIKE TO DONATE?</h4>
                 <Row className="mb-3">
                   <Form.Group
                     controlId="formGridFrequency"
