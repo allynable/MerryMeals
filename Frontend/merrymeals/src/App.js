@@ -18,6 +18,8 @@ import { getCurrentUser } from "./service/MCRegisterService";
 import PageNotFound from "./component/PageNotFound";
 import Member from "./component/Member";
 import AboutUs from "./component/AboutUs"
+import News from "./component/News"
+import PaymentComponent from "./component/PaymentComponent";
 export const ACCESS_TOKEN = "accessToken";
 
 function App(props) {
@@ -80,11 +82,15 @@ function App(props) {
             component={FoodSafetyGuide}
           ></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
+          <Route exact path="/news" component={News}></Route>
+          <Route exact path="/pay" component={PaymentComponent}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>
           <Route
             exact
             path="/admindashboard"
-            component={AdminDashboard}
+            render={(props) => (
+              <AdminDashboard authenticated={authenticated} {...props} />
+            )}
           ></Route>
           <Route path='/member/:memberId' component={Member}></Route>
           <Route path='members/:keyword' element={<AdminDashboard/>} />

@@ -3,40 +3,40 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FoodSafetyGuide = () => {
   return (
-    <div className="container text-left">
-      <h2>Keeping the community safe</h2>
-      <p className="lead">COVID safe services</p>
-      <p>
+    <div className="container1">
+      <h2 className="text-center mt-3 mb-4">KEEPING THE COMMUNITY SAFE</h2>
+      <p className="lead text-center">COVID safe services</p>
+      <p className="text-center">
         Meals on Wheels has always been committed to supporting the health and wellbeing of our customers, not only
-        during the COVID-19 pandemic but every day.
+        during the COVID-19 pandemic.
       </p>
 
-      <h3>To ensure safe and continual delivery of our essential service, we...</h3>
+      <h3 className="mt-5 mb-4">To ensure safe and continual delivery of our essential service, we...</h3>
       <ul className="list-group">
         <li className="list-group-item">Keep delivery visits brief</li>
         <li className="list-group-item">Maintain good hand hygiene before and after each delivery</li>
         <li className="list-group-item">Ask our volunteers and staff members to stay home if they feel unwell</li>
       </ul>
 
-      <p>When community restrictions increase, we introduce extra precautions, including:</p>
+      <p className="mt-4 mb-4">When community restrictions increase, we introduce extra precautions, including:</p>
       <ul className="list-group">
         <li className="list-group-item">Avoiding entering the home where customers can come to the door</li>
         <li className="list-group-item">Placing the meal on furniture outside the door</li>
         <li className="list-group-item">The use of face masks</li>
       </ul>
 
-      <p>
+      <p className="mt-4">
         Our strict food handling procedures and thorough food safety training ensure our customers receive flavorsome and
         nourishing meals in the safest way possible, at a time when it is needed most.
       </p>
 
-      <h2>Food safety</h2>
+      <h2 className="mt-5 mb-4">FOOD SAFETY</h2>
       <p>Meals on Wheels customers are likely to be more vulnerable to food-borne illness.</p>
       <p>
         From cooking to packing, our production process follows a strict food safety program that complies with higher
         safety standards than that in the broader community.
       </p>
-      <p>At Meals on Wheels SA, we train our workers involved in the preparation of food in:</p>
+      <p className=" mb-4">At Meals on Wheels, we train our workers involved in the preparation of food in:</p>
       <ul className="list-group">
         <li className="list-group-item">Temperature Cooking Controls and Storage Refrigeration Records</li>
         <li className="list-group-item">Food Receipt Monitoring</li>
@@ -52,7 +52,7 @@ const FoodSafetyGuide = () => {
         </li>
       </ul>
 
-      <h2>Wellbeing and safety protocols</h2>
+      <h2 className="mt-5 mb-4">WELLBEING AND SAFETY PROTOCOLS</h2>
       <p>
         As a part of each meal delivery, our volunteers take care to check that our customers are safe and well. If they
         notice that something is amiss...
@@ -87,12 +87,12 @@ const FoodSafetyGuide = () => {
         is kept confidential to protect their privacy.
       </p>
 
-      <h2>Additional support</h2>
+      <h2 className="mt-5 mb-4">ADDITIONAL SUPPORT</h2>
       <p>
         At Meals on Wheels SA, we inform our customers about other available services that may benefit them, such as
         personal alarms or key safes.
       </p>
-      <p>
+      <p className="mb-5">
         My Aged Care and other Government support systems can be overwhelming and difficult to understand. Our Customer
         Service Team can provide support to our customers to navigate the My Aged Care portal and kickstart their in-home
         and community support journey.

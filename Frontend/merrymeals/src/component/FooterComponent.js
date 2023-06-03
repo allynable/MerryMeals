@@ -30,7 +30,7 @@ export class FooterComponent extends Component {
         <li><a href="...">FAQ's</a></li>
         <li><a href="...">Annual Report</a></li>
         <li><a href="...">Guide Book</a></li>
-        <li><a href="...">Award</a></li>
+        <li><a href="/pay">Award</a></li>
         <li><a href="/privacypolicy">Privacy Policy</a></li>
         <li><a href="/foodsafetyguide">Food Safety Guideline</a></li>
       </ul>
