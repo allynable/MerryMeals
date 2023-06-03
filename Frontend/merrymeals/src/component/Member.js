@@ -22,26 +22,51 @@ export class Member extends Component {
   }
   render() {
     return (
-      <div>
-            <h1>VIEW MEMBER INFORMATION</h1>
-
-            <table class="table">
-            <thead>
-                <tr class="table-success">
-                <th scope="col">Store Name</th>
-                <th scope="col">Store Location</th>
-                <th scope="col">Store Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <tr>
-                        <td>{this.state.member.firstName}</td>
-                        <td>{this.state.member.lastName}</td>
-                        <td>{this.state.member.contactNumber}</td>
-                    </tr>
-            </tbody>
-            </table>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ width: '50%' }}>
+        <h1 className='my-4'>VIEW MEMBER'S INFORMATION</h1>
+        <table className="table">
+          <tbody>
+            <tr>
+              <th scope="row">First Name</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.firstName}</td>
+            </tr>
+            <tr>
+              <th scope="row">Last Name</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.lastName}</td>
+            </tr>
+            <tr>
+              <th scope="row">Contact Number</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.contactNumber}</td>
+            </tr>
+            <tr>
+              <th scope="row">Date of Birth</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.dob}</td>
+            </tr>
+            <tr>
+              <th scope="row">Condition</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.condition}</td>
+            </tr>
+            <tr>
+              <th scope="row">Allergies</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.allergies}</td>
+            </tr>
+            <tr>
+              <th scope="row">Caregiver Name</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.caregiverName}</td>
+            </tr>
+            <tr>
+              <th scope="row">Relationship</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.relationship}</td>
+            </tr>
+            <tr>
+              <th scope="row">Caregiver Contact</th>
+              <td style={{ textAlign: 'left' }}>{this.state.member.caregiverContact}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
     )
   }
 }

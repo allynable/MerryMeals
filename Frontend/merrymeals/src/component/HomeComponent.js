@@ -22,12 +22,12 @@ export class HomeComponent extends Component {
           <div class="col-xl-3">
             <h3>BODY & SOUL</h3>
             <p>Find out how Meals on Wheels delivers so much more than just a meal.</p>
-            <a class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">LEARN MORE</a>
+            <a class="btn btn-info fs-5 fw-bold text-light" href="/aboutus" role="button">LEARN MORE</a>
           </div>
           <div class="col-xl-3">
             <h3>GET INVOLVED</h3>
             <p>Make an impact in your community.</p><br></br>
-            <a class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">SIGN UP</a>
+            <a class="btn btn-info fs-5 fw-bold text-light" href="/pvregistration" role="button">SIGN UP</a>
           </div>
           <div class="col-xl-3">
             <h3>CONTACT US</h3>

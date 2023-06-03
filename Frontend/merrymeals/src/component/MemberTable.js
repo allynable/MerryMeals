@@ -8,9 +8,10 @@ export class MemberTable extends Component {
    super(props)
  
    this.state = {
-      members: []
-   }
+      members: [],
+   };
  }
+
 
  componentDidMount(){
    memberService.viewMember()
@@ -42,11 +43,11 @@ export class MemberTable extends Component {
   window.location.reload();
  }
 
- 
   render() {
     return (
+      
       <div>
-            <h1>VIEW MEMBERS</h1>
+            <h1 className='mb-4'>VIEW MEMBERS</h1>
             <table class="table">
             <thead>
                 <tr class="table-success">
