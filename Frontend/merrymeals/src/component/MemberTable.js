@@ -1,188 +1,87 @@
-import React, { useState, useEffect } from "react";
-import memberService from "../service/MemberService";
-import {
-  Table,
-  Container,
-  Row,
-  Col,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
-import { FaEye, FaEdit, FaTrashAlt } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
-import DeleteModal from "./Modal/DeleteModal";
-import MemberForm from "./Modal/MemberForm";
-import { toast } from "react-toastify";
+import React, { Component } from 'react'
+import memberService from '../service/MemberService'
+import { withRouter } from 'react-router-dom';
 
-const MemberTable = (props) => {
-  const { keyword } = useParams();
-  const [members, setMembers] = useState([]);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [memberToDelete, setMemberToDelete] = useState(null);
-  const [showMemberForm, setShowMemberForm] = useState(false);
-  const [memberToUpdate, setMemberToUpdate] = useState(null);
+export class MemberTable extends Component {
 
-  const memberData = () => {
-    if (keyword) {
-      memberService.searchMember(keyword).then((response) => {
-        setMembers(response.data);
-      });
-    } else {
-      memberService.viewMember().then((response) => {
-        setMembers(response.data);
-      });
-    }
-  };
-  useEffect(() => {
-    memberData();
-  }, [keyword]);
+ constructor(props) {
+   super(props)
+ 
+   this.state = {
+      members: []
+   }
+ }
 
-  const showDeleteConfirmation = (memberId) => {
-    setMemberToDelete(memberId);
-    setShowDeleteModal(true);
-  };
+ componentDidMount(){
+   memberService.viewMember()
+   .then( (response) => {
+        console.log("All members in Component" + JSON.stringify(response))
+        this.setState({
+            members: response.data
+         })
+   })
+ }
 
-  const deleteMember = (memberId) => {
-    memberService.deleteMember(memberId).then(() => {
-      setMembers((prevMembers) =>
-        prevMembers.filter((member) => member.memberId !== memberId)
-      );
-      setShowDeleteModal(false);
-      toast.error("Member deleted successfully!");
-    });
-  };
+ deleteMember(memberId){
+  memberService.deleteMember(memberId)
+  .then( response =>{
+    this.setState({
+      members: this.state.members.filter(member=>member.memberId !== memberId)
+    })
+    this.props.history.push(`/members`)
+  })
+ }
+ 
+ getMemberById(memberId){
+  this.props.history.push(`/member/${memberId}`)
+  window.location.reload();
+ }
 
-  const showMember = (member) => {
-    if (member) {
-      setMemberToUpdate(member);
-    } else {
-      setMemberToUpdate(null);
-    }
-    setShowMemberForm(true);
-  };
+ updateMember(memberId){
+  this.props.history.push(`/post/${memberId}`)
+  window.location.reload();
+ }
 
-  const saveUpdateMember = (member) => {
-    if (member.memberId) {
-      memberService.updateMember(member).then(() => {
-        memberService.viewMember().then((response) => {
-          setMembers(response.data);
-          toast.info("Member updated Successfully!");
-        });
-      });
-    } else {
-      memberService.saveMember(member).then(() => {
-        memberService.viewMember().then((response) => {
-          setMembers(response.data);
-          toast.success("Member added successfully!");
-        });
-      });
-    }
-  };
+ 
+  render() {
+    return (
+      <div>
+            <h1>VIEW MEMBERS</h1>
+            <table class="table">
+            <thead>
+                <tr class="table-success">
+                <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Condition</th>
+                <th scope='col'>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {
+                this.state.members.map(member =>
+                    <tr key={member.memberId}>
+                        <td>{member.firstName}</td>
+                        <td>{member.contactNumber}</td>
+                        <td>{member.condition}</td>
+                        <td>
+                          <button type="button" class="btn btn-success"
+                          onClick={ () => this.getMemberById(member.memberId)}>VIEW</button> &nbsp;
 
-  
-  return (
-    <section>
-      <Container>
-        <Row className="py-5 align-items-center">
-          <Col xs={12} md={4} lg={3}>
-            <h1>Members</h1>
-          </Col>
-          <Col xs={8} md={5} lg={7}>
-          </Col>
-          {props.authenticated && (
-            <Col xs={4} md={3} lg={2}>
-              <button className="btn btn-primary" onClick={() => showMember()}>
-                Add New Member
-              </button>
-            </Col>
-          )}
-        </Row>
+                          <button type="button" class="btn btn-warning"
+                          onClick={ () => this.updateMember(member.memberId)}>UPDATE</button> &nbsp;
 
-        <Table bordered striped className="table table-rounded">
-          <thead>
-            <tr className="table-dark">
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Condition</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {members.map((member) => (
-              <tr key={member.memberId}>
-                <td>{member.firstName}</td>
-                <td>{member.contactNumber}</td>
-                <td>{member.condition}</td>
-                  <td className="text-center">
-                    <OverlayTrigger
-                      placement="bottom"
-                      overlay={
-                        <Tooltip id={`tooltip-view-${member.memberId}`}>
-                          View Member
-                        </Tooltip>
-                      }
-                    >
-                    <Link
-                      to={`/member/${member.memberId}`}
-                      className="btn btn-success m-1"
-                    >
-                      <FaEye />
-                    </Link>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                      placement="bottom"
-                      overlay={
-                        <Tooltip id={`tooltip-edit-${member.memberId}`}>
-                          Update
-                        </Tooltip>
-                      }
-                    >
-                      <button
-                        className="btn btn-primary m-1"
-                        onClick={() => showMember(member)}
-                      >
-                        <FaEdit />
-                      </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                      placement="bottom"
-                      overlay={
-                        <Tooltip id={`tooltip-delete-${member.memberId}`}>
-                          Delete
-                        </Tooltip>
-                      }
-                    >
-                      <button
-                        className="btn btn-danger m-1"
-                        onClick={() => showDeleteConfirmation(member.memberId)}
-                      >
-                        <FaTrashAlt />
-                      </button>
-                    </OverlayTrigger>
-                  </td>
-                
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Container>
-      {showDeleteModal && (
-        <DeleteModal
-          show={showDeleteModal}
-          setShow={setShowDeleteModal}
-          confirmDelete={() => deleteMember(memberToDelete)}
-        />
-      )}
-      {showMemberForm && (
-        <MemberForm
-          show={showMember}
-          setShow={setShowMemberForm}
-          storeData={memberToUpdate}
-          onSubmit={saveUpdateMember}
-        />
-      )}
-    </section>
-  );
-};
 
-export default MemberTable;
+                          <button type="button" class="btn btn-danger"
+                          onClick={ () => this.deleteMember(member.memberId)}>DELETE</button> &nbsp;
+                        </td>
+                    </tr>
+                )
+            }
+            </tbody>
+            </table>
+      </div>
+    )
+  }
+}
+
+export default withRouter (MemberTable)

@@ -1,6 +1,7 @@
 import React from "react";
 import '../css/AdminDashboard.css'
 import MemberTable from './MemberTable';
+import Member from './Member';
 
 const AdminDashboard = () => {
 
@@ -29,7 +30,7 @@ const AdminDashboard = () => {
                 {/* <!-- Tab content --> */}
                 <div class="tab-pane fade show active" id="member-management" role="tabpanel" aria-labelledby="member-management-tab">
                     <MemberTable/>
-
+                    
                 </div>
                 <div class="tab-pane fade" id="volunteer-management" role="tabpanel" aria-labelledby="volunteer-management-tab">
                     <h3>Tab 2 Content</h3>

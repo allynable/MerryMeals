@@ -80,12 +80,13 @@ function App(props) {
             component={FoodSafetyGuide}
           ></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
+          <Route exact path="/aboutus" component={AboutUs}></Route>
           <Route
             exact
             path="/admindashboard"
             component={AdminDashboard}
           ></Route>
-          <Route path='/member/:memberId' element={<Member/>}></Route>
+          <Route path='/member/:memberId' component={Member}></Route>
           <Route path='members/:keyword' element={<AdminDashboard/>} />
           <Route component={PageNotFound}></Route>
           <Route path="/aboutus" component={AboutUs}></Route>
