@@ -30,7 +30,7 @@ function App(props) {
 
   useEffect(() => {
     loadCurrentlyLoggedInUser();
-  }, []);
+  }, [history]);
 
 
   function loadCurrentlyLoggedInUser() {
@@ -89,7 +89,7 @@ function App(props) {
             exact
             path="/admindashboard"
             render={(props) => (
-              <AdminDashboard authenticated={authenticated} {...props} />
+              <AdminDashboard authenticated={authenticated} role={role} {...props} />
             )}
           ></Route>
           <Route path='/member/:memberId' component={Member}></Route>
