@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OnlineService from '../service/OnlineService';
+import ContactUsService from '../service/ContactUsService';
 import '../css/ContactUsComponent.css';
 
 export class ContactUsComponent extends Component {
@@ -31,7 +31,7 @@ export class ContactUsComponent extends Component {
   
     const text = `[${fullName}] [${email}] [${subject}]: ${message}`;
   
-    OnlineService.slackMessage({ text })
+    ContactUsService.slackMessage({ text })
       .then(() => {
         console.log('The message has been sent successfully');
       });

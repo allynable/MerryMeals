@@ -20,6 +20,7 @@ import Member from "./component/Member";
 import AboutUs from "./component/AboutUs"
 import News from "./component/News"
 import PaymentComponent from "./component/PaymentComponent";
+import ContactUsComponent from "./component/ContactUsComponent";
 export const ACCESS_TOKEN = "accessToken";
 
 function App(props) {
@@ -82,6 +83,7 @@ function App(props) {
             component={FoodSafetyGuide}
           ></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
+          <Route exact path="/contactus" component={ContactUsComponent}></Route>
           <Route exact path="/news" component={News}></Route>
           <Route exact path="/pay" component={PaymentComponent}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>

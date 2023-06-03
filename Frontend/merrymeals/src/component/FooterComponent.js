@@ -38,7 +38,7 @@ export class FooterComponent extends Component {
     <div class="footer-menu">
       <h3 class="footer-title">Contact Us</h3>
       <ul class="footer-links">
-        <li><a href="...">Contact Details</a></li>
+        <li><a href="/contactus">Contact Details</a></li>
         <li><a href="...">Media Enquiries</a></li>
       </ul>
     </div>
