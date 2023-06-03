@@ -59,7 +59,7 @@ export class HomeComponent extends Component {
           it most. Thanks to our generous donors, we’ve been able to provide healthy meals, social contact and a watchful eye for 
           millions of seniors. But, our work has just begun. We still need to safely serve seniors in need through the end of the 
           pandemic and long into the future..</p>
-            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="..." role="button">LEARN MORE</a>
+            <a id="purpose-button" class="btn btn-info fs-5 fw-bold text-light" href="/news" role="button">LEARN MORE</a>
         </div>
         <div class="col-xl-4">
         <img src={news} alt="Purpose"/>
