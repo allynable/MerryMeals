@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.educlaas.dea.merrymeals.dao.MealItem;
 import com.educlaas.dea.merrymeals.repository.MealRepository;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
@@ -38,5 +39,10 @@ public class MealController {
             return mealRepository.save(updatedMeal);
         }
         return null;
+    }
+
+    @DeleteMapping("/{mealId}")
+    public void deleteMealItem(@PathVariable long mealId){
+        mealRepository.deleteById(mealId);
     }
 }
