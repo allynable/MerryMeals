@@ -41,8 +41,23 @@ public class UsersController {
 
     // Profile API <<Get Current User Profile>>
     @GetMapping("/user/me")
-    public Users getUser(@CurrentUser UsersPrincipal usersPrincipal) {
-    	return userRepository.findById((usersPrincipal.getUserId())) 
+    public Object getUser(@CurrentUser UsersPrincipal usersPrincipal) {
+    	Users user =  userRepository.findById((usersPrincipal.getUserId())) 
                 .orElseThrow(() -> new ResourceNotFoundException("Users", "userId", usersPrincipal.getUserId()));
-    }
+        String role = user.getRole();
+        switch (role){
+            case "ROLE_MEMBER":
+                Member member = memberRepository.findByUser(user);
+                return new UserMemberDto(user, member);
+            case "ROLE_VOLUNTEER":
+                Volunteer volunteer = volunteerRepository.findByUser(user);
+                return new UserVolunteerDto(user, volunteer);
+            case  "ROLE_ADMIN":
+                Admin admin = adminRepository.findByUser(user);
+                return new UserAdminDto(user, admin);
+            default:
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("USER NOT FOUND");
+        }
+    }    
 }

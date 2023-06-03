@@ -20,9 +20,10 @@ import Member from "./component/Member";
 import AboutUs from "./component/AboutUs"
 import News from "./component/News"
 import PaymentComponent from "./component/PaymentComponent";
+import MemberProfile from "./component/MemberProfile";
 export const ACCESS_TOKEN = "accessToken";
 
-function App(props) {
+function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState([]);
   const [role, setRole] = useState("");
@@ -38,7 +39,7 @@ function App(props) {
     .then(response => {
       setCurrentUser(response);
       setAuthenticated(true);
-      setRole(response.role);
+      setRole(response.user.role);
     }).catch(error => {
     });    
   }
@@ -66,6 +67,13 @@ function App(props) {
           <Route exact path="/donate" component={DonateComponent}></Route>
           <Route
             exact
+            path="/memberprofile"
+            render={(props) => (
+              <MemberProfile authenticated={authenticated} currentUser={currentUser} {...props} />
+            )}
+          ></Route>
+          <Route
+            exact
             path="/pvregistration"
             component={PVRegisterComponent}
           ></Route>
@@ -83,7 +91,6 @@ function App(props) {
           ></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
           <Route exact path="/news" component={News}></Route>
-          <Route exact path="/pay" component={PaymentComponent}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>
           <Route
             exact
@@ -96,6 +103,7 @@ function App(props) {
           <Route path='members/:keyword' element={<AdminDashboard/>} />
           <Route component={PageNotFound}></Route>
           <Route path="/aboutus" component={AboutUs}></Route>
+          <Route exact path="/pay" component={PaymentComponent}></Route>
         </Switch>
 
         <FooterComponent></FooterComponent>
