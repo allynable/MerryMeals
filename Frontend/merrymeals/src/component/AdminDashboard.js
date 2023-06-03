@@ -5,7 +5,7 @@ import '../css/AdminDashboard.css'
 import MemberTable from './MemberTable';
 import Member from './Member';
 
-const AdminDashboard = () => {
+const AdminDashboard = (props) => {
 
   return (
     <div>
