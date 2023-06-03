@@ -17,7 +17,7 @@ import com.educlaas.dea.merrymeals.pojo.WebhookMessage;
 @Service
 public class WebhookServiceImpl implements WebhookService{
 	private static final String WEBHOOK_URL = "https://hooks.slack.com/services/%s";
-	private static final Map<String, String> WEBHOOK_CHANNEL = Collections.singletonMap("","");
+	private static final Map<String, String> WEBHOOK_CHANNEL = Collections.singletonMap("MDSE-1222-DEA-Group-A","T05AR76MF3P/B05AR7J0YPP/LNdNmp1vutVr8vmaNrJc8ZZM");
 
 	@Override
 	public void sendMessage(String sender, WebhookMessage messages) {

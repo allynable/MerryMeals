@@ -21,6 +21,7 @@ import AboutUs from "./component/AboutUs"
 import News from "./component/News"
 import PaymentComponent from "./component/PaymentComponent";
 import MemberProfile from "./component/MemberProfile";
+import ContactUsComponent from "./component/ContactUsComponent";
 export const ACCESS_TOKEN = "accessToken";
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
             component={FoodSafetyGuide}
           ></Route>
           <Route exact path="/privacypolicy" component={PrivacyPolicy}></Route>
+          <Route exact path="/contactus" component={ContactUsComponent}></Route>
           <Route exact path="/news" component={News}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>
           <Route
