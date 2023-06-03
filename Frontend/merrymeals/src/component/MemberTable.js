@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import memberService from '../service/MemberService'
+import { withRouter } from 'react-router-dom';
 
 export class MemberTable extends Component {
 
@@ -40,6 +41,8 @@ export class MemberTable extends Component {
   this.props.history.push(`/post/${memberId}`)
   window.location.reload();
  }
+
+ 
   render() {
     return (
       <div>
@@ -81,4 +84,4 @@ export class MemberTable extends Component {
   }
 }
 
-export default MemberTable
+export default withRouter (MemberTable)
