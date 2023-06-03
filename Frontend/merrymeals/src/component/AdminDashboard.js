@@ -28,7 +28,7 @@ const AdminDashboard = () => {
                     </li>
                 </ul>
             </div>
-            <div class="col-9 tab-content">
+            <div class="col-9 tab-content custom-tab">
                 {/* <!-- Tab content --> */}
                 <div class="tab-pane fade show active" id="member-management" role="tabpanel" aria-labelledby="member-management-tab">
                     <MemberTable/>
