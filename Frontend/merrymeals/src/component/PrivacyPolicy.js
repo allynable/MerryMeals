@@ -2,14 +2,14 @@ import React from "react";
 import "../css/PrivacyPolicy.css";
 const PrivacyPolicy = () => {
   return (
-    <div className="container">
-      <h2>Privacy</h2>
-      <p>
+    <div className="container1">
+      <h2 className="text-center mt-3 mb-4">PRIVACY POLICY</h2>
+      <p className="text-center">
         Meals on Wheels People respect your privacy choices. If you give us
         personal information, we will treat it according to the policy below.
       </p>
 
-      <h3>CONFIDENTIALITY</h3>
+      <h3 className="mt-5 mb-4">CONFIDENTIALITY</h3>
       <p>
         Meals on Wheels People may list the names of donors in newsletters and
         other periodic publications and may categorize donors by gift amounts
@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
         or sell any donor information collected online or offline.
       </p>
 
-      <h3>SECURITY POLICY</h3>
+      <h3 className="mt-5 mb-4">SECURITY POLICY</h3>
       <p>
         We utilize Secure Socket Layer (SSL) technology to protect your personal
         information.
@@ -34,14 +34,14 @@ const PrivacyPolicy = () => {
         offline.
       </p>
 
-      <h3>PRIVACY POLICY</h3>
+      <h3 className="mt-5 mb-4">POLICY</h3>
       <p>
         Meals on Wheels People maintains a strict donor privacy policy. Great
         care is taken to ensure that donor information is not compromised by
         unauthorized persons.
       </p>
 
-      <h3>HOW PERSONAL INFORMATION IS COLLECTED</h3>
+      <h3 className="mt-5 mb-4">HOW PERSONAL INFORMATION IS COLLECTED</h3>
       <p>
         We will ask you to provide your email address and indicate what
         information you would like to receive. We will, on occasion, transmit
@@ -60,7 +60,7 @@ const PrivacyPolicy = () => {
         web site.
       </p>
 
-      <h3>OTHER INFORMATION COLLECTED ON OUR SITE</h3>
+      <h3 className="mt-5 mb-4">OTHER INFORMATION COLLECTED ON OUR SITE</h3>
       <p>
         We may, from time to time, collect other anonymous information regarding
         the use of our site, which may be used by our organization, but shall
@@ -72,7 +72,7 @@ const PrivacyPolicy = () => {
         identify computers.
       </p>
 
-      <h3>HOW WE USE YOUR PERSONAL INFORMATION</h3>
+      <h3 className="mt-5 mb-4">HOW WE USE YOUR PERSONAL INFORMATION</h3>
       <p>
         Your personal information is stored in an account that is created by
         you. We make that account available to you, at your choice, in order to
@@ -108,7 +108,7 @@ const PrivacyPolicy = () => {
         this privacy policy.
       </p>
 
-      <h3>COOKIES</h3>
+      <h3 className="mt-5 mb-4">COOKIES</h3>
       <p>
         We will, in certain situations, use cookies to help you obtain the
         information you have requested. Cookies are a mechanism to remember
@@ -121,7 +121,7 @@ const PrivacyPolicy = () => {
         will prevent you from accessing the website.
       </p>
 
-      <h3>YOUR RESPONSIBILITY REGARDING THE USE OF OUR SITE</h3>
+      <h3 className="mt-5 mb-4">YOUR RESPONSIBILITY REGARDING THE USE OF OUR SITE</h3>
       <p>
         It is your responsibility to use our site for the purpose it was
         intended; for example, to provide you with information and services
@@ -130,8 +130,8 @@ const PrivacyPolicy = () => {
         not to be in accordance with the intended purpose is prohibited.
       </p>
 
-      <h3>QUESTIONS REGARDING OUR PRIVACY POLICY</h3>
-      <p>
+      <h3 className="mt-5 mb-4">QUESTIONS REGARDING OUR PRIVACY POLICY</h3>
+      <p className="mb-5">
         If you should have questions about our policy or need further
         assistance, please send us an email at info@merrymeals.org.
       </p>

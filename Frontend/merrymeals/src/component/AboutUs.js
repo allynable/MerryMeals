@@ -52,14 +52,14 @@ export class AboutUs extends Component {
     </div>
 
     <h2 className='mt-4'>VOLUNTEERS HELP MAKE IT HAPPEN</h2>
-    <div className="container4 mt-4 mb-5">
+    <div className="container3 mt-4 mb-5">
       <p className='text-center'>
         Volunteers are the heart and soul of the Meals on Wheels People, and we depend on more than 200 people every day to help prepare and deliver meals at the centers and to deliver Meals on Wheels. The volunteer with the friendly smile and hot meal is often the only person some of our homebound seniors will see on an average day. Find out more about volunteer opportunities.
       </p>
     </div>
 
     <h2 className='mt-4'>MAKING MEALS AVAILABLE</h2>
-    <div className="container5 mt-4 mb-5">
+    <div className="container3 mt-4 mb-5">
       <p className='text-center'>
         Meals on Wheels People meals are available to anyone over the age of 60, and seniors are encouraged to donate what they can afford. For seniors that living more than 10km from our place, we can provide the frozen food to avoid stale food while on the go. 
       </p><br></br>
