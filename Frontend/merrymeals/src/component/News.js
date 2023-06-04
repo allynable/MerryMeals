@@ -14,7 +14,11 @@ const News = () => {
       your help.
       </p>
 
-      <h3 className="mt-5 mb-4">CONFIDENTIALITY</h3>
+      <div class="text-center mt-5 mb-5">
+      <iframe title="vimeo-player" src="https://player.vimeo.com/video/510858692?h=f2df50e0fa" width="640" height="360" frameborder="0"    allowfullscreen></iframe>
+      </div>
+
+      <h3 className="mt-5 mb-4">IMPACT WHERE IT'S NEEDED MOST</h3>
       <p>
         Meals on Wheels People may list the names of donors in newsletters and
         other periodic publications and may categorize donors by gift amounts
