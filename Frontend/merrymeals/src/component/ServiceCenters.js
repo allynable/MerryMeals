@@ -18,8 +18,8 @@ const ServiceCenters = (props) => {
   };
 
   const center = {
-    lat: 1.362647,
-    lng: 103.803564,
+    lat: 1.303340,
+    lng: 103.847244
   };
 
   const mapRef = useRef(null);
@@ -31,7 +31,7 @@ const ServiceCenters = (props) => {
 
   const addMarkers = () => {
     props.serviceCenters.forEach((serviceCenter) => {
-      const marker = new window.google.maps.Marker({
+      new window.google.maps.Marker({
         position: {
           lat: parseFloat(serviceCenter.scLatitude),
           lng: parseFloat(serviceCenter.scLongitude),
@@ -52,7 +52,7 @@ const ServiceCenters = (props) => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={12}
+          zoom={14}
           onLoad={handleMapLoad}
         ></GoogleMap>
       </div>
