@@ -8,13 +8,13 @@ const MenuComponent = () => {
   const wednesdayMenuItems = mealItem.filter((item) => item.day === "Wednesday");
   const thursdayMenuItems = mealItem.filter((item) => item.day === "Thursday");
   const fridayMenuItems = mealItem.filter((item) => item.day === "Friday");
-  const storeData = () => {
+  const menuData = () => {
     mealService.getMealItems().then((response) => {
       setMealItem(response.data);
     });
   };
   useEffect(() => {
-    storeData();
+    menuData();
   }, []);
 
   return (
