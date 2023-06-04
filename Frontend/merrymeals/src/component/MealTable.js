@@ -132,6 +132,8 @@ export class MealTable extends Component {
       return acc;
     }, {});
 
+    const daysOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
     return (
       <div>
         <h1 className="mb-4">Meal Menu</h1>
@@ -145,13 +147,15 @@ export class MealTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {Object.entries(groupedMeals).map(([day, meals]) => (
+          {daysOrder.map(day => {
+            const mealsForDay = groupedMeals[day] || [];
+            return (
               <tr key={day}>
                 <td>{day}</td>
                 <td colSpan="3">
                   <table className="table">
                     <tbody>
-                      {meals.map((meal) => (
+                    {mealsForDay.map(meal => (
                         <tr key={meal.mealItemId}>
                           <td style={{ width: '30%' }}>{meal.name}</td>
                           <td style={{ width: '40%' }}>{meal.description}</td>
@@ -179,7 +183,8 @@ export class MealTable extends Component {
                   </table>
                 </td>
               </tr>
-            ))}
+              );
+            })}
           </tbody>
         </table>
 
