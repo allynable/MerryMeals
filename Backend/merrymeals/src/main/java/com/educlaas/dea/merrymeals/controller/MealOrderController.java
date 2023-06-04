@@ -14,7 +14,6 @@ import com.educlaas.dea.merrymeals.dao.MealOrder;
 import com.educlaas.dea.merrymeals.payload.MealOrderResponse;
 import com.educlaas.dea.merrymeals.repository.MealOrderRepository;
 
-
 @RestController
 @RequestMapping("/order")
 public class MealOrderController {
@@ -22,15 +21,14 @@ public class MealOrderController {
    private MealOrderRepository mealOrderRepository;
 
    @PostMapping("/")
-   private MealOrderResponse saveMealOrder(@RequestBody MealOrder mealOrder){
-        mealOrderRepository.save(mealOrder);
-        return new MealOrderResponse(true, "Meal Ordered Successfully!");
+   private MealOrderResponse saveMealOrder(@RequestBody MealOrder mealOrder) {
+      mealOrderRepository.save(mealOrder);
+      return new MealOrderResponse(true, "Meal Ordered Successfully!");
    }
 
    @GetMapping("/all")
-   private List<MealOrder> getMealOrders(){
+   private List<MealOrder> getMealOrders() {
       return mealOrderRepository.findAll();
    }
-
 
 }
