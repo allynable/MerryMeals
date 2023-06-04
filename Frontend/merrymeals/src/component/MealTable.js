@@ -195,7 +195,7 @@ export class MealTable extends Component {
           <Modal.Body>
           <form>
   <div className="form-group">
-    <label htmlFor="name">Name</label>
+    <label class="mb-2" htmlFor="name">Name</label>
     <input
       type="text"
       className="form-control"
@@ -208,10 +208,10 @@ export class MealTable extends Component {
     />
   </div>
   <div className="form-group">
-    <label htmlFor="description">Type</label>
+    <label class="mb-2 mt-2" htmlFor="description">Type</label>
     <input
       type="text"
-      className="form-control"
+      className="form-control mb-2"
       id="description"
       value={selectedMeal.description}
       onChange={(e) => {
@@ -249,7 +249,7 @@ export class MealTable extends Component {
         <Modal.Body>
         <form>
             <div className="form-group">
-              <label htmlFor="day">Day</label>
+              <label class="mb-2" htmlFor="day">Day</label>
               <input
                 type="text"
                 className="form-control"
@@ -262,7 +262,7 @@ export class MealTable extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="description">Type</label>
+              <label class="mb-2 mt-2" htmlFor="description">Type</label>
               <input
                 type="text"
                 className="form-control"
@@ -275,10 +275,10 @@ export class MealTable extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label class="mb-2 mt-2" htmlFor="name">Dish</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control mb-2"
                 id="name"
                 value={newMeal.name}
                 onChange={(e) => {
