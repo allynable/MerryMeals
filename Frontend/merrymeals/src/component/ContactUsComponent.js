@@ -42,7 +42,7 @@ export class ContactUsComponent extends Component {
     return (
      
       <div className='App'>
-      <div className="container-contact100">
+      <div className="container-contact100 mt-3">
         <div
           className="contact100-map"
           id="google_map"
@@ -57,8 +57,8 @@ export class ContactUsComponent extends Component {
             className="contact100-form-title"
             style={{ backgroundImage: "{img1}" }}
           >
-            <span className="contact100-form-title-1">Contact Us</span>
-            <span className="contact100-form-title-2">
+            <span className="contact100-form-title-1 fs-1">CONTACT US</span>
+            <span className="contact100-form-title-2 fs-5">
               Feel free to drop us a message below!
             </span>
           </div>
@@ -111,6 +111,7 @@ export class ContactUsComponent extends Component {
             >
               <span className="label-input100">Message:</span>
               <textarea
+                id="contact-message"
                 name="message"
                 value={this.state.text}
                 onChange={this.changeMessage}
@@ -136,12 +137,12 @@ export class ContactUsComponent extends Component {
         <div id="map">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.47076465373!2d103.76184082312515!3d1.3115935238580003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da11238a8b9375%3A0x887869cf52abf5c4!2sSingapore!5e0!3m2!1sen!2ssg!4v1671625950283!5m2!1sen!2ssg" width="500" height="450" style={{ border: '0' }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div id="contact-details">
+        <div id="contact-details" style={{ textAlign: 'center', marginRight: '60px' }}>
           <ul>
-            <h4>Contact Us:</h4>
+            <h4 class="mt-4">Contact Us:</h4>
             <ul>Email: <b>admin@merrymeals.com</b></ul>
             <ul>Tel No. <b>+65 1234 5678</b></ul>
-            <ul>Location: <b>#01 Merry Meals, Singapore</b></ul>
+            <ul class="mb-4">Location: <b>#01 Merry Meals, Singapore</b></ul>
           </ul>
         </div>
       </div>

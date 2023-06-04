@@ -19,4 +19,3 @@ class MealService{
 const mealService = new MealService()
 
 export default mealService
-
