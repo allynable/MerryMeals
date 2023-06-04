@@ -4,9 +4,12 @@ import { useHistory } from "react-router-dom";
 import '../css/AdminDashboard.css'
 import MemberTable from './MemberTable';
 import Member from './Member';
+import LoadingSpinner from "./Loading";
 
-const AdminDashboard = () => {
-
+const AdminDashboard = (props) => {
+    if (!props.authenticated) {
+        return <LoadingSpinner></LoadingSpinner>;
+      }
   return (
     <div>
           <div class="container-fluid">
