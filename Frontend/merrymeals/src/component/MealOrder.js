@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const MealOrder = (props) => {
   const [mealItem, setMealItem] = useState([]);
-
+  const [currentUser, setCurrentUser] = useState();
   const mondayMenuItems = mealItem.filter((item) => item.day === "Monday");
   const tuesdayMenuItems = mealItem.filter((item) => item.day === "Tuesday");
   const wednesdayMenuItems = mealItem.filter(
@@ -20,22 +20,16 @@ const MealOrder = (props) => {
   const [wednesdayMeal, setWednesdayMeal] = useState([]);
   const [thursdayMeal, setThursdayMeal] = useState([]);
   const [fridayMeal, setFridayMeal] = useState([]);
+  useEffect(() => {
+    menuData();
+    setCurrentUser(props.currentUser.member);
+  }, [props.currentUser]);
 
   const menuData = () => {
     mealService.getMealItems().then((response) => {
       setMealItem(response.data);
     });
   };
-
-  useEffect(() => {
-    menuData();
-  }, []);
-
-  const currentMember = props.currentUser.member;
-
-  if (!currentMember) {
-    return <LoadingSpinner></LoadingSpinner>;
-  }
 
   const handleMondayMealChange = (event) => {
     setMondayMeal(event.target.value);
@@ -59,22 +53,26 @@ const MealOrder = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const currentMember = currentUser.memberId;
     const mealData = {
+      currentMember,
       mondayMeal,
       tuesdayMeal,
       wednesdayMeal,
       thursdayMeal,
-      fridayMeal,
-      currentMember,
+      fridayMeal
     };
     orderService.saveOrder(mealData).then((response) => {
-      toast.success("Successfully placed order!");
+      toast.success(response.data.message);
     })
     .catch((error) => {
       toast.error((error.message) || 'Oops! Something went wrong. Please try again!');
     });
   };
 
+  if (!currentUser) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
   return (
     <Container>
       <Row className="justify-content-center">
