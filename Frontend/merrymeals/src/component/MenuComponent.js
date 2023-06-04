@@ -19,13 +19,13 @@ const MenuComponent = () => {
 
   return (
     <Container>
-      <h1 className="py-3">Meal Menu</h1>
+      <h1 className="mt-3 py-3">MEAL MENU</h1>
       <Row className="justify-content-center">
-        <Table bordered striped className="table table-rounded">
+        <Table bordered striped className="table table-rounded mb-5">
           <tbody>
             <tr>
               <td>
-                <h4 className="p-5">Monday <br />Meal</h4>
+                <h4 className="p-5">Monday</h4>
               </td>
               {mondayMenuItems.map((item) => (
               <td className="pt-5">

@@ -29,7 +29,7 @@ public class MealController {
     }
 
     @GetMapping("/all")
-    private List<MealItem> getMeals(){
+    public List<MealItem> getMeals(){
         return mealRepository.findAll();
     }
 
