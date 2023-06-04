@@ -31,7 +31,7 @@ public class MemberController {
         return memberRepository.findAll();
     }
 
-    @RequestMapping("/{memberId}")
+    @GetMapping("/{memberId}")
     public Optional<Member> getMemberId(@PathVariable Long memberId) {
         return memberRepository.findById(memberId);
     }

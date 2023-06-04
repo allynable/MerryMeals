@@ -32,6 +32,11 @@ public class VolunteerController {
         return volunteerRepository.findAll();
     }
 
+    @GetMapping("/{volunteerId}")
+    public Optional<Volunteer> getMemberId(@PathVariable Long volunteerId) {
+        return volunteerRepository.findById(volunteerId);
+    }
+    
     @DeleteMapping("/{volunteerId}")
     private ResponseEntity<String> deleteVolunteer(@PathVariable long volunteerId) {
         try {
