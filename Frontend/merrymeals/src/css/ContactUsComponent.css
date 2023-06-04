@@ -1,157 +1,109 @@
-/* 
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-  }
-  
-  body,html {
-    height: 100%;
-    font-family: Poppins-Regular,sans-serif
-  }
-  
-  a {
-    font-family: Poppins-Regular;
-    font-size: 14px;
-    line-height: 1.7;
-    color: #666;
-    margin: 0;
-    transition: all .4s;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    -moz-transition: all .4s
-  }
-  
-  a:focus {
-    outline: none!important
-  }
-  
-  a:hover {
-    text-decoration: none
-  }
-  
-  h1,h2,h3,h4,h5,h6 {
-    margin: 0
-  }
-  
-  p {
-    font-family: Poppins-Regular;
-    font-size: 14px;
-    line-height: 1.7;
-    color: #666;
-    margin: 0
-  }
-  
-  ul,li {
-    margin: 0;
-    list-style-type: none
-  }
-  
-  input {
+ .input100 {
     outline: none;
     border: none
   }
   
-  input[type=number] {
+  .input100[type=number] {
     -moz-appearance: textfield;
     appearance: none;
     -webkit-appearance: none
   }
   
-  input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button {
+  .input100[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none
   }
   
-  textarea {
+  .input100:focus::-webkit-input-placeholder {
+    color: transparent
+  }
+  
+  .input100:focus:-moz-placeholder {
+    color: transparent
+  }
+  
+  .input100:focus::-moz-placeholder {
+    color: transparent
+  }
+  
+  .input100:focus:-ms-input-placeholder {
+    color: transparent
+  }
+  
+  .input100::-webkit-input-placeholder {
+    color: #999
+  }
+  
+  .input100:-moz-placeholder {
+    color: #999
+  }
+  
+  .input100::-moz-placeholder {
+    color: #999
+  }
+  
+  .input100:-ms-input-placeholder {
+    color: #999
+  }
+
+  .contact100-form-btn {
+    outline: none!important;
+    border: none;
+    background: 0 0
+  }
+
+  .contact100-form-btn:hover {
+    cursor: pointer
+  }
+
+
+  #contact-message:focus::-webkit-input-placeholder {
+    color: transparent
+  }
+  
+  #contact-message:focus:-moz-placeholder {
+    color: transparent
+  }
+  
+  #contact-message:focus::-moz-placeholder {
+    color: transparent
+  }
+  
+  #contact-message:focus:-ms-input-placeholder {
+    color: transparent
+  }
+
+  #contact-message::-webkit-input-placeholder {
+    color: #999
+  }
+  
+  #contact-message:-moz-placeholder {
+    color: #999
+  }
+  
+  #contact-message::-moz-placeholder {
+    color: #999
+  }
+  
+  #contact-message:-ms-input-placeholder {
+    color: #999
+  }
+
+  #contact-message:focus,input:focus {
+    border-color: transparent!important
+  }
+
+   #contact-message {
     outline: none;
     border: none;
     font-family: Poppins-Regular;
     font-size: 15px
   }
-  
-  textarea:focus,input:focus {
-    border-color: transparent!important
+
+   .container-contact1 {
+    height: 100%;
+    font-family: Poppins-Regular,sans-serif;
   }
-  
-  input:focus::-webkit-input-placeholder {
-    color: transparent
-  }
-  
-  input:focus:-moz-placeholder {
-    color: transparent
-  }
-  
-  input:focus::-moz-placeholder {
-    color: transparent
-  }
-  
-  input:focus:-ms-input-placeholder {
-    color: transparent
-  }
-  
-  textarea:focus::-webkit-input-placeholder {
-    color: transparent
-  }
-  
-  textarea:focus:-moz-placeholder {
-    color: transparent
-  }
-  
-  textarea:focus::-moz-placeholder {
-    color: transparent
-  }
-  
-  textarea:focus:-ms-input-placeholder {
-    color: transparent
-  }
-  
-  input::-webkit-input-placeholder {
-    color: #999
-  }
-  
-  input:-moz-placeholder {
-    color: #999
-  }
-  
-  input::-moz-placeholder {
-    color: #999
-  }
-  
-  input:-ms-input-placeholder {
-    color: #999
-  }
-  
-  textarea::-webkit-input-placeholder {
-    color: #999
-  }
-  
-  textarea:-moz-placeholder {
-    color: #999
-  }
-  
-  textarea::-moz-placeholder {
-    color: #999
-  }
-  
-  textarea:-ms-input-placeholder {
-    color: #999
-  }
-  
-  button {
-    outline: none!important;
-    border: none;
-    background: 0 0
-  }
-  
-  button:hover {
-    cursor: pointer
-  }
-  
-  iframe {
-    border: none!important
-  }
-   */
+
   .container-contact100 {
     width: 100%;
     min-height: 100vh;
@@ -167,7 +119,7 @@
     background: 0 0;
     position: relative;
     z-index: 1
-  
+    
   
   }
   

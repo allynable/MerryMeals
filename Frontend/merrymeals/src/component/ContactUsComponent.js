@@ -40,7 +40,7 @@ export class ContactUsComponent extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='container-contact1'>
         <div className="container-contact100">
           <div
             className="contact100-map"
@@ -110,6 +110,7 @@ export class ContactUsComponent extends Component {
               >
                 <span className="label-input100">Message:</span>
                 <textarea
+                  id="contact-message"
                   name="message"
                   value={this.state.text}
                   onChange={this.changeMessage}
