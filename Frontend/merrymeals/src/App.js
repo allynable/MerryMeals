@@ -22,6 +22,7 @@ import AdminDashboard from "./component/AdminDashboard";
 import { getCurrentUser } from "./service/MCRegisterService";
 import PageNotFound from "./component/PageNotFound";
 import Member from "./component/Member";
+import Volunteer from "./component/Volunteer";
 import AboutUs from "./component/AboutUs";
 import News from "./component/News";
 import PaymentComponent from "./component/PaymentComponent";
@@ -140,6 +141,7 @@ function App() {
             )}
           ></Route>
           <Route path="/member/:memberId" component={Member}></Route>
+          <Route path="/volunteer/:volunteerId" component={Volunteer}></Route>
           <Route path="members/:keyword" element={<AdminDashboard />} />
           <Route component={PageNotFound}></Route>
           <Route path="/aboutus" component={AboutUs}></Route>
