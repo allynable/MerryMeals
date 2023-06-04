@@ -13,9 +13,18 @@ export class MealTable extends Component {
       meals: [],
       showUpdateModal: false,
       selectedMeal: null,
+      showAddModal: false,
+      newMeal: {
+        day: "",
+        description: '',
+        name: '',
+      },
     };
     this.openUpdateModal = this.openUpdateModal.bind(this);
     this.updateMeal = this.updateMeal.bind(this);
+    this.createMeal = this.createMeal.bind(this);
+    this.openAddModal = this.openAddModal.bind(this);
+    this.closeAddModal = this.closeAddModal.bind(this);
   }
 
   componentDidMount() {
@@ -80,8 +89,39 @@ export class MealTable extends Component {
       });
   }
 
+  createMeal = (newMeal) => {
+    mealService.createMeal(newMeal)
+      .then((response) => {
+        toast.success('Meal created successfully!');
+        const createdMeal = response.data;
+  
+        this.setState(prevState => ({
+          meals: [...prevState.meals, createdMeal]
+        }));
+        this.closeAddModal();
+      })
+      .catch((error) => {
+        toast.error('Failed to create the meal.');
+      });
+  }
+
+    openAddModal() {
+      this.setState({ showAddModal: true });
+    }
+
+    closeAddModal() {
+      this.setState({
+        showAddModal: false,
+        newMeal: {
+          day: "",
+          description: '',
+          name: '',
+        },
+      });
+    }
+
   render() {
-    const { meals, showUpdateModal, selectedMeal  } = this.state;
+    const { meals, showUpdateModal, selectedMeal, showAddModal, newMeal } = this.state;
 
     // Group meals by day
     const groupedMeals = meals.reduce((acc, meal) => {
@@ -198,6 +238,79 @@ export class MealTable extends Component {
         </Modal>
         )}
         
+        <Modal show={showAddModal} onHide={() => this.closeAddModal()}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Meal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <form>
+            <div className="form-group">
+              <label htmlFor="day">Day</label>
+              <input
+                type="text"
+                className="form-control"
+                id="day"
+                value={newMeal.day}
+                onChange={(e) => {
+                  const createdMeal = { ...newMeal, day: e.target.value };
+                  this.setState({ newMeal: createdMeal });
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Type</label>
+              <input
+                type="text"
+                className="form-control"
+                id="description"
+                value={newMeal.description}
+                onChange={(e) => {
+                  const createdMeal = { ...newMeal, description: e.target.value };
+                  this.setState({ newMeal: createdMeal });
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                value={newMeal.name}
+                onChange={(e) => {
+                  const createdMeal = { ...newMeal, name: e.target.value };
+                  this.setState({ newMeal: createdMeal });
+                }}
+              />
+            </div>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => this.createMeal(newMeal)}
+          >
+            Add
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => this.closeAddModal()}
+          >
+            Cancel
+          </button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Add Meal Button */}
+      <button
+        type="button"
+        className="btn btn-success me-1"
+        onClick={() => this.openAddModal()}
+      >
+        Add Meal
+      </button>
       </div>
     );
   }
