@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import memberService from '../service/MemberService';
+import volunteerService from '../service/VolunteerService';
 import { toast } from 'react-toastify';
 
-export class Member extends Component {
+export class Volunteer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      memberId: this.props.match.params.memberId,
-      member: {},
+      volunteerId: this.props.match.params.volunteerId,
+      volunteer: {},
       address: '',
     };
   }
 
   componentDidMount() {
-    memberService.getMemberById(this.state.memberId)
+    volunteerService.getVolunteerById(this.state.volunteerId)
       .then((response) => {
         this.setState({
-          member: response.data,
+          volunteer: response.data,
         });
         
         const { latitude, longitude } = response.data;
@@ -57,21 +57,21 @@ export class Member extends Component {
   };
 
   render() {
-    const { member, address } = this.state;
+    const { volunteer, address } = this.state;
 
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div className='mb-5' style={{ width: '50%' }}>
-          <h1 className="my-4">VIEW MEMBER'S INFORMATION</h1>
+          <h1 className="my-4">VIEW VOLUNTEER'S INFORMATION</h1>
           <table className="table">
             <tbody>
               <tr>
                 <th scope="row">First Name</th>
-                <td style={{ textAlign: 'left' }}>{member.firstName}</td>
+                <td style={{ textAlign: 'left' }}>{volunteer.firstName}</td>
               </tr>
               <tr>
                 <th scope="row">Last Name</th>
-                <td style={{ textAlign: 'left' }}>{member.lastName}</td>
+                <td style={{ textAlign: 'left' }}>{volunteer.lastName}</td>
               </tr>
               <tr>
                 <th scope="row">Address</th>
@@ -79,31 +79,23 @@ export class Member extends Component {
               </tr>
               <tr>
                 <th scope="row">Contact Number</th>
-                <td style={{ textAlign: 'left' }}>{member.contactNumber}</td>
+                <td style={{ textAlign: 'left' }}>{volunteer.contactNumber}</td>
               </tr>
               <tr>
                 <th scope="row">Date of Birth</th>
-                <td style={{ textAlign: 'left' }}>{member.dob}</td>
+                <td style={{ textAlign: 'left' }}>{volunteer.dob}</td>
               </tr>
               <tr>
-                <th scope="row">Condition</th>
-                <td style={{ textAlign: 'left' }}>{member.condition}</td>
+                <th scope="row">Representing Group</th>
+                <td style={{ textAlign: 'left' }}>{volunteer.representingGroup}</td>
               </tr>
               <tr>
-                <th scope="row">Allergies</th>
-                <td style={{ textAlign: 'left' }}>{member.allergies}</td>
+                <th scope="row">Group Name</th>
+                <td style={{ textAlign: 'left' }}>{volunteer.groupName}</td>
               </tr>
               <tr>
-                <th scope="row">Caregiver Name</th>
-                <td style={{ textAlign: 'left' }}>{member.caregiverName}</td>
-              </tr>
-              <tr>
-                <th scope="row">Relationship</th>
-                <td style={{ textAlign: 'left' }}>{member.relationship}</td>
-              </tr>
-              <tr>
-                <th scope="row">Caregiver Contact</th>
-                <td style={{ textAlign: 'left' }}>{member.caregiverContact}</td>
+                <th scope="row">Station</th>
+                <td style={{ textAlign: 'left' }}>{volunteer.station}</td>
               </tr>
             </tbody>
           </table>
@@ -113,4 +105,4 @@ export class Member extends Component {
   }
 }
 
-export default Member;
+export default Volunteer;
