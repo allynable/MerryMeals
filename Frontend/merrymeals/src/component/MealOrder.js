@@ -25,6 +25,9 @@ const MealOrder = (props) => {
   useEffect(() => {
     menuData();
     setCurrentUser(props.currentUser.member);
+    orderService.getOrder(currentUser.memberId).then((response)=>{
+      setMemberOrder(response.data);
+    })
   }, [props.currentUser]);
 
   const menuData = () => {
@@ -33,17 +36,16 @@ const MealOrder = (props) => {
     });
   };
 
-  // const getOrder =() => {
-  //   const memberId = currentUser.memberId;
-  //   console.log(memberId);
-  //   orderService.getOrder(memberId).then((response)=>{
-  //     setMemberOrder(response.data);
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //   });
-  // }
+  const getOrder =() => {
+    const memberId = currentUser.memberId;
+    orderService.getOrder(memberId).then((response)=>{
+      setMemberOrder(response.data);
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+  }
 
   const handleMondayMealChange = (event) => {
     setMondayMeal(event.target.value);

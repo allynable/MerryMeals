@@ -7,9 +7,9 @@ class OrderService{
     }
 
     getOrder(memberId){
-        return axios.get(API_BASE_URL + "order/" + memberId)
+        return axios.get(API_BASE_URL + "order/member/" + memberId)
     }
-    
+
     viewMealOrders() {
         return axios.get(API_BASE_URL + "order/all");
     }

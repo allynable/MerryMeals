@@ -50,8 +50,8 @@ export class MealOrderTable extends Component {
           <tbody>
           {this.state.mealOrders.map((mealOrder) => (
               <tr key={mealOrder.mealOrderId}>
-                <td>{this.getMemberFirstName(mealOrder.memberId)}</td>
-                <td>{this.getMemberFirstName(mealOrder.memberId)}</td>
+                <td>{mealOrder.member.firstName}</td>
+                <td>{mealOrder.member.lastName}</td>
                 <td>
                   <ul>
                     <li>Monday: {mealOrder.mondayMeal}</li>
