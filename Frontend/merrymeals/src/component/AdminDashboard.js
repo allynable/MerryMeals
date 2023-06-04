@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 import '../css/AdminDashboard.css'
 import MemberTable from './MemberTable';
 import MealTable from './MealTable';
-
 import VolunteerTable from "./VolunteerTable";
+import MealOrderTable from "./MealOrderTable";
 
 const AdminDashboard = (props) => {
 
@@ -28,6 +28,9 @@ const AdminDashboard = (props) => {
                     <li class="nav-item">
                         <a class="nav-link" id="meal-management-tab" data-bs-toggle="pill" href="#meal-management" role="tab" aria-controls="v-pills-meal" aria-selected="false">Meal Management</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="meal-order-tab" data-bs-toggle="pill" href="#meal-order" role="tab" aria-controls="v-pills-mealorder" aria-selected="false">Meal Order Management</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-9 tab-content custom-tab">
@@ -42,6 +45,10 @@ const AdminDashboard = (props) => {
                 </div>
                 <div class="tab-pane fade" id="meal-management" role="tabpanel" aria-labelledby="meal-management-tab">
                     <MealTable/>
+
+                </div>
+                <div class="tab-pane fade" id="meal-order" role="tabpanel" aria-labelledby="meal-order-tab">
+                    <MealOrderTable/>
 
                 </div>
             </div>

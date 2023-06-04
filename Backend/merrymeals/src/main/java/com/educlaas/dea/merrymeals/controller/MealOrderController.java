@@ -31,7 +31,7 @@ public class MealOrderController {
    @PostMapping("/save/")
    private MealOrderResponse saveMealOrder(@RequestBody MealOrderDto mealOrderDto) {
       Optional<Member> optionalMember = memberRepository.findById(mealOrderDto.getCurrentMember());
-      if(optionalMember.isPresent()){
+      if (optionalMember.isPresent()) {
          Member member = optionalMember.get();
 
          MealOrder mealOrder = new MealOrder();
@@ -48,7 +48,7 @@ public class MealOrderController {
    }
 
    @GetMapping("/all")
-   private List<MealOrder> getMealOrders() {
+   public List<MealOrder> getMealOrders() {
       return mealOrderRepository.findAll();
    }
 

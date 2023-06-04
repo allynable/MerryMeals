@@ -5,6 +5,9 @@ class OrderService{
     saveOrder(orderData){
         return axios.post(API_BASE_URL + "order/save/", orderData)
     }
+    viewMealOrders() {
+        return axios.get(API_BASE_URL + "order/all");
+    }
 }
 
 const orderService = new OrderService()
