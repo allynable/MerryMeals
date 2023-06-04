@@ -11,8 +11,8 @@ class MealService{
         return axios.delete(API_BASE_URL + "meal/" + mealItemId);
     }
 
-    saveMeal(meal){
-        return axios.post(API_BASE_URL + "savemeal", meal);
+    createMeal(newMeal){
+        return axios.post(API_BASE_URL + "savemeal", newMeal);
     }
 }
 
