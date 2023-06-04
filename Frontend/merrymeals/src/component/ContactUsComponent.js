@@ -56,8 +56,8 @@ export class ContactUsComponent extends Component {
               className="contact100-form-title"
               style={{ backgroundImage: "{img1}" }}
             >
-              <span className="contact100-form-title-1">Contact Us</span>
-              <span className="contact100-form-title-2">
+              <span className="contact100-form-title-1 fs-1">CONTACT US</span>
+              <span className="contact100-form-title-2 fs-5">
                 Feel free to drop us a message below!
               </span>
             </div>
