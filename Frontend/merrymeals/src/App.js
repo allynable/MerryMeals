@@ -30,6 +30,8 @@ import ContactUsComponent from "./component/ContactUsComponent";
 import PVProfile from "./component/PVProfile";
 import ProtectedRoute from "./component/PrivateRoute"
 import MenuComponent from "./component/MenuComponent";
+import MealOrder from "./component/MealOrder";
+import ServiceCenters from "./component/ServiceCenters";
 export const ACCESS_TOKEN = "accessToken";
 
 
@@ -73,8 +75,14 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeComponent}></Route>
           <Route exact path="/memregistration" component={MemberSignup}></Route>
+          <Route exact path="/servicecenter" component={ServiceCenters}></Route>
           <Route exact path="/donate" component={DonateComponent}></Route>
           <Route exact path="/menu" component={MenuComponent}></Route>
+          <Route exact path="/order" render={(props) =>(<MealOrder
+              {...props}
+                authenticated={authenticated}
+                currentUser={currentUser}
+              />)}></Route>
           <Route
             exact
             path="/memberprofile"

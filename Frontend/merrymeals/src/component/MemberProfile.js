@@ -37,10 +37,10 @@ export const MemberProfile = (props) => {
           var modifiedAddress = formattedAddress.replace(/\s\w+\+\w+/g, "");
           setAddress(modifiedAddress);
         } else {
-          toast.error("No results found.");
+          console.log("No results found.");
         }
       } else {
-        toast.error("Please enter a valid address!");
+        console.log("Enter Valid Address")
       }
     });
   }
@@ -49,7 +49,7 @@ export const MemberProfile = (props) => {
       <Container className="profile">
         <Row className="py-5 justify-content-center">
           <Col xs={12} sm={10} md={8}>
-            <Card className="p-3 shadow-lg" style={{ height: "200%%" }}>
+            <Card className="p-3 shadow-lg">
               <Row>
                 <Col xs={4} className="text-center">
                   <Image

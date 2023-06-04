@@ -10,6 +10,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-google-maps/api": "^2.18.1",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -35,8 +36,6 @@
     "styled-components": "^5.3.11",
     "web-vitals": "^2.1.4"
   },
-
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

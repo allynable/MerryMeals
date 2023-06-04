@@ -25,41 +25,44 @@ export class HeaderComponent extends Component {
                     Meals
                   </a>
                 </li>
+                {this.props.role === "ROLE_MEMBER" && (
+                  <li>
+                    <a href="/order" className="navbar-link">
+                      Order
+                    </a>
+                  </li>
+                )}
                 <li>
                   <a href="/donate" class="navbar-link">
                     Donate
                   </a>
                 </li>
-                {this.props.role === "ROLE_ADMIN" && 
-                  <li>
-                  <a
-                    href="/admindashboard"
-                    class="navbar-link"
-                  >
-                    Dashboard
-                  </a>
-                </li>
-                }
-                {this.props.role === "ROLE_MEMBER" && 
-                  <li>
-                  <a
-                    href="/memberprofile"
-                    class="navbar-link"
-                  >
-                    Profile
-                  </a>
-                </li>
-                }
-                {this.props.role === "ROLE_VOLUNTEER" && 
                 <li>
-                    <a
-                      href="/volunteerprofile"
-                      class="navbar-link"
-                    >
+                  <a href="/servicecenter" class="navbar-link">
+                    Service Centers
+                  </a>
+                </li>
+                {this.props.role === "ROLE_ADMIN" && (
+                  <li>
+                    <a href="/admindashboard" class="navbar-link">
+                      Dashboard
+                    </a>
+                  </li>
+                )}
+                {this.props.role === "ROLE_MEMBER" && (
+                  <li>
+                    <a href="/memberprofile" class="navbar-link">
                       Profile
                     </a>
                   </li>
-                }
+                )}
+                {this.props.role === "ROLE_VOLUNTEER" && (
+                  <li>
+                    <a href="/volunteerprofile" class="navbar-link">
+                      Profile
+                    </a>
+                  </li>
+                )}
                 {this.props.authenticated ? (
                   <li>
                     <a
