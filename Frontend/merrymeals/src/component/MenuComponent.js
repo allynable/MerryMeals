@@ -19,16 +19,16 @@ const MenuComponent = () => {
 
   return (
     <Container>
-      {console.log()} <h1>Meal Menu</h1>
+      <h1 className="py-3">Meal Menu</h1>
       <Row className="justify-content-center">
         <Table bordered striped className="table table-rounded">
           <tbody>
             <tr>
               <td>
-                <h4>Monday</h4>
+                <h4 className="p-5">Monday <br />Meal</h4>
               </td>
               {mondayMenuItems.map((item) => (
-              <td>
+              <td className="pt-5">
                 <h5>{item.name}</h5>
                 <p>{item.description}</p>
               </td>
@@ -36,10 +36,10 @@ const MenuComponent = () => {
             </tr>
             <tr>
               <td>
-                <h4>Tuesday</h4>
+                <h4 className="p-5">Tuesday</h4>
               </td>
-              {mondayMenuItems.map((item) => (
-              <td>
+              {tuesdayMenuItems.map((item) => (
+              <td className="pt-5">
                 <h5>{item.name}</h5>
                 <p>{item.description}</p>
               </td>
@@ -47,10 +47,10 @@ const MenuComponent = () => {
             </tr>
             <tr>
               <td>
-                <h4>Wednesday</h4>
+                <h4 className="p-5">Wednesday</h4>
               </td>
               {wednesdayMenuItems.map((item) => (
-              <td>
+              <td className="pt-5">
                 <h5>{item.name}</h5>
                 <p>{item.description}</p>
               </td>
@@ -58,10 +58,10 @@ const MenuComponent = () => {
             </tr>
             <tr>
               <td>
-                <h4>Thursday</h4>
+                <h4 className="p-5">Thursday</h4>
               </td>
               {thursdayMenuItems.map((item) => (
-              <td>
+              <td className="pt-5">
                 <h5>{item.name}</h5>
                 <p>{item.description}</p>
               </td>
@@ -69,10 +69,10 @@ const MenuComponent = () => {
             </tr>
             <tr>
               <td>
-                <h4>Friday</h4>
+                <h4 className="p-5">Friday</h4>
               </td>
               {fridayMenuItems.map((item) => (
-              <td>
+              <td className="pt-5">
                 <h5>{item.name}</h5>
                 <p>{item.description}</p>
               </td>
