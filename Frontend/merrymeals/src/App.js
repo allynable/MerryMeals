@@ -28,6 +28,7 @@ import PaymentComponent from "./component/PaymentComponent";
 import MemberProfile from "./component/MemberProfile";
 import ContactUsComponent from "./component/ContactUsComponent";
 import PVProfile from "./component/PVProfile";
+import MenuComponent from "./component/MenuComponent";
 export const ACCESS_TOKEN = "accessToken";
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
           <Route exact path="/" component={HomeComponent}></Route>
           <Route exact path="/memregistration" component={MemberSignup}></Route>
           <Route exact path="/donate" component={DonateComponent}></Route>
+          <Route exact path="/menu" component={MenuComponent}></Route>
           <Route
             exact
             path="/memberprofile"

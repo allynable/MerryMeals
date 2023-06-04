@@ -1,5 +1,6 @@
 package com.educlaas.dea.merrymeals.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.educlaas.dea.merrymeals.dao.MealItem;
 import com.educlaas.dea.merrymeals.repository.MealRepository;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
@@ -24,6 +26,11 @@ public class MealController {
     @PostMapping("/savemeal")
     private MealItem saveMealItem(@RequestBody MealItem mealItem){
         return mealRepository.save(mealItem);
+    }
+
+    @GetMapping("/all")
+    private List<MealItem> getMeals(){
+        return mealRepository.findAll();
     }
 
     @PutMapping("/{mealId}")

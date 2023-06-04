@@ -37,3 +37,8 @@
 .profile{
   text-align: left !important;
 }
+
+.table-rounded {
+  border-radius: 5px;
+  overflow: hidden;
+}

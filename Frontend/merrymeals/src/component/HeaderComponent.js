@@ -21,7 +21,7 @@ export class HeaderComponent extends Component {
                   </a>
                 </li>
                 <li>
-                  <a href="..." class="navbar-link">
+                  <a href="/menu" class="navbar-link">
                     Meals
                   </a>
                 </li>
