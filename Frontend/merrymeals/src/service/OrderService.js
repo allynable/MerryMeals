@@ -3,7 +3,7 @@ const API_BASE_URL = "http://localhost:8080/"
 
 class OrderService{
     saveOrder(orderData){
-        return axios.post(API_BASE_URL + "saveorder", orderData)
+        return axios.post(API_BASE_URL + "order/save", orderData)
     }
 }
 

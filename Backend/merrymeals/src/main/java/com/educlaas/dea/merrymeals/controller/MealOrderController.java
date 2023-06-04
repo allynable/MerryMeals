@@ -20,7 +20,7 @@ public class MealOrderController {
    @Autowired
    private MealOrderRepository mealOrderRepository;
 
-   @PostMapping("/")
+   @PostMapping("/save")
    private MealOrderResponse saveMealOrder(@RequestBody MealOrder mealOrder) {
       mealOrderRepository.save(mealOrder);
       return new MealOrderResponse(true, "Meal Ordered Successfully!");
