@@ -5,6 +5,7 @@ import '../css/AdminDashboard.css'
 import MemberTable from './MemberTable';
 import Member from './Member';
 import LoadingSpinner from "./Loading";
+import VolunteerTable from "./VolunteerTable";
 
 const AdminDashboard = (props) => {
     if (!props.authenticated) {
@@ -38,8 +39,7 @@ const AdminDashboard = (props) => {
                     
                 </div>
                 <div class="tab-pane fade" id="volunteer-management" role="tabpanel" aria-labelledby="volunteer-management-tab">
-                    <h3>Tab 2 Content</h3>
-                    <p>This is the content of tab 2.</p>
+                    <VolunteerTable/>
   
                 </div>
                 <div class="tab-pane fade" id="meal-management" role="tabpanel" aria-labelledby="meal-management-tab">

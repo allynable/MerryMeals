@@ -27,10 +27,10 @@ public class VolunteerController {
     @Autowired
     private UsersRepository usersRepository;
 
-    @PostMapping("/all")
-    private List<Volunteer> getAllVolunteer(){
+    @GetMapping("/all")
+    private List<Volunteer> getAllVolunteer() {
         return volunteerRepository.findAll();
-    } 
+    }
 
     @GetMapping("/{volunteerId}")
     public Optional<Volunteer> getMemberId(@PathVariable Long volunteerId) {
@@ -38,7 +38,7 @@ public class VolunteerController {
     }
     
     @DeleteMapping("/{volunteerId}")
-    private ResponseEntity<String> deleteVolunteer(@PathVariable long volunteerId){
+    private ResponseEntity<String> deleteVolunteer(@PathVariable long volunteerId) {
         try {
             Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(volunteerId);
 
