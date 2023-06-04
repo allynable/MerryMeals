@@ -202,8 +202,8 @@
       serviceCenters.forEach(function (serviceCenter) {
         var marker = new google.maps.Marker({
           position: {
-            lat: parseFloat(serviceCenter.lat),
-            lng: parseFloat(serviceCenter.lng),
+            lat: parseFloat(serviceCenter.lng),
+            lng: parseFloat(serviceCenter.lat),
           },
           map: map,
           title: serviceCenter.name,

@@ -1,28 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   GoogleMap,
   LoadScript,
   Marker,
   useLoadScript,
 } from "@react-google-maps/api";
-import locationService from "../service/LocationService";
 import LoadingSpinner from "./Loading";
 
-const ServiceCenters = () => {
-  const [serviceCenters, setServiceCenters] = useState([]);
+const ServiceCenters = (props) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyBeP41nTw8QroOfvcCFR9bKIC-GUW7BLcs",
   });
-
-  const fetchServiceCenter = async () => {
-    locationService.getServiceCenter().then((response) => {
-      setServiceCenters(response.data);
-    });
-  };
-
-  useEffect(() => {
-    fetchServiceCenter();
-  }, []);
 
   const containerStyle = {
     width: "800px",
@@ -34,23 +22,39 @@ const ServiceCenters = () => {
     lng: 103.803564,
   };
 
-  if (!isLoaded) return <LoadingSpinner></LoadingSpinner>;
+  const mapRef = useRef(null);
+
+  const handleMapLoad = (map) => {
+    mapRef.current = map;
+    addMarkers();
+  };
+
+  const addMarkers = () => {
+    props.serviceCenters.forEach((serviceCenter) => {
+      const marker = new window.google.maps.Marker({
+        position: {
+          lat: parseFloat(serviceCenter.scLatitude),
+          lng: parseFloat(serviceCenter.scLongitude),
+        },
+        map: mapRef.current,
+        title: serviceCenter.scName,
+      });
+    });
+  };
+
+  if (!isLoaded || !props.serviceCenters)
+    return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <div className="container text-center">
-      {console.log(serviceCenters)}
+        <h1 className="pt-5">Service Center Locations</h1>
       <div className="py-5 d-flex justify-content-center align-items-center">
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
-          {serviceCenters.map((serviceCenter) => (
-            <Marker
-              position={{
-                lat: parseFloat(serviceCenter.scLatitude),
-                lng: parseFloat(serviceCenter.scLongitude),
-              }}
-              label={serviceCenter.scName}
-            />
-          ))}
-        </GoogleMap>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={12}
+          onLoad={handleMapLoad}
+        ></GoogleMap>
       </div>
     </div>
   );
