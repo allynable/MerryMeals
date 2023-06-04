@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +27,13 @@ public class VolunteerController {
     @Autowired
     private UsersRepository usersRepository;
 
-    @PostMapping("/all")
-    private List<Volunteer> getAllVolunteer(){
+    @GetMapping("/all")
+    private List<Volunteer> getAllVolunteer() {
         return volunteerRepository.findAll();
-    } 
+    }
 
     @DeleteMapping("/{volunteerId}")
-    private ResponseEntity<String> deleteVolunteer(@PathVariable long volunteerId){
+    private ResponseEntity<String> deleteVolunteer(@PathVariable long volunteerId) {
         try {
             Optional<Volunteer> optionalVolunteer = volunteerRepository.findById(volunteerId);
 
