@@ -75,7 +75,7 @@ function App() {
           <Route exact path="/memregistration" component={MemberSignup}></Route>
           <Route exact path="/donate" component={DonateComponent}></Route>
           <Route exact path="/menu" component={MenuComponent}></Route>
-          <ProtectedRoute
+          <Route
             exact
             path="/memberprofile"
             render={(props) => (
