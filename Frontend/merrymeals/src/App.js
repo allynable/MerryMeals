@@ -29,21 +29,23 @@ import PaymentComponent from "./component/PaymentComponent";
 import MemberProfile from "./component/MemberProfile";
 import ContactUsComponent from "./component/ContactUsComponent";
 import PVProfile from "./component/PVProfile";
-import ProtectedRoute from "./component/PrivateRoute"
+import ProtectedRoute from "./component/PrivateRoute";
 import MenuComponent from "./component/MenuComponent";
 import MealOrder from "./component/MealOrder";
 import ServiceCenters from "./component/ServiceCenters";
+import locationService from "./service/LocationService";
 export const ACCESS_TOKEN = "accessToken";
-
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [serviceCenters, setServiceCenters] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [role, setRole] = useState("");
   const history = useHistory();
 
   useEffect(() => {
     loadCurrentlyLoggedInUser();
+    fetchServiceCenter();
   }, [history]);
 
   function loadCurrentlyLoggedInUser() {
@@ -56,6 +58,11 @@ function App() {
       .catch((error) => {});
   }
 
+  const fetchServiceCenter = async () => {
+    locationService.getServiceCenter().then((response) => {
+      setServiceCenters(response.data);
+    });
+  };
   function handleLogout() {
     localStorage.removeItem(ACCESS_TOKEN);
     setAuthenticated(false);
@@ -76,25 +83,37 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomeComponent}></Route>
           <Route exact path="/memregistration" component={MemberSignup}></Route>
-          <Route exact path="/servicecenter" component={ServiceCenters}></Route>
+          <Route
+            exact
+            path="/servicecenter"
+            render={(props) => (
+              <ServiceCenters {...props} serviceCenters={serviceCenters} />
+            )}
+          ></Route>
           <Route exact path="/donate" component={DonateComponent}></Route>
           <Route exact path="/menu" component={MenuComponent}></Route>
-          <Route exact path="/order" render={(props) =>(<MealOrder
-              {...props}
+          <Route
+            exact
+            path="/order"
+            render={(props) => (
+              <MealOrder
+                {...props}
                 authenticated={authenticated}
                 currentUser={currentUser}
-              />)}></Route>
+              />
+            )}
+          ></Route>
           <Route
             exact
             path="/memberprofile"
             render={(props) => (
               <MemberProfile
-              {...props}
+                {...props}
                 authenticated={authenticated}
                 currentUser={currentUser}
               />
             )}
-            ></Route>
+          ></Route>
           <Route
             exact
             path="/pvregistration"
@@ -127,7 +146,7 @@ function App() {
                 {...props}
               />
             )}
-            ></Route>
+          ></Route>
 
           <Route
             exact
