@@ -28,15 +28,15 @@ public class VolunteerController {
     private UsersRepository usersRepository;
 
     @GetMapping("/all")
-    private List<Volunteer> getAllVolunteer() {
+    public List<Volunteer> getVolunteer() {
         return volunteerRepository.findAll();
     }
 
     @GetMapping("/{volunteerId}")
-    public Optional<Volunteer> getMemberId(@PathVariable Long volunteerId) {
+    public Optional<Volunteer> getVolunteerId(@PathVariable Long volunteerId) {
         return volunteerRepository.findById(volunteerId);
     }
-    
+
     @DeleteMapping("/{volunteerId}")
     private ResponseEntity<String> deleteVolunteer(@PathVariable long volunteerId) {
         try {

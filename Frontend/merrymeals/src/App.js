@@ -82,7 +82,7 @@ function App() {
                 currentUser={currentUser}
               />
             )}
-            ></ProtectedRoute>
+            ></Route>
           <Route
             exact
             path="/pvregistration"
@@ -105,7 +105,7 @@ function App() {
           <Route exact path="/news" component={News}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>
           {/* <Route exact path="/volunteerprofile" component={PVProfile} /> */}
-          <ProtectedRoute
+          <Route
             exact
             path="/volunteerprofile"
             render={(props) => (
@@ -115,9 +115,9 @@ function App() {
                 {...props}
               />
             )}
-            ></ProtectedRoute>
+            ></Route>
 
-          <ProtectedRoute
+          <Route
             exact
             path="/admindashboard"
             render={(props) => (
@@ -127,7 +127,7 @@ function App() {
                 {...props}
               />
             )}
-          ></ProtectedRoute>
+          ></Route>
           <Route path="/member/:memberId" component={Member}></Route>
           <Route path="members/:keyword" element={<AdminDashboard />} />
           <Route component={PageNotFound}></Route>
