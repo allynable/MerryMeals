@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import '../css/AdminDashboard.css'
 import MemberTable from './MemberTable';
-import Member from './Member';
+import MealTable from './MealTable';
 
 import VolunteerTable from "./VolunteerTable";
 
@@ -41,8 +41,7 @@ const AdminDashboard = (props) => {
   
                 </div>
                 <div class="tab-pane fade" id="meal-management" role="tabpanel" aria-labelledby="meal-management-tab">
-                    <h3>Tab 3 Content</h3>
-                    <p>This is the content of tab 3.</p>
+                    <MealTable/>
 
                 </div>
             </div>
