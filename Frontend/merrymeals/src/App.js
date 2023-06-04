@@ -28,8 +28,8 @@ import PaymentComponent from "./component/PaymentComponent";
 import MemberProfile from "./component/MemberProfile";
 import ContactUsComponent from "./component/ContactUsComponent";
 import PVProfile from "./component/PVProfile";
-import MenuComponent from "./component/MenuComponent";
 export const ACCESS_TOKEN = "accessToken";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -72,7 +72,6 @@ function App() {
           <Route exact path="/" component={HomeComponent}></Route>
           <Route exact path="/memregistration" component={MemberSignup}></Route>
           <Route exact path="/donate" component={DonateComponent}></Route>
-          <Route exact path="/menu" component={MenuComponent}></Route>
           <Route
             exact
             path="/memberprofile"
@@ -83,7 +82,7 @@ function App() {
                 currentUser={currentUser}
               />
             )}
-          />
+            ></ProtectedRoute>
           <Route
             exact
             path="/pvregistration"
@@ -106,7 +105,7 @@ function App() {
           <Route exact path="/news" component={News}></Route>
           <Route exact path="/aboutus" component={AboutUs}></Route>
           {/* <Route exact path="/volunteerprofile" component={PVProfile} /> */}
-          <Route
+          <ProtectedRoute
             exact
             path="/volunteerprofile"
             render={(props) => (
@@ -116,19 +115,19 @@ function App() {
                 {...props}
               />
             )}
-          />
+            ></ProtectedRoute>
 
-          <Route
+          <ProtectedRoute
             exact
             path="/admindashboard"
             render={(props) => (
               <AdminDashboard
                 authenticated={authenticated}
-                role={role}
+                role={currentUser}
                 {...props}
               />
             )}
-          ></Route>
+          ></ProtectedRoute>
           <Route path="/member/:memberId" component={Member}></Route>
           <Route path="members/:keyword" element={<AdminDashboard />} />
           <Route component={PageNotFound}></Route>

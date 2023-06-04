@@ -40,7 +40,7 @@ export class ContactUsComponent extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='container-contact1'>
         <div className="container-contact100">
           <div
             className="contact100-map"
@@ -56,8 +56,8 @@ export class ContactUsComponent extends Component {
               className="contact100-form-title"
               style={{ backgroundImage: "{img1}" }}
             >
-              <span className="contact100-form-title-1">Contact Us</span>
-              <span className="contact100-form-title-2">
+              <span className="contact100-form-title-1 fs-1">CONTACT US</span>
+              <span className="contact100-form-title-2 fs-5">
                 Feel free to drop us a message below!
               </span>
             </div>
@@ -110,6 +110,7 @@ export class ContactUsComponent extends Component {
               >
                 <span className="label-input100">Message:</span>
                 <textarea
+                  id="contact-message"
                   name="message"
                   value={this.state.text}
                   onChange={this.changeMessage}
