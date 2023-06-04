@@ -1,13 +1,10 @@
 import { Container, Row, Col, Image, Card, Form } from "react-bootstrap";
 import defaultProfile from "../image/profile.svg";
-import { getCurrentUser } from "../service/MCRegisterService";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import LoadingSpinner from "./Loading";
 import { toast } from "react-toastify";
 
 export const MemberProfile = (props) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(null);
   const [address, setAddress] = useState("");
   if (!props.authenticated) {
     return <LoadingSpinner></LoadingSpinner>;

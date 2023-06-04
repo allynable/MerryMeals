@@ -1,8 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import {
   GoogleMap,
-  LoadScript,
-  Marker,
   useLoadScript,
 } from "@react-google-maps/api";
 import LoadingSpinner from "./Loading";

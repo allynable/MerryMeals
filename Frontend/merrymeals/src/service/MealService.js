@@ -4,8 +4,8 @@ class MealService{
     getMealItems() {
         return axios.get(API_BASE_URL + "meal/all");
     }
-    updateMeal(meal){
-        return axios.put(API_BASE_URL + "meal/" + meal.mealItemId, meal);
+    updateMeal(mealItemId, meal){
+        return axios.put(API_BASE_URL + "meal/" + mealItemId, meal);
     }
     deleteMeal(mealItemId){
         return axios.delete(API_BASE_URL + "meal/" + mealItemId);
