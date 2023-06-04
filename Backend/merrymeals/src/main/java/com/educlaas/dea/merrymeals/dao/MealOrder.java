@@ -21,18 +21,12 @@ public class MealOrder {
     @JoinColumn(name = "member_id", referencedColumnName = "memberId")
     private Member member;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "meal_item_id", referencedColumnName = "mealItemId")
-    private MealItem mealItem;
+    private String mondayMeal;
+    private String tuesdayMeal;
+    private String wednesdayMeal;
+    private String thursdayMeal;
+    private String fridayMeal;
 
-    public MealOrder() {
-    }
-
-    public MealOrder(long mealOrderId, Member member, MealItem mealItem) {
-        this.mealOrderId = mealOrderId;
-        this.member = member;
-        this.mealItem = mealItem;
-    }
 
     public long getMealOrderId() {
         return this.mealOrderId;
@@ -50,27 +44,44 @@ public class MealOrder {
         this.member = member;
     }
 
-    public MealItem getMealItem() {
-        return this.mealItem;
+    public String getMondayMeal() {
+        return this.mondayMeal;
     }
 
-    public void setMealItem(MealItem mealItem) {
-        this.mealItem = mealItem;
+    public void setMondayMeal(String mondayMeal) {
+        this.mondayMeal = mondayMeal;
     }
 
-    public MealOrder mealOrderId(long mealOrderId) {
-        setMealOrderId(mealOrderId);
-        return this;
+    public String getTuesdayMeal() {
+        return this.tuesdayMeal;
     }
 
-    public MealOrder member(Member member) {
-        setMember(member);
-        return this;
+    public void setTuesdayMeal(String tuesdayMeal) {
+        this.tuesdayMeal = tuesdayMeal;
     }
 
-    public MealOrder mealItem(MealItem mealItem) {
-        setMealItem(mealItem);
-        return this;
+    public String getWednesdayMeal() {
+        return this.wednesdayMeal;
     }
 
+    public void setWednesdayMeal(String wednesdayMeal) {
+        this.wednesdayMeal = wednesdayMeal;
+    }
+
+    public String getThursdayMeal() {
+        return this.thursdayMeal;
+    }
+
+    public void setThursdayMeal(String thursdayMeal) {
+        this.thursdayMeal = thursdayMeal;
+    }
+
+    public String getFridayMeal() {
+        return this.fridayMeal;
+    }
+
+    public void setFridayMeal(String fridayMeal) {
+        this.fridayMeal = fridayMeal;
+    }
+    
 }
