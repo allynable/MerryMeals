@@ -28,6 +28,8 @@ import PaymentComponent from "./component/PaymentComponent";
 import MemberProfile from "./component/MemberProfile";
 import ContactUsComponent from "./component/ContactUsComponent";
 import PVProfile from "./component/PVProfile";
+import ProtectedRoute from "./component/PrivateRoute"
+import MenuComponent from "./component/MenuComponent";
 export const ACCESS_TOKEN = "accessToken";
 
 
@@ -72,7 +74,8 @@ function App() {
           <Route exact path="/" component={HomeComponent}></Route>
           <Route exact path="/memregistration" component={MemberSignup}></Route>
           <Route exact path="/donate" component={DonateComponent}></Route>
-          <Route
+          <Route exact path="/menu" component={MenuComponent}></Route>
+          <ProtectedRoute
             exact
             path="/memberprofile"
             render={(props) => (
