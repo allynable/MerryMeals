@@ -5,6 +5,10 @@ class OrderService{
     saveOrder(orderData){
         return axios.post(API_BASE_URL + "order/save/", orderData)
     }
+
+    getOrder(memberId){
+        return axios.get(API_BASE_URL + "order/" + memberId)
+    }
 }
 
 const orderService = new OrderService()

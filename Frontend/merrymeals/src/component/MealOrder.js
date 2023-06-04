@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const MealOrder = (props) => {
   const [mealItem, setMealItem] = useState([]);
   const [currentUser, setCurrentUser] = useState();
+  const [memberOrder, setMemberOrder] = useState();
   const mondayMenuItems = mealItem.filter((item) => item.day === "Monday");
   const tuesdayMenuItems = mealItem.filter((item) => item.day === "Tuesday");
   const wednesdayMenuItems = mealItem.filter(
@@ -20,6 +21,7 @@ const MealOrder = (props) => {
   const [wednesdayMeal, setWednesdayMeal] = useState([]);
   const [thursdayMeal, setThursdayMeal] = useState([]);
   const [fridayMeal, setFridayMeal] = useState([]);
+
   useEffect(() => {
     menuData();
     setCurrentUser(props.currentUser.member);
@@ -30,6 +32,18 @@ const MealOrder = (props) => {
       setMealItem(response.data);
     });
   };
+
+  // const getOrder =() => {
+  //   const memberId = currentUser.memberId;
+  //   console.log(memberId);
+  //   orderService.getOrder(memberId).then((response)=>{
+  //     setMemberOrder(response.data);
+  //     console.log(response);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   });
+  // }
 
   const handleMondayMealChange = (event) => {
     setMondayMeal(event.target.value);

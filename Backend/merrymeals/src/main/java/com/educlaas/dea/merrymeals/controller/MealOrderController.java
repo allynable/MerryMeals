@@ -31,18 +31,24 @@ public class MealOrderController {
    @PostMapping("/save/")
    private MealOrderResponse saveMealOrder(@RequestBody MealOrderDto mealOrderDto) {
       Optional<Member> optionalMember = memberRepository.findById(mealOrderDto.getCurrentMember());
-      if(optionalMember.isPresent()){
-         Member member = optionalMember.get();
+      if (optionalMember.isPresent()) {
+         Optional<MealOrder> presentMealOrder = mealOrderRepository.findByMember(optionalMember.get());
+         if (presentMealOrder.isPresent()) {
+            return new MealOrderResponse(false, "Failed to Order");
+         } else {
+            Member member = optionalMember.get();
 
-         MealOrder mealOrder = new MealOrder();
-         mealOrder.setMember(member);
-         mealOrder.setMondayMeal(mealOrderDto.getMondayMeal());
-         mealOrder.setTuesdayMeal(mealOrderDto.getTuesdayMeal());
-         mealOrder.setWednesdayMeal(mealOrderDto.getWednesdayMeal());
-         mealOrder.setThursdayMeal(mealOrderDto.getThursdayMeal());
-         mealOrder.setFridayMeal(mealOrderDto.getFridayMeal());
-         mealOrderRepository.save(mealOrder);
-         return new MealOrderResponse(true, "Meal Ordered Successfully!");
+            MealOrder mealOrder = new MealOrder();
+            mealOrder.setMember(member);
+            mealOrder.setMondayMeal(mealOrderDto.getMondayMeal());
+            mealOrder.setTuesdayMeal(mealOrderDto.getTuesdayMeal());
+            mealOrder.setWednesdayMeal(mealOrderDto.getWednesdayMeal());
+            mealOrder.setThursdayMeal(mealOrderDto.getThursdayMeal());
+            mealOrder.setFridayMeal(mealOrderDto.getFridayMeal());
+            mealOrderRepository.save(mealOrder);
+            return new MealOrderResponse(true, "Meal Ordered Successfully!");
+         }
+
       }
       return new MealOrderResponse(false, "Failed to Order");
    }
@@ -52,4 +58,13 @@ public class MealOrderController {
       return mealOrderRepository.findAll();
    }
 
+   @GetMapping("/{memberId}")
+   private Optional<MealOrder> getMealOrder(@PathVariable long memberId) {
+      Optional<Member> optionalMember = memberRepository.findById(memberId);
+      if (optionalMember.isPresent()) {
+         Member member = optionalMember.get();
+         return mealOrderRepository.findByMember(member);
+      }
+      return null;
+   }
 }
