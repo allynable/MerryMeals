@@ -34,7 +34,7 @@ public class MealOrderController {
       if (optionalMember.isPresent()) {
          Optional<MealOrder> presentMealOrder = mealOrderRepository.findByMember(optionalMember.get());
          if (presentMealOrder.isPresent()) {
-            return new MealOrderResponse(false, "Failed to Order");
+            return new MealOrderResponse(false, "You have a pending order");
          } else {
             Member member = optionalMember.get();
 
@@ -54,11 +54,11 @@ public class MealOrderController {
    }
 
    @GetMapping("/all")
-   private List<MealOrder> getMealOrders() {
+   public List<MealOrder> getMealOrders() {
       return mealOrderRepository.findAll();
    }
 
-   @GetMapping("/{memberId}")
+   @GetMapping("/member/{memberId}")
    private Optional<MealOrder> getMealOrder(@PathVariable long memberId) {
       Optional<Member> optionalMember = memberRepository.findById(memberId);
       if (optionalMember.isPresent()) {
@@ -66,5 +66,10 @@ public class MealOrderController {
          return mealOrderRepository.findByMember(member);
       }
       return null;
+   }
+
+   @GetMapping("/{orderId}")
+   private Optional<MealOrder> getOrder(@PathVariable long orderId) {
+      return mealOrderRepository.findById(orderId);
    }
 }

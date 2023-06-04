@@ -9,6 +9,10 @@ class OrderService{
     getOrder(memberId){
         return axios.get(API_BASE_URL + "order/" + memberId)
     }
+    
+    viewMealOrders() {
+        return axios.get(API_BASE_URL + "order/all");
+    }
 }
 
 const orderService = new OrderService()
