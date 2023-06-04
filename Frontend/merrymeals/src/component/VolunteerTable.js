@@ -16,7 +16,6 @@ export class VolunteerTable extends Component {
  componentDidMount(){
    volunteerService.viewVolunteer()
    .then( (response) => {
-        console.log("All volunteers in Component" + JSON.stringify(response))
         this.setState({
             volunteers: response.data
          })

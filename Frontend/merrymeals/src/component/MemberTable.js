@@ -16,7 +16,6 @@ export class MemberTable extends Component {
  componentDidMount(){
    memberService.viewMember()
    .then( (response) => {
-        console.log("All members in Component" + JSON.stringify(response))
         this.setState({
             members: response.data
          })

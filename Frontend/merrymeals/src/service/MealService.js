@@ -12,10 +12,11 @@ class MealService{
     }
 
     createMeal(newMeal){
-        return axios.post(API_BASE_URL + "savemeal", newMeal);
+        return axios.post(API_BASE_URL + "meal/savemeal", newMeal);
     }
 }
 
 const mealService = new MealService()
+
 export default mealService
 

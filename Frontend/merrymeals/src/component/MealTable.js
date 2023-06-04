@@ -30,7 +30,6 @@ export class MealTable extends Component {
   componentDidMount() {
     mealService.getMealItems()
       .then((response) => {
-        console.log("All meals in Component" + JSON.stringify(response));
         this.setState({
           meals: response.data,
         });

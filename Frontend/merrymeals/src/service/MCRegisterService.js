@@ -52,3 +52,11 @@ export function memberRegister(memberRegisterRequest) {
     body: JSON.stringify(memberRegisterRequest),
   });
 }
+
+export function createMeal(newMeal){
+  return newMeal({
+      url: API_BASE_URL + "meal/savemeal",
+      method: "POST",
+      body: JSON.stringify(newMeal),
+    });
+}
