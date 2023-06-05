@@ -16,8 +16,6 @@ export class MemberTable extends Component {
       newMember: {
         firstName: '',
         lastName: '',
-        latitude: '',
-        longitude: '',
         contactNumber: '',
         dob: '',
         condition: '',
@@ -108,7 +106,7 @@ export class MemberTable extends Component {
 
   createMember(newMember) {
     memberService
-      .createMember(newMember)
+      .saveMember(newMember)
       .then((response) => {
         toast.success('Member created successfully!');
         const createdMember = response.data;
@@ -316,7 +314,7 @@ export class MemberTable extends Component {
               <div className="form-group">
                 <label htmlFor="dob">Date of Birth</label>
                 <input
-                  type="number"
+                  type="date"
                   className="form-control"
                   id="dob"
                   value={newMember.dob}
