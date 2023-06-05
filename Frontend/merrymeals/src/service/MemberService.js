@@ -14,7 +14,7 @@ class MemberService{
     }
 
     updateMember(memberId, member){
-        return axios.put(API_BASE_URL + "member/" + memberId, member);
+        return axios.put(API_BASE_URL + "member/update/" + memberId, member);
     }
 
     searchMember(keyword){

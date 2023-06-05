@@ -25,9 +25,6 @@ const MealOrder = (props) => {
   useEffect(() => {
     menuData();
     setCurrentUser(props.currentUser.member);
-    orderService.getOrder(currentUser.memberId).then((response)=>{
-      setMemberOrder(response.data);
-    })
   }, [props.currentUser]);
 
   const menuData = () => {
@@ -35,17 +32,6 @@ const MealOrder = (props) => {
       setMealItem(response.data);
     });
   };
-
-  const getOrder =() => {
-    const memberId = currentUser.memberId;
-    orderService.getOrder(memberId).then((response)=>{
-      setMemberOrder(response.data);
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error)
-    });
-  }
 
   const handleMondayMealChange = (event) => {
     setMondayMeal(event.target.value);
@@ -76,14 +62,18 @@ const MealOrder = (props) => {
       tuesdayMeal,
       wednesdayMeal,
       thursdayMeal,
-      fridayMeal
+      fridayMeal,
     };
-    orderService.saveOrder(mealData).then((response) => {
-      toast.success(response.data.message);
-    })
-    .catch((error) => {
-      toast.error((error.message) || 'Oops! Something went wrong. Please try again!');
-    });
+    orderService
+      .saveOrder(mealData)
+      .then((response) => {
+        toast.success(response.data.message);
+      })
+      .catch((error) => {
+        toast.error(
+          error.message || "Oops! Something went wrong. Please try again!"
+        );
+      });
   };
 
   if (!currentUser) {

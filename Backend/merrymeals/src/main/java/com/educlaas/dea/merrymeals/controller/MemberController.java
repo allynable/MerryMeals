@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.educlaas.dea.merrymeals.dao.Member;
 import com.educlaas.dea.merrymeals.dao.Users;
+import com.educlaas.dea.merrymeals.payload.MemberRegister;
+import com.educlaas.dea.merrymeals.payload.UserMemberDto;
 import com.educlaas.dea.merrymeals.repository.MemberRepository;
 import com.educlaas.dea.merrymeals.repository.UsersRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/member")
@@ -37,7 +41,7 @@ public class MemberController {
     }
 
     @DeleteMapping("/{memberId}")
-    public ResponseEntity<String> deleteStore(@PathVariable Long memberId) {
+    public ResponseEntity<String> deleteMember(@PathVariable Long memberId) {
         try {
             Optional<Member> optionalMember = memberRepository.findById(memberId);
 
@@ -55,6 +59,37 @@ public class MemberController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error deleting member");
+        }
+    }
+
+    @PutMapping("/update/{memberId}")
+    public ResponseEntity<String> updateMember(@PathVariable long memberId,@RequestBody Member memberUpdate) {
+        try {
+            Optional<Member> optionalMember = memberRepository.findById(memberId);
+            if (optionalMember.isPresent()) {
+                Member member = optionalMember.get();
+                Users user = member.getUser();
+                user.setEmail(memberUpdate.getUser().getEmail());
+                user.setIsApproved(memberUpdate.getUser().getIsApproved());
+                member.setUser(null);
+                member.setFirstName(memberUpdate.getFirstName());
+                member.setLastName(memberUpdate.getLastName());
+                member.setContactNumber(memberUpdate.getContactNumber());
+                member.setDob(memberUpdate.getDob());
+                member.setCondition(memberUpdate.getCondition());
+                member.setAllergies(memberUpdate.getAllergies());
+                member.setCaregiverName(memberUpdate.getCaregiverName());
+                member.setRelationship(memberUpdate.getRelationship());
+                member.setCaregiverContact(memberUpdate.getCaregiverContact());
+                member.setUser(user);
+                usersRepository.save(user);
+                memberRepository.save(member);
+                return ResponseEntity.ok("Member successfully updated!");
+            }
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error updating member");
         }
     }
 }

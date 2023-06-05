@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import memberService from '../service/MemberService'
-import { withRouter } from 'react-router-dom';
-import { Modal} from "react-bootstrap";
+import React, { Component } from "react";
+import memberService from "../service/MemberService";
+import { withRouter } from "react-router-dom";
+import { Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 export class MemberTable extends Component {
@@ -40,7 +40,7 @@ export class MemberTable extends Component {
             (member) => member.memberId !== memberId
           ),
         });
-        this.props.history.push('/members');
+        this.props.history.push("/members");
       })
       .catch((error) => {
         console.error(error);
@@ -72,7 +72,7 @@ export class MemberTable extends Component {
     memberService
       .updateMember(memberId, updatedMember)
       .then((response) => {
-        toast.info('Member updated successfully!');
+        toast.info(response.data);
         this.closeUpdateModal();
 
         const updatedMembers = this.state.members.map((member) => {
@@ -85,13 +85,12 @@ export class MemberTable extends Component {
         this.setState({ members: updatedMembers });
       })
       .catch((error) => {
-        toast.error('Failed to update the member.');
+        toast.error(error.data);
       });
   }
 
   render() {
-    const { members, showUpdateModal, selectedMember } =
-      this.state;
+    const { members, showUpdateModal, selectedMember } = this.state;
 
     return (
       <div>
@@ -177,17 +176,20 @@ export class MemberTable extends Component {
                     type="email"
                     className="form-control"
                     id="email"
-                    value={selectedMember.email}
+                    value={selectedMember.user.email}
                     onChange={(e) => {
                       const updatedMember = {
                         ...selectedMember,
-                        email: e.target.value,
+                        user: {
+                          ...selectedMember.user,
+                          email: e.target.value,
+                        },
                       };
                       this.setState({ selectedMember: updatedMember });
                     }}
                   />
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
@@ -202,7 +204,7 @@ export class MemberTable extends Component {
                       this.setState({ selectedMember: updatedMember });
                     }}
                   />
-                </div>
+                </div> */}
                 <div className="form-group">
                   <label htmlFor="contactNumber">Contact Number</label>
                   <input
@@ -222,7 +224,7 @@ export class MemberTable extends Component {
                 <div className="form-group">
                   <label htmlFor="dob">Date of Birth</label>
                   <input
-                    type="date"
+                    type="text"
                     className="form-control"
                     id="dob"
                     value={selectedMember.dob}
@@ -315,6 +317,27 @@ export class MemberTable extends Component {
                     }}
                   />
                 </div>
+                <div className="form-group">
+                  <label htmlFor="isApproved">Approve Application</label>
+                  <select
+                    className="form-control"
+                    id="isApproved"
+                    value={selectedMember.user.isApproved}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        user: {
+                          ...selectedMember.user,
+                          isApproved: e.target.value === "true",
+                        },
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  >
+                    <option value={true}>Yes</option>
+                    <option value={false}>No</option>
+                  </select>
+                </div>
               </form>
             </Modal.Body>
             <Modal.Footer>
@@ -337,7 +360,6 @@ export class MemberTable extends Component {
             </Modal.Footer>
           </Modal>
         )}
-
       </div>
     );
   }

@@ -141,4 +141,23 @@ public class Member {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " memberId='" + getMemberId() + "'" +
+            ", firstName='" + getFirstName() + "'" +
+            ", lastName='" + getLastName() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
+            ", contactNumber='" + getContactNumber() + "'" +
+            ", dob='" + getDob() + "'" +
+            ", condition='" + getCondition() + "'" +
+            ", allergies='" + getAllergies() + "'" +
+            ", caregiverName='" + getCaregiverName() + "'" +
+            ", relationship='" + getRelationship() + "'" +
+            ", caregiverContact='" + getCaregiverContact() + "'" +
+            ", user='" + getUser() + "'" +
+            "}";
+    }
+
 }
