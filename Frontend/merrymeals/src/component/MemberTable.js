@@ -12,25 +12,10 @@ export class MemberTable extends Component {
       members: [],
       showUpdateModal: false,
       selectedMember: null,
-      showAddModal: false,
-      newMember: {
-        firstName: '',
-        lastName: '',
-        contactNumber: '',
-        dob: '',
-        condition: '',
-        allergies: '',
-        caregiverName: '',
-        relationship: '',
-        caregiverContact: '',
-      },
     };
 
     this.openUpdateModal = this.openUpdateModal.bind(this);
     this.updateMember = this.updateMember.bind(this);
-    this.createMember = this.createMember.bind(this);
-    this.openAddModal = this.openAddModal.bind(this);
-    this.closeAddModal = this.closeAddModal.bind(this);
   }
 
   componentDidMount() {
@@ -104,40 +89,8 @@ export class MemberTable extends Component {
       });
   }
 
-  createMember(newMember) {
-    memberService
-      .saveMember(newMember)
-      .then((response) => {
-        toast.success('Member created successfully!');
-        const createdMember = response.data;
-
-        this.setState((prevState) => ({
-          members: [...prevState.members, createdMember],
-        }));
-        this.closeAddModal();
-      })
-      .catch((error) => {
-        toast.error('Failed to create the member.');
-      });
-  }
-
-  openAddModal() {
-    this.setState({ showAddModal: true });
-  }
-
-  closeAddModal() {
-    this.setState({
-      showAddModal: false,
-      newMember: {
-        name: '',
-        email: '',
-        address: '',
-      },
-    });
-  }
-
   render() {
-    const { members, showUpdateModal, selectedMember, showAddModal, newMember } =
+    const { members, showUpdateModal, selectedMember } =
       this.state;
 
     return (
@@ -187,16 +140,32 @@ export class MemberTable extends Component {
             <Modal.Body>
               <form>
                 <div className="form-group">
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="firstname">First Name </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="name"
-                    value={selectedMember.name}
+                    id="firstname"
+                    value={selectedMember.firstName}
                     onChange={(e) => {
                       const updatedMember = {
                         ...selectedMember,
-                        name: e.target.value,
+                        firstName: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="lastname">Last Name </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="lastname"
+                    value={selectedMember.lastName}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        lastName: e.target.value,
                       };
                       this.setState({ selectedMember: updatedMember });
                     }}
@@ -205,7 +174,7 @@ export class MemberTable extends Component {
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input
-                    type="text"
+                    type="email"
                     className="form-control"
                     id="email"
                     value={selectedMember.email}
@@ -219,16 +188,128 @@ export class MemberTable extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="address">Address</label>
+                  <label htmlFor="password">Password</label>
                   <input
-                    type="text"
+                    type="password"
                     className="form-control"
-                    id="address"
-                    value={selectedMember.address}
+                    id="password"
+                    value={selectedMember.password}
                     onChange={(e) => {
                       const updatedMember = {
                         ...selectedMember,
-                        address: e.target.value,
+                        password: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="contactNumber">Contact Number</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="contactNumber"
+                    value={selectedMember.contactNumber}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        contactNumber: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="dob">Date of Birth</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="dob"
+                    value={selectedMember.dob}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        dob: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="condition">Condition</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="condition"
+                    value={selectedMember.condition}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        condition: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="allergies">Allergies</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="allergies"
+                    value={selectedMember.allergies}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        allergies: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="caregiverName">Caregiver's Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="caregiverName"
+                    value={selectedMember.caregiverName}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        caregiverName: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="relationship">Relationship</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="relationship"
+                    value={selectedMember.relationship}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        relationship: e.target.value,
+                      };
+                      this.setState({ selectedMember: updatedMember });
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="caregiverContact">Caregiver's Contact</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="caregiverContact"
+                    value={selectedMember.caregiverContact}
+                    onChange={(e) => {
+                      const updatedMember = {
+                        ...selectedMember,
+                        caregiverContact: e.target.value,
                       };
                       this.setState({ selectedMember: updatedMember });
                     }}
@@ -257,183 +338,6 @@ export class MemberTable extends Component {
           </Modal>
         )}
 
-        <Modal show={showAddModal} onHide={() => this.closeAddModal()}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add Member</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form>
-              <div className="form-group">
-                <label htmlFor="firstname">First Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="firstname"
-                  value={newMember.firstName}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      firstName: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastname">Last Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="lastname"
-                  value={newMember.lastName}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      lastName: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="contact">Contact Number</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="contact"
-                  value={newMember.contactNumber}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      contactNumber: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="dob">Date of Birth</label>
-                <input
-                  type="date"
-                  className="form-control"
-                  id="dob"
-                  value={newMember.dob}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      dob: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="condition">Condition</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="condition"
-                  value={newMember.condition}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      condition: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="allergies">Allergies</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="allergies"
-                  value={newMember.allergies}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      allergies: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="caregiverName">Caregiver's Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="caregiverName"
-                  value={newMember.caregiverName}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      caregiverName: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="relationship">Relationship</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="relationship"
-                  value={newMember.relationship}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      relationship: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="caregiverContact">Caregiver's Contact</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="caregiverContact"
-                  value={newMember.caregiverContact}
-                  onChange={(e) => {
-                    const createdMember = {
-                      ...newMember,
-                      caregiverContact: e.target.value,
-                    };
-                    this.setState({ newMember: createdMember });
-                  }}
-                />
-              </div>
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => this.createMember(newMember)}
-            >
-              Add
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={() => this.closeAddModal()}
-            >
-              Cancel
-            </button>
-          </Modal.Footer>
-        </Modal>
-
-        <button
-          type="button"
-          className="btn btn-success me-1"
-          onClick={() => this.openAddModal()}
-        >
-          Add Member
-        </button>
       </div>
     );
   }

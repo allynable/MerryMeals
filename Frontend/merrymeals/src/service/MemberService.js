@@ -13,10 +13,6 @@ class MemberService{
         return axios.delete(API_BASE_URL + "member/" + memberId);
     }
 
-    saveMember(newMember){
-        return axios.post(API_BASE_URL + "online/register/member", newMember);
-    }
-
     updateMember(memberId, member){
         return axios.put(API_BASE_URL + "member/" + memberId, member);
     }
