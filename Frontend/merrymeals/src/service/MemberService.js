@@ -17,13 +17,14 @@ class MemberService{
         return axios.post(API_BASE_URL + "member", member);
     }
 
-    updateMember(member){
-        return axios.put(API_BASE_URL + "member/" + member.memberId, member);
+    updateMember(memberId, member){
+        return axios.put(API_BASE_URL + "member/" + memberId, member);
     }
 
     searchMember(keyword){
         return axios.get(API_BASE_URL + "members/"+ keyword);
     }
+    
 }
 
 const memberService = new MemberService()

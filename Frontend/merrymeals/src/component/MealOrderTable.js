@@ -26,13 +26,6 @@ export class MealOrderTable extends Component {
       });
   }
 
-  getMemberFirstName(memberId) {
-    const member = this.state.members.find((m) => m.memberId === memberId);
-    if (member) {
-      return member.firstName;
-    }
-    return '';
-  }
 
   render() {
     return (
